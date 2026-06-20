@@ -1,0 +1,10 @@
+{
+    "game": "SULFUR",
+    "minimum_ap_version": "0.6.7",
+    "world_version": "0.0.0",
+    "authors": [
+        "nuzzles"
+    ],
+    "compatible_version": 7,
+    "version": 7
+}
