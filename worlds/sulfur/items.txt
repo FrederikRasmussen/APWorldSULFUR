@@ -1,0 +1,984 @@
+﻿id, name, type, weaponType
+
+1, Ammo Box (12ga), Consumable, None
+2, Ammo Box (50 BMG), Consumable, None
+3, Ammo Box (5.56mm), Consumable, None
+4, Ammo Box (7.62mm), Consumable, None
+5, Ammo Box (9mm), Consumable, None
+6, Ammo Box (Energy Cells), Consumable, None
+7, Blood of the Earth Mother, Consumable, None
+8, A12C Muzzle Brake, Attachment, None
+9, Assault Scope, Attachment, None
+10, Barrel Extension 2", Attachment, None
+11, Barrel Extension 4", Attachment, None
+12, Barrel Extension 6", Attachment, None
+13, Breznik BMD, Attachment, None
+14, Breznik BMD (Tactical), Attachment, None
+15, Compact Sight, Attachment, None
+16, Gun Crank, Attachment, None
+17, Haukland Flash Hider, Attachment, None
+18, Holographic Sight, Attachment, None
+19, Hunting Scope, Attachment, None
+20, Improvised Barrel Extension, Attachment, None
+21, Insurance, Attachment, None
+22, Laser Sight, Attachment, None
+23, Laser Sight, Attachment, None
+24, Laser Sight, Attachment, None
+25, Priming Bolt, Attachment, None
+26, Recon Scope, Attachment, None
+27, Reflex Sight, Attachment, None
+28, Shrouded Barrel Extension, Attachment, None
+29, Sniper Scope, Attachment, None
+30, Haukland Silencer, Attachment, None
+31, Aftermarket Haukland Silencer, Attachment, None
+32, SR-P3 Silencer, Attachment, None
+33, M87 "Albatross" Silencer, Attachment, None
+34, Warmage Compensator, Attachment, None
+35, Chamber Chisel (12ga), Gadget, None
+36, Chamber Chisel (.50 BMG), Gadget, None
+37, Chamber Chisel (5.56mm), Gadget, None
+38, Chamber Chisel (7.62mm), Gadget, None
+39, Chamber Chisel (9mm), Gadget, None
+40, Cash Money Bill, Consumable, None
+41, Cash Money Coin, Consumable, None
+42, Cash Money Twenny, Consumable, None
+43, Action Oil, Enchantment, None
+44, Add Damage Oil, Enchantment, None
+45, Scroll of Aftershock, Enchantment, None
+46, Aimless Oil, Enchantment, None
+47, Airsoft Oil, Enchantment, None
+48, Altruistic Oil, Enchantment, None
+49, Arkanoid Oil, Enchantment, None
+50, Arrow Oil, Enchantment, None
+51, Artery Oil, Enchantment, None
+52, Artillery Oil, Enchantment, None
+53, Ascetic Oil, Enchantment, None
+54, Assassin Dart Oil, Enchantment, None
+55, Attack Speed Oil, Enchantment, None
+56, Axe Oil, Enchantment, None
+57, Bad Planet Oil, Enchantment, None
+58, Bandit Oil, Enchantment, None
+59, BB Oil, Enchantment, None
+60, Bigger Bullets Oil, Enchantment, None
+61, Big Oil, Enchantment, None
+62, Big Tax Oil, Enchantment, None
+63, Birth Oil, Enchantment, None
+64, Black Friday Oil, Enchantment, None
+65, Blindfold Oil, Enchantment, None
+66, Blurt Oil, Enchantment, None
+67, Bolt Oil, Enchantment, None
+68, Bombard Oil, Enchantment, None
+69, Boomstick Oil, Enchantment, None
+70, Boulder Oil, Enchantment, None
+71, Bouncing Bullets Oil, Enchantment, None
+72, Bowl Oil, Enchantment, None
+73, Braced Oil, Enchantment, None
+74, Damage Oil, Enchantment, None
+75, Brute Oil, Enchantment, None
+76, Bulk Oil, Enchantment, None
+77, Bystander Oil, Enchantment, None
+78, Carefree Oil, Enchantment, None
+79, Careful Oil, Enchantment, None
+80, Careless Splitter Oil, Enchantment, None
+81, Cartoon Oil, Enchantment, None
+82, Casual Oil, Enchantment, None
+83, Scroll of Chain Lightning, Enchantment, None
+84, Scroll of Chaos Strike, Enchantment, None
+85, Scroll of Charm, Enchantment, None
+86, Cheap Oil, Enchantment, None
+87, Chonk Oil, Enchantment, None
+88, Chub Oil, Enchantment, None
+89, Clump Oil, Enchantment, None
+90, Collateral Oil, Enchantment, None
+91, Complicated Oil, Enchantment, None
+92, Compo Oil, Enchantment, None
+93, Confidence Oil, Enchantment, None
+94, Congestion Oil, Enchantment, None
+95, Considerate Oil, Enchantment, None
+96, Contained Force Oil, Enchantment, None
+97, Scroll of Corpse Explosion, Enchantment, None
+98, Scroll of Poison Blood, Enchantment, None
+99, Critical Oil, Enchantment, None
+100, Scroll of Crusader, Enchantment, None
+101, Cycle Oil, Enchantment, None
+102, Damage Oil, Enchantment, None
+103, Scroll of Dark, Enchantment, None
+104, Dart Oil, Enchantment, None
+105, Dead Center Oil, Enchantment, None
+106, Delayed Hyper Tube Oil, Enchantment, None
+107, Dense Oil, Enchantment, None
+108, Detune Oil, Enchantment, None
+109, Diesel Oil, Enchantment, None
+110, Discharge Oil, Enchantment, None
+111, Disposable Oil, Enchantment, None
+112, Division Oil, Enchantment, None
+113, Do-over Oil, Enchantment, None
+114, Double Fire Oil, Enchantment, None
+115, Double Lock Oil, Enchantment, None
+116, Double Nothing Oil, Enchantment, None
+117, Oil of Yin, Enchantment, None
+118, Dum Dum Oil, Enchantment, None
+119, Dynamic Oil, Enchantment, None
+120, Scroll of Earth, Enchantment, None
+121, Easy Oil, Enchantment, None
+122, Easy Plop Oil, Enchantment, None
+123, Scroll of Surge, Enchantment, None
+124, Elephant Oil, Enchantment, None
+125, Eternal Oil, Enchantment, None
+126, Exotic Barrel Oil, Enchantment, None
+127, Expander Oil, Enchantment, None
+128, Extra Powder Oil, Enchantment, None
+129, Farsighted Oil, Enchantment, None
+130, Fast Bet Oil, Enchantment, None
+131, Fast Forward Oil, Enchantment, None
+132, Scroll of Fear, Enchantment, None
+133, Feature Gun Oil, Enchantment, None
+134, Fidget Lord Oil, Enchantment, None
+135, Fidget Oil, Enchantment, None
+136, Scroll of Embers, Enchantment, None
+137, First Blood Oil, Enchantment, None
+138, Scroll of Flame Thrower, Enchantment, None
+139, Flea Oil, Enchantment, None
+140, Flop Oil, Enchantment, None
+141, Flow Funnel Oil, Enchantment, None
+142, Rate of Fire Oil, Enchantment, None
+143, Food Stamp Oil, Enchantment, None
+144, Force Oil, Enchantment, None
+145, Fragile System Oil, Enchantment, None
+146, Franciscan Oil, Enchantment, None
+147, Scroll of Frostbite, Enchantment, None
+148, Frugal Oil, Enchantment, None
+149, Gambler Oil, Enchantment, None
+150, Gargantuan Oil, Enchantment, None
+151, Gemini Oil, Enchantment, None
+152, Gentle Oil, Enchantment, None
+153, Glass Cannon Oil, Enchantment, None
+154, Great Oil, Enchantment, None
+155, Grounded Oil, Enchantment, None
+156, Gunslinger Oil, Enchantment, None
+157, Happy Accident Oil, Enchantment, None
+158, Heavy Lead Oil, Enchantment, None
+159, Heavy Oil, Enchantment, None
+160, Heavy Pockets  Oil, Enchantment, None
+161, Hefty Oil, Enchantment, None
+162, Helium Oil, Enchantment, None
+163, High Grade Oil, Enchantment, None
+164, Hip Blaster Oil, Enchantment, None
+165, Hip Marksman Oil, Enchantment, None
+166, Scroll of Holy Fire, Enchantment, None
+167, Scroll of Holy Purge, Enchantment, None
+168, Hoop Oil, Enchantment, None
+169, Hunter Oil, Enchantment, None
+170, Hustler Oil, Enchantment, None
+171, Hyper Lead Oil, Enchantment, None
+172, Imperfect Oil, Enchantment, None
+173, Inconsiderate Oil, Enchantment, None
+174, Inherited Oil, Enchantment, None
+175, Instant Oil, Enchantment, None
+176, Judgement Oil, Enchantment, None
+177, Jungian Oil, Enchantment, None
+178, Keep Oil, Enchantment, None
+179, Kicker Oil, Enchantment, None
+180, Kinetic Oil, Enchantment, None
+181, Last Drop Oil, Enchantment, None
+182, Late Boom Oil, Enchantment, None
+183, Launcher Oil, Enchantment, None
+184, Scroll of Lava, Enchantment, None
+185, Lazy Oil, Enchantment, None
+186, Scroll of Least Resistance, Enchantment, None
+187, Less Recoil Oil, Enchantment, None
+188, Scroll of Light, Enchantment, None
+189, Lightweight Oil, Enchantment, None
+190, Longshot Oil, Enchantment, None
+191, Lost In Focus Oil, Enchantment, None
+192, Low Roller Oil, Enchantment, None
+193, Machine Oil, Enchantment, None
+194, Main Discipline Oil, Enchantment, None
+195, Main Focus Oil, Enchantment, None
+196, Manifestation Oil, Enchantment, None
+197, Matrix Oil, Enchantment, None
+198, Micro Wing Oil, Enchantment, None
+199, Modern Technology Oil, Enchantment, None
+200, Mosquito Oil, Enchantment, None
+201, Multichamber Oil, Enchantment, None
+202, Multishot Oil, Enchantment, None
+203, Scroll of Nature, Enchantment, None
+204, Needleye Oil, Enchantment, None
+205, Nerf Oil, Enchantment, None
+206, No Look Oil, Enchantment, None
+207, No Need Oil, Enchantment, None
+208, Scroll of Noxiosa, Enchantment, None
+209, Out of the Box Oil, Enchantment, None
+210, Overclock Oil, Enchantment, None
+211, Overdose Oil, Enchantment, None
+212, Over Oil, Enchantment, None
+213, Parallel Mag Oil, Enchantment, None
+214, Peashooter Oil, Enchantment, None
+215, Penetration Oil, Enchantment, None
+216, Perfect Bounce Oil, Enchantment, None
+217, Perforate Oil, Enchantment, None
+218, Scroll of Pesticide, Enchantment, None
+219, Scroll of Petrification, Enchantment, None
+220, Scroll of Petroleum, Enchantment, None
+221, Plinker Oil, Enchantment, None
+222, Plop Back Oil, Enchantment, None
+223, Scroll of Plague, Enchantment, None
+224, Pool Oil, Enchantment, None
+225, Potato Oil, Enchantment, None
+226, Potshot Oil, Enchantment, None
+227, Scroll of Prism, Enchantment, None
+228, Puncher Oil, Enchantment, None
+229, Puncture Oil, Enchantment, None
+230, Purse Gun Oil, Enchantment, None
+231, Scroll of Explosions, Enchantment, None
+232, Rapid Internals Oil, Enchantment, None
+233, Ready Oil, Enchantment, None
+234, Rebound Oil, Enchantment, None
+235, Recycle Oil, Enchantment, None
+236, Relax Oil, Enchantment, None
+237, Release Oil, Enchantment, None
+238, Reload Oil, Enchantment, None
+239, Ricochet Oil, Enchantment, None
+240, Rigid System Oil, Enchantment, None
+241, Rigor Oil, Enchantment, None
+242, Robust Mechanics Oil, Enchantment, None
+243, Scroll of Rocket Launcher, Enchantment, None
+244, Rookie Oil, Enchantment, None
+245, Rubber Oil, Enchantment, None
+246, Rush Job Oil, Enchantment, None
+247, Scroll of Sacrifice, Enchantment, None
+248, Safety Oil, Enchantment, None
+249, Translucent Oil, Enchantment, None
+250, Saviour Oil, Enchantment, None
+251, Scatter Oil, Enchantment, None
+252, Scramble Oil, Enchantment, None
+253, Seated Fit Oil, Enchantment, None
+254, Seated Oil, Enchantment, None
+255, Sect Oil, Enchantment, None
+256, Sender Oil, Enchantment, None
+257, Sensible Oil, Enchantment, None
+258, Shaved Clip Oil, Enchantment, None
+259, Shellman Oil, Enchantment, None
+260, Sherlock Oil, Enchantment, None
+261, Shower Oil, Enchantment, None
+262, Shredder Oil, Enchantment, None
+263, Size Up Oil, Enchantment, None
+264, Skip Oil, Enchantment, None
+265, Crit Oil, Enchantment, None
+266, Slick Oil, Enchantment, None
+267, Slippy Coating Oil, Enchantment, None
+268, Slotmachine Oil, Enchantment, None
+269, Slow Mo Oil, Enchantment, None
+270, Slow Punch Oil, Enchantment, None
+271, Scroll of Slush, Enchantment, None
+272, Smart Bullet Oil, Enchantment, None
+273, Smash Oil, Enchantment, None
+274, Soft Bullet Oil, Enchantment, None
+275, Solid Oil, Enchantment, None
+276, Spartan Oil, Enchantment, None
+277, Speed Trade Oil, Enchantment, None
+278, Spitter Oil, Enchantment, None
+279, Spread Oil, Enchantment, None
+280, Stability Oil, Enchantment, None
+281, Stable Hip Oil, Enchantment, None
+282, Stationary Oil, Enchantment, None
+283, Scroll of Steam, Enchantment, None
+284, Stiffy Fit Oil, Enchantment, None
+285, Stoic Oil, Enchantment, None
+286, Scroll of Storm Surge, Enchantment, None
+287, Suppressive Oil, Enchantment, None
+288, Surgical Laser Oil, Enchantment, None
+289, Synchronicity Oil, Enchantment, None
+290, Tactical Oil, Enchantment, None
+291, Tandem Oil, Enchantment, None
+292, Task Oil, Enchantment, None
+293, Tech Support Oil, Enchantment, None
+294, Tension Oil, Enchantment, None
+295, Terminator Oil, Enchantment, None
+296, Test oil, Enchantment, None
+297, Test oil 2, Enchantment, None
+298, Tetrus Oil, Enchantment, None
+299, Thorough Oil, Enchantment, None
+300, Scroll of Thunderbolt, Enchantment, None
+301, Tight Barrel Oil, Enchantment, None
+302, Tight Oil, Enchantment, None
+303, Too Much Oil, Enchantment, None
+304, Scroll of Toxic Lobotomy, Enchantment, None
+305, Triple Oil, Enchantment, None
+306, Trusty Old Oil, Enchantment, None
+307, Turbulence Oil, Enchantment, None
+308, Twice Oil, Enchantment, None
+309, Two Time Oil, Enchantment, None
+310, Unlabeled Oil, Enchantment, None
+311, Untechnical Oil, Enchantment, None
+312, Vasectomy Oil, Enchantment, None
+313, Vegan Oil, Enchantment, None
+314, Vegetable Oil, Enchantment, None
+315, Velocity Oil, Enchantment, None
+316, Scroll of Voodoo, Enchantment, None
+317, Walk Easy Oil, Enchantment, None
+318, Waster Oil, Enchantment, None
+319, Scroll of Water, Enchantment, None
+320, Whim Oil, Enchantment, None
+321, Whos Counting Oil, Enchantment, None
+322, Wobble Oil, Enchantment, None
+323, Xanny Oil, Enchantment, None
+324, Zero Fucks Oil, Enchantment, None
+325, Zooming Oil, Enchantment, None
+326, Sulf Air, Armor, None
+327, Air Duster, Misc, None
+328, Americano, Consumable, None
+329, Amulet, Misc, None
+330, Aspic, Consumable, None
+331, Ass Wheel™, Misc, None
+332, Badass Vest, Armor, None
+333, Balaclava, Armor, None
+334, Ballistic Helmet, Armor, None
+335, Ballistic Vest, Armor, None
+336, Banana, Consumable, None
+337, Banana Bread, Consumable, None
+338, Banana peel, Misc, None
+339, Banana Sulfs, Consumable, None
+340, Blue Bandana, Armor, None
+341, Red Bandana, Armor, None
+342, Bark, Misc, None
+343, Bark bread, Consumable, None
+344, Bathrobe, Armor, None
+345, Beanie, Armor, None
+346, Beans, Consumable, None
+347, Beef Jerky, Consumable, None
+348, Beer Helmet, Armor, None
+349, BeGone, Misc, None
+350, Berries, Consumable, None
+351, Biscuits and Gravy, Consumable, None
+352, Black Pepper, Consumable, None
+353, Bladder, Misc, None
+354, Blast Boot, Armor, None
+355, Bleach, Misc, None
+356, Blindfold, Armor, None
+357, Blood, Consumable, None
+358, Blood Bag, Gadget, None
+359, Fried Blood Pudding, Consumable, None
+360, Blue Slipper, Armor, None
+361, Boba Tea, Consumable, None
+362, Bomb, Gadget, None
+363, Bone, Misc, None
+364, Boomerang, Gadget, None
+365, BOOMerang, Gadget, None
+366, Bottle, Gadget, None
+367, Bottled Scream, Gadget, None
+368, Bottled Water, Consumable, None
+369, Brain, Misc, None
+370, Bread, Consumable, None
+371, Breastplate, Armor, None
+372, Broth, Consumable, None
+373, Butter, Consumable, None
+374, Buttermilk Pancakes, Consumable, None
+375, Cacao, Consumable, None
+376, Cactus, Consumable, None
+377, Cactus Softdrink, Consumable, None
+378, Grilled Cactus, Consumable, None
+379, Lackerol Cactus, Consumable, None
+380, Caltrops, Gadget, None
+381, Camo Jacket, Armor, None
+382, Candy Cane, Consumable, None
+383, Cap, Armor, None
+384, Cappuccino, Consumable, None
+385, Bottled Caviar, Consumable, None
+386, Tube Caviar, Consumable, None
+387, Cencer, Gadget, None
+388, Cereal, Consumable, None
+389, Cevapi, Consumable, None
+390, Cheese, Consumable, None
+391, Cheeseburger, Consumable, None
+392, Cheese Tops, Consumable, None
+393, Chest of Drawers, Misc, None
+394, Chicken Leg, Misc, None
+395, Nashville Hot Chicken, Consumable, None
+396, Chocolate Ball, Consumable, None
+397, Chocolate Bar, Consumable, None
+398, Chocolate Syrup, Consumable, None
+399, Christmas Sock, Armor, None
+400, Christmas Spice, Consumable, None
+401, Christmas Sweater, Armor, None
+402, Father's Shirt, Armor, None
+403, Climbing Gear, Gadget, None
+404, Clog, Armor, None
+405, Cloth, Misc, None
+406, Coffee, Consumable, None
+407, Combat Boot, Armor, None
+408, Cordon Bleu, Consumable, None
+409, Cotton Candy, Consumable, None
+410, Cotton Swabs, Misc, None
+411, Cowboy Boot, Armor, None
+412, Cowboy Hat, Armor, None
+413, Cowboy Vest, Armor, None
+414, Craw Eye, Misc, None
+415, Craw Flesh, Misc, None
+416, Craw Skin, Misc, None
+417, Crown, Armor, None
+418, Crypt Key, Misc, None
+419, Cuisses De Grenouille, Consumable, None
+420, Cultist Heart, Misc, None
+421, Curry, Consumable, None
+422, Currywurst, Consumable, None
+423, Dark Lamp, Misc, None
+424, Death's Favor, Gadget, None
+425, Denim Jacket, Armor, None
+426, Detective Pipe, Misc, None
+427, Dimmie, Consumable, None
+428, Disgusting Cookbook, Gadget, None
+429, Dish Soap, Misc, None
+430, Diving Mask, Armor, None
+431, Dog Eye, Misc, None
+432, Dog Flesh, Misc, None
+433, Dog Skin, Misc, None
+434, Dogtags, Misc, None
+435, Dog Whistle, Misc, None
+436, Dopp i Grytan, Consumable, None
+437, Double Cheeseburger, Consumable, None
+438, Dunce Cap, Armor, None
+439, Ear Protectors, Armor, None
+440, Egg, Consumable, None
+441, Egg Toddy, Consumable, None
+442, Encrypted Hoodie, Armor, None
+443, Energy Gum, Consumable, None
+444, Escargot, Consumable, None
+445, Extra Lung, Misc, None
+446, Eye Patch, Armor, None
+447, False Sulfcap, Misc, None
+448, Fatberg Chunk, Consumable, None
+449, Firefighter Helmet, Armor, None
+450, Firefighter Jacket, Armor, None
+451, First Aid Kit, Consumable, None
+452, Fish, Consumable, None
+453, Fishing Rod, Gadget, None
+454, Fish and chips, Consumable, None
+455, Salted Fish, Consumable, None
+456, Flour, Consumable, None
+457, Fluffy Hat, Armor, None
+458, Fondue, Consumable, None
+459, Four-leaf Clover, Misc, None
+460, French Hotdog, Consumable, None
+461, French Toast, Consumable, None
+462, Frog Leg, Consumable, None
+463, Diving Fin, Armor, None
+464, Full English Breakfast, Consumable, None
+465, Funny Gas, Gadget, None
+466, Gas Mask, Armor, None
+467, Genie Shoe, Armor, None
+468, Geta, Armor, None
+469, Ghillie Suit, Armor, None
+470, Goblin eye, Misc, None
+471, Goblin flesh, Misc, None
+472, Goblin skin, Misc, None
+473, Golden Slipper, Armor, None
+474, Gonster, Consumable, None
+475, Graved salmon, Consumable, None
+476, Gravy, Consumable, None
+477, Green Glob, Misc, None
+478, Grilled Poultry, Consumable, None
+479, Sweet Gum, Consumable, None
+480, Haggis, Consumable, None
+481, Hard Bread, Consumable, None
+482, Hardhat, Armor, None
+483, Hardshell Taco, Consumable, None
+484, Haukland Membership Card, Misc, None
+485, Hazelnut, Consumable, None
+486, Hazmat Suit, Armor, None
+487, Health Potion, Consumable, None
+488, Heart, Misc, None
+489, Hedgehog Suit, Armor, None
+490, Herbs, Consumable, None
+491, Herbal Tea, Consumable, None
+492, High Heel, Armor, None
+493, High Quality Elf Shoe, Armor, None
+494, Hockey Shoulder Pads, Armor, None
+495, Hockey Helmet, Armor, None
+496, Holy Toast, Consumable, None
+497, Holy Water, Consumable, None
+498, Holy Water, Gadget, None
+499, Yellow Hoodie, Armor, None
+500, Hot Pot, Consumable, None
+501, Hot Sauce, Consumable, None
+502, Hot Snacks, Consumable, None
+503, Human eye, Misc, None
+504, Human flesh, Misc, None
+505, Human skin, Misc, None
+506, Hunting Vest, Armor, None
+507, Ice Skate, Armor, None
+508, Instant Defibrillator, Misc, None
+509, Intestines, Misc, None
+510, Iron Feather, Misc, None
+511, Berry Jam, Consumable, None
+512, Berry Jam (Unsweetened), Consumable, None
+513, Jansson's Temptation, Consumable, None
+514, Jello, Consumable, None
+515, Jet Pack, Gadget, None
+516, Julmust, Consumable, None
+517, Juniper Branch, Gadget, None
+518, Karl-Oskar, Consumable, None
+519, Kidney, Misc, None
+520, Kidney Pie, Consumable, None
+521, Kidney Stone, Consumable, None
+522, Knee Pads, Misc, None
+523, Knight's Helmet, Armor, None
+524, Kombucha, Consumable, None
+525, Latte, Consumable, None
+526, Leather Jacket, Armor, None
+527, Lemonade, Consumable, None
+528, Leverpastej, Consumable, None
+529, Library Card, Misc, None
+530, Life Vest, Armor, None
+531, Lightning in a Bottle, Gadget, None
+532, Liquor, Consumable, None
+533, Liver, Misc, None
+534, Dumpling, Consumable, None
+535, Shav'Wa bladder, Misc, None
+536, Shav'Wa eye, Misc, None
+537, Shav'Wa flesh, Misc, None
+538, Shav'Wa skin, Misc, None
+539, Loaded Die, Misc, None
+540, Lock of the Magus, Misc, None
+541, Lung, Misc, None
+542, Lussekatt, Consumable, None
+543, Lutfisk, Consumable, None
+544, Mac'n'Cheese, Consumable, None
+545, Maki, Consumable, None
+546, Marshmallows, Consumable, None
+547, Mashed Potatoes, Consumable, None
+548, Green Tea Gum, Consumable, None
+549, Green Tea, Consumable, None
+550, Matcha, Consumable, None
+551, Meat Skewer, Consumable, None
+552, Meringue, Consumable, None
+553, Metabulator Pump, Misc, None
+554, Metal Detector, Gadget, None
+555, Metal Scrap, Misc, None
+556, Microfiber Dish Cloth, Misc, None
+557, High Cut Helmet, Armor, None
+558, Skimmed Milk, Consumable, None
+559, Buttermilk, Consumable, None
+560, Low Fat Milk, Consumable, None
+561, Whole Milk, Consumable, None
+562, Berry Milkshake, Consumable, None
+563, Chocolate Milkshake, Consumable, None
+564, Mineral Water, Consumable, None
+565, Mochi, Consumable, None
+566, Monkey Paw, Gadget, None
+567, Motorcycle Helmet, Armor, None
+568, Chocolate Mudcake, Consumable, None
+569, Mulled Wine, Consumable, None
+570, Fried Mushroom , Consumable, None
+571, Mushroom Omelette, Consumable, None
+572, Mushroom Skewer, Consumable, None
+573, Mushroom Soup, Consumable, None
+574, Mutagen Capsule, Misc, None
+575, Mycota Squamata, Consumable, None
+576, Mystery Meat, Consumable, None
+577, Nigiri, Consumable, None
+578, Nuggets, Consumable, None
+579, Nut Mix, Consumable, None
+580, Nut Spread, Consumable, None
+581, Oats, Consumable, None
+582, Office Wear, Armor, None
+583, Oil Lamp, Gadget, None
+584, Old-Timey Suit, Armor, None
+585, Omelette, Consumable, None
+586, Onigiri, Consumable, None
+587, Pancreas, Misc, None
+588, Paper, Misc, None
+589, Parka, Armor, None
+590, Spaghetti Bolognese, Consumable, None
+591, Peanut, Consumable, None
+592, Peanut Butter, Consumable, None
+593, Peg Leg, Armor, None
+594, Pillow Armor, Armor, None
+595, Pine nuts, Consumable, None
+596, Pith Helmet, Armor, None
+597, Pizza, Consumable, None
+598, Pizza Slice, Consumable, None
+599, Plain White Tee, Armor, None
+600, Plate Carrier, Armor, None
+601, Platform Shoe, Armor, None
+602, Pocket Sand, Gadget, None
+603, Anti-Poison Gum, Consumable, None
+604, Police Hat, Armor, None
+605, Police Uniform, Armor, None
+606, Pölsa, Consumable, None
+607, Pølse, Consumable, None
+608, Pope Hat, Armor, None
+609, Porridge, Consumable, None
+610, Potato, Consumable, None
+611, Potato Salad, Consumable, None
+612, Poutine, Consumable, None
+613, Power Bar, Consumable, None
+614, Lower Prison Key, Misc, None
+615, Pyjamas, Armor, None
+616, Pyttipanna, Consumable, None
+617, Raclette, Consumable, None
+618, Raincoat, Armor, None
+619, Ramen, Consumable, None
+620, Tori Ramen, Consumable, None
+621, Key, Misc, None
+622, Range Finder, Misc, None
+623, Rat Cage, Gadget, None
+624, Razorang, Gadget, None
+625, Razor Blossom, Gadget, None
+626, Refrigerator, Misc, None
+627, Rhubarb, Consumable, None
+628, Rhubarb Pie, Consumable, None
+629, Rhubarb Porridge, Consumable, None
+630, Rhubarb Sauce, Consumable, None
+631, Rice, Consumable, None
+632, Puffed Rice Cakes, Consumable, None
+633, Risalamande, Consumable, None
+634, Rice Porridge, Consumable, None
+635, Robot Brain, Misc, None
+636, Robot Control Unit, Misc, None
+637, Robot Eye, Misc, None
+638, Robot Flesh, Misc, None
+639, Robot Heart, Misc, None
+640, Robot Hydraul, Misc, None
+641, Robot Joint Pneumatic, Misc, None
+642, Robot Plate, Misc, None
+643, Robot Septacoil, Misc, None
+644, Robot Soul Capsule, Misc, None
+645, Rock, Misc, None
+646, Rödsopp, Consumable, None
+647, Rödsopp Paste, Consumable, None
+648, Roller Blade, Armor, None
+649, Round Glasses, Armor, None
+650, Rubber, Misc, None
+651, Rubber Boot, Armor, None
+652, Rudolf Nose, Armor, None
+653, Running Shoe, Armor, None
+654, Safe, Misc, None
+655, Safety Vest, Armor, None
+656, Salt, Consumable, None
+657, Salted Sandfish, Consumable, None
+658, Samurai Armor, Armor, None
+659, Flat Sandfish, Consumable, None
+660, Bread Sandwich, Consumable, None
+661, Buddy Sandwich, Consumable, None
+662, Butter Sandwich, Consumable, None
+663, Cheese Sandwich, Consumable, None
+664, Liver Pâté Sandwich, Consumable, None
+665, Nut Spread Sandwich, Consumable, None
+666, Peanutbutter Sandwich, Consumable, None
+667, Peanutbutter Jelly Sandwich, Consumable, None
+668, Santa Coat, Armor, None
+669, Santa Hat, Armor, None
+670, Sashimi, Consumable, None
+671, Spicy Sausage, Consumable, None
+672, Sausage Omelette, Consumable, None
+673, Sausage On Stick, Consumable, None
+674, Sausage Soup, Consumable, None
+675, Sawdust, Misc, None
+676, Oxygen Tank, Misc, None
+677, Seaweed, Consumable, None
+678, Sheriff's Badge, Misc, None
+679, Shield Belt, Gadget, None
+680, Shoe, Armor, None
+681, Shovel, Gadget, None
+682, Hellshrew eye, Misc, None
+683, Hellshrew flesh, Misc, None
+684, Hellshrew skin, Misc, None
+685, Shrink Ray, Gadget, None
+686, Shurikens, Gadget, None
+687, Pickled herring platter, Consumable, None
+688, Ski Goggles, Armor, None
+689, Smoke Grenade, Gadget, None
+690, Snail, Misc, None
+691, Sneaker, Armor, None
+692, Admiral White Extra Strong, Consumable, None
+693, Sock, Armor, None
+694, Soda, Consumable, None
+695, Solution, Consumable, None
+696, Spaghetti, Consumable, None
+697, Spanish Omelette, Consumable, None
+698, Spice Mix, Misc, None
+699, Spleen, Misc, None
+700, Sports Drink, Consumable, None
+701, Springcoil Boot, Armor, None
+702, Square Glasses, Armor, None
+703, Steel Helmet, Armor, None
+704, Stew, Consumable, None
+705, Stick, Misc, None
+706, Stout, Consumable, None
+707, Straitjacket, Armor, None
+708, Sugar, Consumable, None
+709, Suitcase, Misc, None
+710, SULFUR Cap, Armor, None
+711, SULFUR Hoodie, Armor, None
+712, Sunglasses, Armor, None
+713, Surstromming, Consumable, None
+714, Suspensor Shield, Gadget, None
+715, Soapy Wool, Misc, None
+716, Swedish Pancakes, Consumable, None
+717, Swing-Ding, Consumable, None
+718, Sylvester Hat, Armor, None
+719, Tanker Helmet, Armor, None
+720, Thyroid, Misc, None
+721, Titanium Helmet, Armor, None
+722, Toaster, Gadget, None
+723, Toast Skagen, Consumable, None
+724, Tongue, Misc, None
+725, Tongue On Stick, Consumable, None
+726, Tracksuit, Armor, None
+727, Trapped Angel, Gadget, None
+728, Green Tunic, Armor, None
+729, Turtle Shell, Armor, None
+730, Unagi, Consumable, None
+731, Used Rubber, Misc, None
+732, Vacuum Cleaner, Consumable, None
+733, Vampire Heart, Gadget, None
+734, Velvet Bell, Consumable, None
+735, Vibraport, Gadget, None
+736, Voodoo Doll, Gadget, None
+737, Walnut, Consumable, None
+738, Wardrobe, Misc, None
+739, Weapon Rack, Misc, None
+740, Weapon Rack, Misc, None
+741, Repair Kit, Misc, None
+742, Wet Wipes, Misc, None
+743, Red Wine, Consumable, None
+744, Winter Scarf, Armor, None
+745, Wooden Armor, Armor, None
+746, Wooden Cross, Gadget, None
+747, Earthworm, Consumable, None
+748, Yakety Sax, Misc, None
+749, Ygg, Armor, None
+750, Guild Approved Cuisine, Consumable, None
+751, The Chequered Cookbook, Consumable, None
+752, Eating as Royals, Consumable, None
+753, From the Cellar, Consumable, None
+754, Shav'Wani delights, Consumable, None
+755, Tastes From the Sewers™️, Consumable, None
+756, Food for Desert Survival, Consumable, None
+757, Delicacies of the Forest, Consumable, None
+758, GABBA FOODMAKE, Consumable, None
+759, Recipe: Aspic, Consumable, None
+760, Recipe: Banana Sulfs, Consumable, None
+761, Recipe: Bark bread, Consumable, None
+762, Recipe: Beef Jerky, Consumable, None
+763, Recipe: Broth, Consumable, None
+764, Recipe: Broth, Consumable, None
+765, Recipe: Butter, Consumable, None
+766, Recipe: Butter, Consumable, None
+767, Recipe: Cheese, Consumable, None
+768, Recipe: Cheeseburger, Consumable, None
+769, Recipe: Double Cheeseburger, Consumable, None
+770, Recipe: Cheese Tops, Consumable, None
+771, Recipe: Nuggets, Consumable, None
+772, Recipe: Chocolate Ball, Consumable, None
+773, Recipe: Chocolate Syrup, Consumable, None
+774, Recipe: Cordon Bleu, Consumable, None
+775, Recipe: Cuisses De Grenouille, Consumable, None
+776, Recipe: Currywurst, Consumable, None
+777, Recipe: Vacuum Cleaner, Consumable, None
+778, Recipe: Dimmie, Consumable, None
+779, Recipe: Egg Toddy, Consumable, None
+780, Recipe: Escargot, Consumable, None
+781, Recipe: Extra Lung, Consumable, None
+782, Recipe: Extra Lung, Consumable, None
+783, Recipe: Fish and chips, Consumable, None
+784, Recipe: Fondue, Consumable, None
+785, Recipe: French Hotdog, Consumable, None
+786, Recipe: French Toast, Consumable, None
+787, Recipe: Full English Breakfast, Consumable, None
+788, Recipe: Full English Breakfast, Consumable, None
+789, Recipe: Gonster, Consumable, None
+790, Recipe: Green Glob, Consumable, None
+791, Recipe: Green Glob, Consumable, None
+792, Recipe: Sweet Gum, Consumable, None
+793, Recipe: Sweet Gum, Consumable, None
+794, Recipe: Hard Bread, Consumable, None
+795, Recipe: Holy Toast, Consumable, None
+796, Recipe: Hot Pot, Consumable, None
+797, Recipe: Hot Pot, Consumable, None
+798, Recipe: Hot Pot, Consumable, None
+799, Recipe: Hot Pot, Consumable, None
+800, Recipe: Berry Jam, Consumable, None
+801, Recipe: Jello, Consumable, None
+802, Recipe: Kidney Pie, Consumable, None
+803, Recipe: Kidney Stone, Consumable, None
+804, Recipe: Kidney Stone, Consumable, None
+805, Recipe: Leverpastej, Consumable, None
+806, Recipe: Liver Patty Sandwich, Consumable, None
+807, Recipe: Mac'n'Cheese, Consumable, None
+808, Recipe: Maki, Consumable, None
+809, Recipe: Marshmallows, Consumable, None
+810, Recipe: Mashed Potatoes, Consumable, None
+811, Recipe: Mochi, Consumable, None
+812, Recipe: Chocolate Mudcake, Consumable, None
+813, Recipe: Mushroom Omelette, Consumable, None
+814, Recipe: Fried Mushroom , Consumable, None
+815, Recipe: Fried Mushroom , Consumable, None
+816, Recipe: Mushroom Soup, Consumable, None
+817, Recipe: Mushroom Soup, Consumable, None
+818, Recipe: Mushroom Soup, Consumable, None
+819, Recipe: Mushroom Skewer, Consumable, None
+820, Recipe: Mystery Meat, Consumable, None
+821, Recipe: Mystery Meat, Consumable, None
+822, Recipe: Nashville Hot Chicken, Consumable, None
+823, Recipe: Nigiri, Consumable, None
+824, Recipe: Omelette, Consumable, None
+825, Recipe: Omelette, Consumable, None
+826, Recipe: Omelette, Consumable, None
+827, Recipe: Onigiri, Consumable, None
+828, Recipe: Peanut Butter, Consumable, None
+829, Recipe: Pölsa, Consumable, None
+830, Recipe: Pölsa, Consumable, None
+831, Recipe: Porridge, Consumable, None
+832, Recipe: Poutine, Consumable, None
+833, Recipe: Ramen, Consumable, None
+834, Recipe: Raclette, Consumable, None
+835, Recipe: Rhubarb Pie, Consumable, None
+836, Recipe: Rhubarb Porridge, Consumable, None
+837, Recipe: Puffed Rice Cakes, Consumable, None
+838, Recipe: Butter Sandwich, Consumable, None
+839, Recipe: Sashimi, Consumable, None
+840, Recipe: Sashimi, Consumable, None
+841, Recipe: Spicy Sausage, Consumable, None
+842, Recipe: Spicy Sausage, Consumable, None
+843, Recipe: Spicy Sausage, Consumable, None
+844, Recipe: Sausage On Stick, Consumable, None
+845, Bites & bytes, Consumable, None
+846, Car Stereo, Misc, None
+847, Craw Guano, Misc, None
+848, Diamond Ring, Misc, None
+849, Drivers License, Misc, None
+850, DVD Player, Misc, None
+851, Famous Painting, Misc, None
+852, Fancy Watch, Misc, None
+853, Fine China, Misc, None
+854, Flatscreen TV, Misc, None
+855, Gaming Laptop, Misc, None
+856, Gold Chain, Misc, None
+857, Golden Figurine, Misc, None
+858, Golden Ticket, Misc, None
+859, MiniDisc Player, Misc, None
+860, MP3 Player, Misc, None
+861, Old Vintage, Misc, None
+862, Ornamental Vase, Misc, None
+863, Poker Chips, Misc, None
+864, Silver Spoon, Misc, None
+865, Shav'Wa Soap, Misc, None
+866, Smartphone, Misc, None
+867, Soul Resin, Misc, None
+868, The Cost, Misc, None
+869, Arbiter 2, Weapon, Shotgun
+870, Arbiter 2, Weapon, Shotgun
+871, Augusta, Weapon, Shotgun
+872, .357 Balthazar, Weapon, Revolver
+873, Beck 8, Weapon, Pistol
+875, Bo, Weapon, Melee
+876, Breacher 8, Weapon, Shotgun
+877, Bronco 89, Weapon, Pistol
+878, Burner Phone, Gadget, Throwable
+885, Catacoil Rapid X, Weapon, AssaultRifle
+886, Corpsemaker, Weapon, AssaultRifle
+888, Cryogenic Grenade, Gadget, Throwable
+890, D4RT, Weapon, Sniper
+891, Deathstar PG, Weapon, SMG
+892, P38 Dirk, Weapon, Pistol
+893, Dolphin 99, Weapon, Sniper
+894, Drifter 9, Weapon, SMG
+895, Duhar, Weapon, LMG
+896, Dynamite, Gadget, Throwable
+898, Farsight, Weapon, Rifle
+899, Ferryman, Weapon, SMG
+900, Flicker, Weapon, Pistol
+901, Flock 76, Weapon, Shotgun
+909, Gravekeeper, Weapon, Pistol
+916, Impala Gravita, Weapon, Sniper
+917, Jar of Love, Gadget, Throwable
+918, Katana, Weapon, Melee
+919, Knop .22, Weapon, Rifle
+920, M11A2 Fisk, Weapon, AssaultRifle
+921, Majordome, Weapon, Shotgun
+922, 1889 Mario, Weapon, Shotgun
+923, Molotov Cocktail, Gadget, Throwable
+925, Mossman, Weapon, Shotgun
+926, Neuraxis F22, Weapon, LMG
+928, Nunchaku, Weapon, Melee
+929, Palehorse Topclipper, Weapon, Revolver
+930, M182 Pierre-Fusil, Weapon, Rifle
+931, Pineapple Grenade, Gadget, Throwable
+932, Ploika Compact, Weapon, SMG
+933, Jar of Poison, Gadget, Throwable
+934, Proximity Mine, Gadget, Throwable
+935, Ramshack, Weapon, Rifle
+936, Rektor 100rd, Weapon, LMG
+938, Rokua .308, Weapon, Sniper
+939, Sai, Weapon, Melee
+940, Salamander, Weapon, Pistol
+942, Snowball, Gadget, Throwable
+943, Snut .38, Weapon, Revolver
+944, Socom 9, Weapon, Pistol
+945, Star & Witness, Weapon, Pistol
+946, Stick Grenade, Gadget, Throwable
+947, Sulfur Grenade, Gadget, Throwable
+948, Tailor Marksman MKII, Weapon, Rifle
+949, M3 Termite, Weapon, SMG
+950, Throwing Knife, Gadget, Throwable
+952, Type 80 Typhoon, Weapon, AssaultRifle
+953, Unknown, Weapon, Pistol
+954, Valet, Weapon, SMG
+955, Vrede, Weapon, SMG
+956, Wakizashi, Weapon, Melee
+959, Wyatt PULSAR, Weapon, Revolver
+960, Wyatt PULSAR, Weapon, Revolver
+961, Stamp, Consumable, None
+962, Baptismal Font, Misc, None
+963, Bulk Ammo Box, Misc, None
+964, Chrismatory, Misc, None
+965, Gun Cabinet, Misc, None
+966, Snake Basket, Misc, None
+967, Longboy, Weapon, Sniper
+968, Toilet Paper, Misc, None
+969, Toilet, Misc, None
+970, Small Golden Wall Frame, Misc, None
+971, Withered Wood Wall Frame, Misc, None
+972, Cherry Wood Wall Frame, Misc, None
+973, Luxurious Wall Frame, Misc, None
+974, Holoreality Projector, Misc, None
+975, Chrismatory Cost Reset, Misc, None
+976, Delivery Demon Cost Reset, Misc, None
+977, Delivery Demon, Misc, None
+978, Hell 'N' Back, Weapon, Pistol
+979, Wingman, Weapon, AssaultRifle
+980, Additional Banish for Endless, Consumable, None
+981, Additional Choice Draw for Endless, Consumable, None
+982, Additional Re-roll for Endless, Consumable, None
+983, Warpig, Weapon, LMG
+984, Cavalier, Weapon, Pistol
+985, Cash Money Grand, Consumable, None
+986, Chat-Pardeur 98, Weapon, LMG
+987, Songbird, Weapon, SMG
+988, Socom ACR, Weapon, AssaultRifle
+989, SulfCola, Consumable, None
+990, Pilk, Consumable, None
+991, Coffin, Misc, None
+992, Left Wall Mount, Misc, None
+993, Center Wall Mount, Misc, None
+994, Right Wall Mount, Misc, None
+995, Laser Sight, Attachment, None
+996, Laser Sight, Attachment, None
+997, Laser Sight, Attachment, None
+998, Laser Sight, Attachment, None
+999, Laser Sight, Attachment, None
+1000, Laser Sight, Attachment, None
+1001, Laser Sight, Attachment, None
+1002, Laser Sight, Attachment, None
+1003, Laser Sight, Attachment, None
+1004, Laser Sight, Attachment, None
+1005, Laser Sight, Attachment, None
+1006, Laser Sight, Attachment, None
+1007, Terrier URB., Weapon, Pistol
+1008, Blackwater, Weapon, Revolver
+1009, Chimera Rapid, Weapon, SMG
+1010, CYB47, Weapon, AssaultRifle
+1011, Death's Toll, Weapon, Revolver
+1012, Money Stack, Gadget, Throwable

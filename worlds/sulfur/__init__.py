@@ -3,6 +3,9 @@ from worlds.AutoWorld import World
 from BaseClasses import Region, Location, Entrance, Item, ItemClassification
 from Options import Toggle, Range, Choice, PerGameCommonOptions
 from dataclasses import dataclass
+from .items import ITEM_NAME_TO_ID, SulfurItem
+from .locations import SulfurLocation
+
 
 # Options
 class Deathlink(Toggle):
@@ -31,15 +34,7 @@ class SulfurOptions(PerGameCommonOptions):
     average_sulf_per_filler: AverageSulfPerFiller
 
 # The rest
-class SulfurItem(Item):
-    game = "SULFUR"
-
-class SulfurLocation(Location):
-    game = "SULFUR"
-
-sulfur_items = [
-    "Mac 'N' Cheese"
-]
+sulfur_items = items.ITEM_NAME_TO_ID.keys()
 
 sulfur_locations = [
     "Sulfur Caves"
@@ -54,11 +49,10 @@ class SulfurWorld(World):
 
     base_id = 1
 
-    item_name_to_id = {name: id for id, name in enumerate(sulfur_items, base_id)}
+    item_name_to_id = ITEM_NAME_TO_ID
     location_name_to_id = {name: id for id, name in enumerate(sulfur_locations, base_id)}
 
     item_name_group = {
-        "foodstuffs": {"Mac 'N' Cheese"}
     }
 
     def generate_early(self) -> None:
@@ -66,9 +60,15 @@ class SulfurWorld(World):
     
     def create_regions(self) -> None:
         menu_region = Region("Menu", self.player, self.multiworld)
-        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves", None, menu_region))
+        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves I", None, menu_region))
+        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves II", None, menu_region))
+        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves III", None, menu_region))
+        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves IV", None, menu_region))
+        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves V", None, menu_region))
+        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves VI", None, menu_region))
+        menu_region.locations.append(SulfurLocation(self.player, "Sulfur Caves VII", None, menu_region))
         self.multiworld.regions.append(menu_region)
-    
+
     def create_item(self, item: str) -> SulfurItem:
         classification = ItemClassification.filler
         return SulfurItem(item, classification, self.item_name_to_id[item], self.player)
@@ -80,8 +80,8 @@ class SulfurWorld(World):
         for item in map(self.create_item, sulfur_items):
             self.multiworld.itempool.append(item)
         junk = 0  # calculate this based on player options
-        self.multiworld.itempool += [self.create_item("nothing") for _ in range(junk)]
+        self.multiworld.itempool += [self.create_item("Currency_SulfCoin") for _ in range(junk)]
     
     def set_rules(self) -> None:
-        self.multiworld.get_location("Sulfur Caves", self.player).place_locked_item(self.create_event("Victory"))
+        self.multiworld.get_location("Sulfur Caves VII", self.player).place_locked_item(self.create_event("Victory"))
         self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
