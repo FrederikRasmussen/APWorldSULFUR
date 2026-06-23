@@ -7,7 +7,8 @@ from dataclasses import dataclass
 from .item_names import ItemNames
 from .item_tags import ItemTags
 from .items import SulfurItem, ITEMS, ItemDetails
-from .locations import LOCATION_NAME_TO_ID, SulfurLocation, \
+from .location_names import LocationNames
+from .locations import SulfurLocation, LOCATIONS, LocationDetails, \
     get_location_names_with_ids
 
 
@@ -52,8 +53,7 @@ class SulfurWorld(World):
 
     item_name_to_details = items.item_identifier_to_details()
     item_name_to_id = items.item_name_to_id()
-    location_name_to_id = LOCATION_NAME_TO_ID
-
+    location_name_to_id = locations.location_name_to_id()
 
     item_name_groups = {
         ItemTags.accessory: items.get_item_names_from_tag(ItemTags.accessory),
@@ -94,52 +94,53 @@ class SulfurWorld(World):
         church_region.add_locations(
             get_location_names_with_ids(
                 [
-                    "Sulfur Caves I",
-                    "Sulfur Caves II",
-                    "Sulfur Caves III",
-                    "Sulfur Caves IV",
-                    "Sulfur Caves V",
-                    "Sulfur Caves VI",
+                    LocationNames.reach_sulfur_caves_i,
+                    LocationNames.reach_sulfur_caves_ii,
+                    LocationNames.reach_sulfur_caves_iii,
+                    LocationNames.reach_sulfur_caves_iv,
+                    LocationNames.reach_sulfur_caves_v,
+                    LocationNames.reach_sulfur_caves_vi,
+                    LocationNames.reach_sulfur_caves_vii,
                 ],
             ),
             SulfurLocation,
         )
         church_region.add_event(
-            "Sulfur Caves VII",
+            LocationNames.reach_sulfur_caves_vii,
             "Victory",
             location_type=SulfurLocation,
             item_type=SulfurItem,
         )
 
-        town_region = Region("Town", self.player, self.multiworld)
-        town_region.add_locations(
-            get_location_names_with_ids(
-                [
-                    "Trade Stamps for the Small Golden Wall Frame",
-                    "Trade Stamps for the Withered Wood Wall Frame",
-                    "Trade Stamps for the Cherry Wood Wall Frame",
-                    "Trade Stamps for the Luxurious Wall Frame",
-                    "Trade Stamps for the Bulk Ammo Box",
-                    "Trade Stamps for the Baptismal Font",
-                    "Trade Stamps for the Left Wall Mount",
-                    "Trade Stamps for the Center Wall Mount",
-                    "Trade Stamps for the Right Wall Mount",
-                    "Trade Stamps for the Snake Basket",
-                    "Trade Stamps for the Safe",
-                    "Trade Stamps for the Toilet",
-                    "Trade Stamps for the Wardrobe",
-                    "Trade Stamps for the Coffin",
-                    "Trade Stamps for the Gun Cabinet",
-                    "Trade Stamps for the Chrismatory",
-                    "Trade Stamps for the first Weapon Rack",
-                    "Trade Stamps for the second Weapon Rack",
-                    "Trade Stamps for the Delivery Demon",
-                    "Trade Stamps for the Holoreality Projector",
-                ],
-            ),
-            SulfurLocation,
-        )
-        church_region.connect(town_region, "Church to Town")
+        #town_region = Region("Town", self.player, self.multiworld)
+        #town_region.add_locations(
+        #    get_location_names_with_ids(
+        #        [
+        #            "Trade Stamps for the Small Golden Wall Frame",
+        #            "Trade Stamps for the Withered Wood Wall Frame",
+        #            "Trade Stamps for the Cherry Wood Wall Frame",
+        #            "Trade Stamps for the Luxurious Wall Frame",
+        #            "Trade Stamps for the Bulk Ammo Box",
+        #            "Trade Stamps for the Baptismal Font",
+        #            "Trade Stamps for the Left Wall Mount",
+        #            "Trade Stamps for the Center Wall Mount",
+        #            "Trade Stamps for the Right Wall Mount",
+        #            "Trade Stamps for the Snake Basket",
+        #            "Trade Stamps for the Safe",
+        #            "Trade Stamps for the Toilet",
+        #            "Trade Stamps for the Wardrobe",
+        #            "Trade Stamps for the Coffin",
+        #            "Trade Stamps for the Gun Cabinet",
+        #            "Trade Stamps for the Chrismatory",
+        #            "Trade Stamps for the first Weapon Rack",
+        #            "Trade Stamps for the second Weapon Rack",
+        #            "Trade Stamps for the Delivery Demon",
+        #            "Trade Stamps for the Holoreality Projector",
+        #        ],
+        #    ),
+        #    SulfurLocation,
+        #)
+        #church_region.connect(town_region, "Church to Town")
 
         self.multiworld.regions.append(church_region)
 

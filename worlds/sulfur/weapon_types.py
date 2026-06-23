@@ -1,0 +1,10 @@
+﻿class WeaponTypes:
+    melee = "Melee Weapon"
+    sniper = "Sniper Rifle"
+    submachine_gun = "Sub-Machine Gun"
+    shotgun = "Shotgun"
+    rifle = "Rifle"
+    revolver = "Revolver"
+    pistol = "Pistol"
+    light_machine_gun = "Light Machine Gun"
+    assault_rifle = "Assault Rifle"

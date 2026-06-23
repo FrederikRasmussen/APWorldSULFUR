@@ -1,954 +1,521 @@
-﻿from BaseClasses import Location
+﻿from typing import List
+
+from BaseClasses import Location
+from worlds.sulfur import ItemTags, ItemNames
+from worlds.sulfur.location_names import LocationNames
+from worlds.sulfur.location_tags import LocationTags
+from worlds.sulfur.weapon_types import WeaponTypes
 
 
 class SulfurLocation(Location):
     game = "SULFUR"
 
+CURRENT_LOCATION_ID: int = 0
+def get_and_increment_current_location_id() -> int:
+    global CURRENT_LOCATION_ID
+    CURRENT_LOCATION_ID += 1
+    return CURRENT_LOCATION_ID
+
+class LocationDetails:
+    def __init__(
+            self,
+            name: str,
+            tags: List[str],
+    ):
+        self.id: int = get_and_increment_current_location_id()
+        self.name: str = name
+        self.tags: List[str] = tags
 
 def get_location_names_with_ids(location_names: list[str]) -> dict[
     str, int | None]:
-    return {location_name: LOCATION_NAME_TO_ID[location_name] for location_name
+    return {location_name: location_name_to_id()[location_name] for location_name
             in location_names}
 
+def location_name_to_id() -> dict[str, int]:
+    return_dict: dict[str, int] = {}
+    for details in LOCATIONS:
+        return_dict[details.name] = details.id
+    return return_dict
 
-LOCATION_NAME_TO_ID = {
-    # Places and bosses
-    "The Church": 0,
-    "Sulfur Caves I": 1,
-    "Sulfur Caves II": 2,
-    "Sulfur Caves III": 3,
-    "Sulfur Caves IV": 4,
-    "Sulfur Caves V": 5,
-    "Sulfur Caves VI": 6,
-    "Sulfur Caves VII": 7,
-    "Cousin": 8,
-    "Town I": 9,
-    "Town II": 10,
-    "Town III": 11,
-    "Town IV": 12,
-    "Town V": 13,
-    "Black Guild Cardinals": 14,
-    "Sewer I": 15,
-    "Sewer II": 16,
-    "Sewer III": 17,
-    "Sewer IV": 18,
-    "Hedge Maze": 19,
-    "Dungeon I": 20,
-    "Dungeon II": 21,
-    "Dungeon III": 22,
-    "Dungeon IV": 23,
-    "Novanian Guard": 24,
-    "Castle I": 25,
-    "Castle II": 26,
-    "Castle III": 27,
-    "St. Lucia": 28,
-    "Forest I": 29,
-    "Forest II": 30,
-    "Forest III": 31,
-    "Forest IV": 32,
-    "Forest V": 33,
-    "Terrorbaum": 34,
-    "Shav'Wani Bridge": 35,
-    "Shav'Wani Fortress I": 36,
-    "Shav'Wani Fortress II": 37,
-    "Shav'Wani Fortress III": 38,
-    "Shav'Wani Fortress IV": 39,
-    "Shav'Wani Fortress V": 40,
-    "Shav'Wani Fortress VI": 41,
-    "The Emperor": 42,
-    "Desert I": 43,
-    "Desert II": 44,
-    "Desert III": 45,
-    "Desert IV": 46,
-    "Desert V": 47,
-    "Desert Claus": 48,
-    "Beyond the Veil": 49,
-    "The Witch": 50,
+LOCATIONS = []
 
-    # Weapon locations
-    ## 7 Assault Rifle models: Catacoil Rapid X, Corpsemaker, M11A2 Fisk, Type 80 Typhoon, Wingman, Socom ACR, CYB47
-    ### Specific Assault Rifle model locations
-    "Find Assault Rifle, Catacoil Rapid X": 51,
-    "Reach Rank 1 with Assault Rifle, Catacoil Rapid X": 52,
-    "Reach Rank 2 with Assault Rifle, Catacoil Rapid X": 53,
-    "Reach Rank 3 with Assault Rifle, Catacoil Rapid X": 54,
-    "Reach Rank 4 with Assault Rifle, Catacoil Rapid X": 55,
-    "Reach Rank 5 with Assault Rifle, Catacoil Rapid X": 56,
-    "Contribute Assault Rifle to the cause, Catacoil Rapid X": 57,
-    "Find Assault Rifle, Corpsemaker": 58,
-    "Reach Rank 1 with Assault Rifle, Corpsemaker": 59,
-    "Reach Rank 2 with Assault Rifle, Corpsemaker": 60,
-    "Reach Rank 3 with Assault Rifle, Corpsemaker": 61,
-    "Reach Rank 4 with Assault Rifle, Corpsemaker": 62,
-    "Reach Rank 5 with Assault Rifle, Corpsemaker": 63,
-    "Contribute Assault Rifle to the cause, Corpsemaker": 64,
-    "Find Assault Rifle, M11A2 Fisk": 65,
-    "Reach Rank 1 with Assault Rifle, M11A2 Fisk": 66,
-    "Reach Rank 2 with Assault Rifle, M11A2 Fisk": 67,
-    "Reach Rank 3 with Assault Rifle, M11A2 Fisk": 68,
-    "Reach Rank 4 with Assault Rifle, M11A2 Fisk": 69,
-    "Reach Rank 5 with Assault Rifle, M11A2 Fisk": 70,
-    "Contribute Assault Rifle to the cause, M11A2 Fisk": 71,
-    "Find Assault Rifle, Type 80 Typhoon": 72,
-    "Reach Rank 1 with Assault Rifle, Type 80 Typhoon": 73,
-    "Reach Rank 2 with Assault Rifle, Type 80 Typhoon": 74,
-    "Reach Rank 3 with Assault Rifle, Type 80 Typhoon": 75,
-    "Reach Rank 4 with Assault Rifle, Type 80 Typhoon": 76,
-    "Reach Rank 5 with Assault Rifle, Type 80 Typhoon": 77,
-    "Contribute Assault Rifle to the cause, Type 80 Typhoon": 78,
-    "Find Assault Rifle, Wingman": 79,
-    "Reach Rank 1 with Assault Rifle, Wingman": 80,
-    "Reach Rank 2 with Assault Rifle, Wingman": 81,
-    "Reach Rank 3 with Assault Rifle, Wingman": 82,
-    "Reach Rank 4 with Assault Rifle, Wingman": 83,
-    "Reach Rank 5 with Assault Rifle, Wingman": 84,
-    "Contribute Assault Rifle to the cause, Wingman": 85,
-    "Find Assault Rifle, Socom ACR": 86,
-    "Reach Rank 1 with Assault Rifle, Socom ACR": 87,
-    "Reach Rank 2 with Assault Rifle, Socom ACR": 88,
-    "Reach Rank 3 with Assault Rifle, Socom ACR": 89,
-    "Reach Rank 4 with Assault Rifle, Socom ACR": 90,
-    "Reach Rank 5 with Assault Rifle, Socom ACR": 91,
-    "Contribute Assault Rifle to the cause, Socom ACR": 92,
-    "Find Assault Rifle, CYB47": 93,
-    "Reach Rank 1 with Assault Rifle, CYB47": 94,
-    "Reach Rank 2 with Assault Rifle, CYB47": 95,
-    "Reach Rank 3 with Assault Rifle, CYB47": 96,
-    "Reach Rank 4 with Assault Rifle, CYB47": 97,
-    "Reach Rank 5 with Assault Rifle, CYB47": 98,
-    "Contribute Assault Rifle to the cause, CYB47": 99,
+def add_game_area_location_details(
+        region: str,
+        stages: list[str],
+        boss: str = None
+):
+    for stage in stages:
+        LOCATIONS.append(
+            LocationDetails(
+                stage,
+                [region]
+            )
+        )
+    if boss is not None:
+        LOCATIONS.append(
+            LocationDetails(
+                boss,
+                [region, LocationTags.boss]
+            )
+        )
 
-    ### Assault Rifle class locations
-    "Find an Assault Rifle": 100,
-    "Reach Rank 1 with an Assault Rifle": 101,
-    "Reach Rank 2 with an Assault Rifle": 102,
-    "Reach Rank 3 with an Assault Rifle": 103,
-    "Reach Rank 4 with an Assault Rifle": 104,
-    "Reach Rank 5 with an Assault Rifle": 105,
-    "Contribute an Assault Rifle to the cause": 106,
-    "Find two Assault Rifle models": 107,
-    "Reach Rank 1 with two Assault Rifle models": 108,
-    "Reach Rank 2 with two Assault Rifle models": 109,
-    "Reach Rank 3 with two Assault Rifle models": 110,
-    "Reach Rank 4 with two Assault Rifle models": 111,
-    "Reach Rank 5 with two Assault Rifle models": 112,
-    "Contribute two Assault Rifle models to the cause": 113,
-    "Find three Assault Rifle models": 114,
-    "Reach Rank 1 with three Assault Rifle models": 115,
-    "Reach Rank 2 with three Assault Rifle models": 116,
-    "Reach Rank 3 with three Assault Rifle models": 117,
-    "Reach Rank 4 with three Assault Rifle models": 118,
-    "Reach Rank 5 with three Assault Rifle models": 119,
-    "Contribute three Assault Rifle models to the cause": 120,
-    "Find four Assault Rifle models": 121,
-    "Reach Rank 1 with four Assault Rifle models": 122,
-    "Reach Rank 2 with four Assault Rifle models": 123,
-    "Reach Rank 3 with four Assault Rifle models": 124,
-    "Reach Rank 4 with four Assault Rifle models": 125,
-    "Reach Rank 5 with four Assault Rifle models": 126,
-    "Contribute four Assault Rifle models to the cause": 127,
-    "Find five Assault Rifle models": 128,
-    "Reach Rank 1 with five Assault Rifle models": 129,
-    "Reach Rank 2 with five Assault Rifle models": 130,
-    "Reach Rank 3 with five Assault Rifle models": 131,
-    "Reach Rank 4 with five Assault Rifle models": 132,
-    "Reach Rank 5 with five Assault Rifle models": 133,
-    "Contribute five Assault Rifle models to the cause": 134,
-    "Find six Assault Rifle models": 135,
-    "Reach Rank 1 with six Assault Rifle models": 136,
-    "Reach Rank 2 with six Assault Rifle models": 137,
-    "Reach Rank 3 with six Assault Rifle models": 138,
-    "Reach Rank 4 with six Assault Rifle models": 139,
-    "Reach Rank 5 with six Assault Rifle models": 140,
-    "Contribute six Assault Rifle models to the cause": 141,
-    "Find all seven Assault Rifle models": 142,
-    "Reach Rank 1 with all seven Assault Rifle models": 143,
-    "Reach Rank 2 with all seven Assault Rifle models": 144,
-    "Reach Rank 3 with all seven Assault Rifle models": 145,
-    "Reach Rank 4 with all seven Assault Rifle models": 146,
-    "Reach Rank 5 with all seven Assault Rifle models": 147,
-    "Contribute all seven Assault Rifle models to the cause": 148,
+# The Church
+add_game_area_location_details(
+    LocationTags.region_church,
+    [
+        LocationNames.reach_church
+    ]
+)
 
-    ## 5 Light Machine Gun models: Duhar, Neuraxis F22, Rektor 100rd, Warpig, Chat-Pardeur 98
-    ### Specific Light Machine Gun model locations
-    "Find Light Machine Gun, Duhar": 149,
-    "Reach Rank 1 with Light Machine Gun, Duhar": 150,
-    "Reach Rank 2 with Light Machine Gun, Duhar": 151,
-    "Reach Rank 3 with Light Machine Gun, Duhar": 152,
-    "Reach Rank 4 with Light Machine Gun, Duhar": 153,
-    "Reach Rank 5 with Light Machine Gun, Duhar": 154,
-    "Contribute Light Machine Gun to the cause, Duhar": 155,
-    "Find Light Machine Gun, Neuraxis F22": 156,
-    "Reach Rank 1 with Light Machine Gun, Neuraxis F22": 157,
-    "Reach Rank 2 with Light Machine Gun, Neuraxis F22": 158,
-    "Reach Rank 3 with Light Machine Gun, Neuraxis F22": 159,
-    "Reach Rank 4 with Light Machine Gun, Neuraxis F22": 160,
-    "Reach Rank 5 with Light Machine Gun, Neuraxis F22": 161,
-    "Contribute Light Machine Gun to the cause, Neuraxis F22": 162,
-    "Find Light Machine Gun, Rektor 100rd": 163,
-    "Reach Rank 1 with Light Machine Gun, Rektor 100rd": 164,
-    "Reach Rank 2 with Light Machine Gun, Rektor 100rd": 165,
-    "Reach Rank 3 with Light Machine Gun, Rektor 100rd": 166,
-    "Reach Rank 4 with Light Machine Gun, Rektor 100rd": 167,
-    "Reach Rank 5 with Light Machine Gun, Rektor 100rd": 168,
-    "Contribute Light Machine Gun to the cause, Rektor 100rd": 169,
-    "Find Light Machine Gun, Warpig": 170,
-    "Reach Rank 1 with Light Machine Gun, Warpig": 171,
-    "Reach Rank 2 with Light Machine Gun, Warpig": 172,
-    "Reach Rank 3 with Light Machine Gun, Warpig": 173,
-    "Reach Rank 4 with Light Machine Gun, Warpig": 174,
-    "Reach Rank 5 with Light Machine Gun, Warpig": 175,
-    "Contribute Light Machine Gun to the cause, Warpig": 176,
-    "Find Light Machine Gun, Chat-Pardeur 98": 177,
-    "Reach Rank 1 with Light Machine Gun, Chat-Pardeur 98": 178,
-    "Reach Rank 2 with Light Machine Gun, Chat-Pardeur 98": 179,
-    "Reach Rank 3 with Light Machine Gun, Chat-Pardeur 98": 180,
-    "Reach Rank 4 with Light Machine Gun, Chat-Pardeur 98": 181,
-    "Reach Rank 5 with Light Machine Gun, Chat-Pardeur 98": 182,
-    "Contribute Light Machine Gun to the cause, Chat-Pardeur 98": 183,
+# Sulfur Caves
+add_game_area_location_details(
+    LocationTags.region_sulfur_caves,
+    [
+        LocationNames.reach_sulfur_caves_i,
+        LocationNames.reach_sulfur_caves_ii,
+        LocationNames.reach_sulfur_caves_iii,
+        LocationNames.reach_sulfur_caves_iv,
+        LocationNames.reach_sulfur_caves_v,
+        LocationNames.reach_sulfur_caves_vi,
+        LocationNames.reach_sulfur_caves_vii,
+    ],
+    LocationNames.boss_cousin
+)
 
-    ### Light Machine Gun class locations
-    "Find a Light Machine Gun": 184,
-    "Reach Rank 1 with a Light Machine Gun": 185,
-    "Reach Rank 2 with a Light Machine Gun": 186,
-    "Reach Rank 3 with a Light Machine Gun": 187,
-    "Reach Rank 4 with a Light Machine Gun": 188,
-    "Reach Rank 5 with a Light Machine Gun": 189,
-    "Contribute a Light Machine Gun to the cause": 190,
-    "Find two Light Machine Gun models": 191,
-    "Reach Rank 1 with two Light Machine Gun models": 192,
-    "Reach Rank 2 with two Light Machine Gun models": 193,
-    "Reach Rank 3 with two Light Machine Gun models": 194,
-    "Reach Rank 4 with two Light Machine Gun models": 195,
-    "Reach Rank 5 with two Light Machine Gun models": 196,
-    "Contribute two Light Machine Gun models to the cause": 197,
-    "Find three Light Machine Gun models": 198,
-    "Reach Rank 1 with three Light Machine Gun models": 199,
-    "Reach Rank 2 with three Light Machine Gun models": 200,
-    "Reach Rank 3 with three Light Machine Gun models": 201,
-    "Reach Rank 4 with three Light Machine Gun models": 202,
-    "Reach Rank 5 with three Light Machine Gun models": 203,
-    "Contribute three Light Machine Gun models to the cause": 204,
-    "Find four Light Machine Gun models": 205,
-    "Reach Rank 1 with four Light Machine Gun models": 206,
-    "Reach Rank 2 with four Light Machine Gun models": 207,
-    "Reach Rank 3 with four Light Machine Gun models": 208,
-    "Reach Rank 4 with four Light Machine Gun models": 209,
-    "Reach Rank 5 with four Light Machine Gun models": 210,
-    "Contribute four Light Machine Gun models to the cause": 211,
-    "Find all five Light Machine Gun models": 212,
-    "Reach Rank 1 with all five Light Machine Gun models": 213,
-    "Reach Rank 2 with all five Light Machine Gun models": 214,
-    "Reach Rank 3 with all five Light Machine Gun models": 215,
-    "Reach Rank 4 with all five Light Machine Gun models": 216,
-    "Reach Rank 5 with all five Light Machine Gun models": 217,
-    "Contribute all five Light Machine Gun models to the cause": 218,
+# Town
+add_game_area_location_details(
+    LocationTags.region_town,
+    [
+        LocationNames.reach_town_i,
+        LocationNames.reach_town_ii,
+        LocationNames.reach_town_iii,
+        LocationNames.reach_town_iv,
+        LocationNames.reach_town_v,
+    ],
+    LocationNames.boss_black_guild_cardinals
+)
 
-    ## 5 Melee Weapons: Bo, Katana, Nunchaku, Sai, Wakizashi
-    ### Specific Melee Weapon locations
-    "Find Melee Weapon, Bo": 219,
-    "Find Melee Weapon, Katana": 220,
-    "Find Melee Weapon, Nunchaku": 221,
-    "Find Melee Weapon, Sai": 222,
-    "Find Melee Weapon, Wakizashi": 223,
+# Sewers
+add_game_area_location_details(
+    LocationTags.region_sewers,
+    [
+        LocationNames.reach_sewers_i,
+        LocationNames.reach_sewers_ii,
+        LocationNames.reach_sewers_iii,
+        LocationNames.reach_sewers_iv,
+    ]
+)
 
-    ### Melee Weapon class locations
-    "Find a Melee Weapon": 224,
-    "Find two different Melee Weapons": 225,
-    "Find three different Melee Weapons": 226,
-    "Find four different Melee Weapons": 227,
-    "Find five different Melee Weapons": 228,
+# Hedge Maze
+add_game_area_location_details(
+    LocationTags.region_hedge_maze,
+    [
+        LocationNames.reach_hedge_maze,
+    ]
+)
 
-    ## 12 Pistol models: Beck 8, Bronco 89, P38 Dirk, Flicker, Gravekeeper, Salamander, Socom 9, Unknown, Hell 'N' Back, Cavalier, Terrier URB.
-    ### Specific Pistol model locations
-    "Find Pistol, Beck 8": 229,
-    "Reach Rank 1 with Pistol, Beck 8": 230,
-    "Reach Rank 2 with Pistol, Beck 8": 231,
-    "Reach Rank 3 with Pistol, Beck 8": 232,
-    "Reach Rank 4 with Pistol, Beck 8": 233,
-    "Reach Rank 5 with Pistol, Beck 8": 234,
-    "Contribute Pistol to the cause, Beck 8": 235,
-    "Find Pistol, Bronco 89": 236,
-    "Reach Rank 1 with Pistol, Bronco 89": 237,
-    "Reach Rank 2 with Pistol, Bronco 89": 238,
-    "Reach Rank 3 with Pistol, Bronco 89": 239,
-    "Reach Rank 4 with Pistol, Bronco 89": 240,
-    "Reach Rank 5 with Pistol, Bronco 89": 241,
-    "Contribute Pistol to the cause, Bronco 89": 242,
-    "Find Pistol, P38 Dirk": 243,
-    "Reach Rank 1 with Pistol, P38 Dirk": 244,
-    "Reach Rank 2 with Pistol, P38 Dirk": 245,
-    "Reach Rank 3 with Pistol, P38 Dirk": 246,
-    "Reach Rank 4 with Pistol, P38 Dirk": 247,
-    "Reach Rank 5 with Pistol, P38 Dirk": 248,
-    "Contribute Pistol to the cause, P38 Dirk": 249,
-    "Find Pistol, Flicker": 250,
-    "Reach Rank 1 with Pistol, Flicker": 251,
-    "Reach Rank 2 with Pistol, Flicker": 252,
-    "Reach Rank 3 with Pistol, Flicker": 253,
-    "Reach Rank 4 with Pistol, Flicker": 254,
-    "Reach Rank 5 with Pistol, Flicker": 255,
-    "Contribute Pistol to the cause, Flicker": 256,
-    "Find Pistol, Gravekeeper": 257,
-    "Reach Rank 1 with Pistol, Gravekeeper": 258,
-    "Reach Rank 2 with Pistol, Gravekeeper": 259,
-    "Reach Rank 3 with Pistol, Gravekeeper": 260,
-    "Reach Rank 4 with Pistol, Gravekeeper": 261,
-    "Reach Rank 5 with Pistol, Gravekeeper": 262,
-    "Contribute Pistol to the cause, Gravekeeper": 263,
-    "Find Pistol, Salamander": 264,
-    "Reach Rank 1 with Pistol, Salamander": 265,
-    "Reach Rank 2 with Pistol, Salamander": 266,
-    "Reach Rank 3 with Pistol, Salamander": 267,
-    "Reach Rank 4 with Pistol, Salamander": 268,
-    "Reach Rank 5 with Pistol, Salamander": 269,
-    "Contribute Pistol to the cause, Salamander": 270,
-    "Find Pistol, Socom 9": 271,
-    "Reach Rank 1 with Pistol, Socom 9": 272,
-    "Reach Rank 2 with Pistol, Socom 9": 273,
-    "Reach Rank 3 with Pistol, Socom 9": 274,
-    "Reach Rank 4 with Pistol, Socom 9": 275,
-    "Reach Rank 5 with Pistol, Socom 9": 276,
-    "Contribute Pistol to the cause, Socom 9": 277,
-    "Find Pistol, Unknown": 278,
-    "Reach Rank 1 with Pistol, Unknown": 279,
-    "Reach Rank 2 with Pistol, Unknown": 280,
-    "Reach Rank 3 with Pistol, Unknown": 281,
-    "Reach Rank 4 with Pistol, Unknown": 282,
-    "Reach Rank 5 with Pistol, Unknown": 283,
-    "Contribute Pistol to the cause, Unknown": 284,
-    "Find Pistol, Hell 'N' Back": 285,
-    "Reach Rank 1 with Pistol, Hell 'N' Back": 286,
-    "Reach Rank 2 with Pistol, Hell 'N' Back": 287,
-    "Reach Rank 3 with Pistol, Hell 'N' Back": 288,
-    "Reach Rank 4 with Pistol, Hell 'N' Back": 289,
-    "Reach Rank 5 with Pistol, Hell 'N' Back": 290,
-    "Contribute Pistol to the cause, Hell 'N' Back": 291,
-    "Find Pistol, Cavalier": 292,
-    "Reach Rank 1 with Pistol, Cavalier": 293,
-    "Reach Rank 2 with Pistol, Cavalier": 294,
-    "Reach Rank 3 with Pistol, Cavalier": 295,
-    "Reach Rank 4 with Pistol, Cavalier": 296,
-    "Reach Rank 5 with Pistol, Cavalier": 297,
-    "Contribute Pistol to the cause, Cavalier": 298,
-    "Find Pistol, Terrier URB.": 299,
-    "Reach Rank 1 with Pistol, Terrier URB.": 300,
-    "Reach Rank 2 with Pistol, Terrier URB.": 301,
-    "Reach Rank 3 with Pistol, Terrier URB.": 302,
-    "Reach Rank 4 with Pistol, Terrier URB.": 303,
-    "Reach Rank 5 with Pistol, Terrier URB.": 304,
-    "Contribute Pistol to the cause, Terrier URB.": 305,
+# Dungeon
+add_game_area_location_details(
+    LocationTags.region_dungeon,
+    [
+        LocationNames.reach_dungeon_i,
+        LocationNames.reach_dungeon_ii,
+        LocationNames.reach_dungeon_iii,
+        LocationNames.reach_dungeon_iv,
+    ],
+    LocationNames.boss_novanian_guard
+)
 
-    ### Pistol weapon class locations
-    "Find a Pistol": 306,
-    "Reach Rank 1 with a Pistol": 307,
-    "Reach Rank 2 with a Pistol": 308,
-    "Reach Rank 3 with a Pistol": 309,
-    "Reach Rank 4 with a Pistol": 310,
-    "Reach Rank 5 with a Pistol": 311,
-    "Contribute a Pistol to the cause": 312,
-    "Find two Pistol models": 313,
-    "Reach Rank 1 with two Pistol models": 314,
-    "Reach Rank 2 with two Pistol models": 315,
-    "Reach Rank 3 with two Pistol models": 316,
-    "Reach Rank 4 with two Pistol models": 317,
-    "Reach Rank 5 with two Pistol models": 318,
-    "Contribute two Pistol models to the cause": 319,
-    "Find three Pistol models": 320,
-    "Reach Rank 1 with three Pistol models": 321,
-    "Reach Rank 2 with three Pistol models": 322,
-    "Reach Rank 3 with three Pistol models": 323,
-    "Reach Rank 4 with three Pistol models": 324,
-    "Reach Rank 5 with three Pistol models": 325,
-    "Contribute three Pistol models to the cause": 326,
-    "Find four Pistol models": 327,
-    "Reach Rank 1 with four Pistol models": 328,
-    "Reach Rank 2 with four Pistol models": 329,
-    "Reach Rank 3 with four Pistol models": 330,
-    "Reach Rank 4 with four Pistol models": 331,
-    "Reach Rank 5 with four Pistol models": 332,
-    "Contribute four Pistol models to the cause": 333,
-    "Find five Pistol models": 334,
-    "Reach Rank 1 with five Pistol models": 335,
-    "Reach Rank 2 with five Pistol models": 336,
-    "Reach Rank 3 with five Pistol models": 337,
-    "Reach Rank 4 with five Pistol models": 338,
-    "Reach Rank 5 with five Pistol models": 339,
-    "Contribute five Pistol models to the cause": 340,
-    "Find six Pistol models": 341,
-    "Reach Rank 1 with six Pistol models": 342,
-    "Reach Rank 2 with six Pistol models": 343,
-    "Reach Rank 3 with six Pistol models": 344,
-    "Reach Rank 4 with six Pistol models": 345,
-    "Reach Rank 5 with six Pistol models": 346,
-    "Contribute six Pistol models to the cause": 347,
-    "Find seven Pistol models": 348,
-    "Reach Rank 1 with seven Pistol models": 349,
-    "Reach Rank 2 with seven Pistol models": 350,
-    "Reach Rank 3 with seven Pistol models": 351,
-    "Reach Rank 4 with seven Pistol models": 352,
-    "Reach Rank 5 with seven Pistol models": 353,
-    "Contribute seven Pistol models to the cause": 354,
-    "Find eight Pistol models": 355,
-    "Reach Rank 1 with eight Pistol models": 356,
-    "Reach Rank 2 with eight Pistol models": 357,
-    "Reach Rank 3 with eight Pistol models": 358,
-    "Reach Rank 4 with eight Pistol models": 359,
-    "Reach Rank 5 with eight Pistol models": 360,
-    "Contribute eight Pistol models to the cause": 361,
-    "Find nine Pistol models": 362,
-    "Reach Rank 1 with nine Pistol models": 363,
-    "Reach Rank 2 with nine Pistol models": 364,
-    "Reach Rank 3 with nine Pistol models": 365,
-    "Reach Rank 4 with nine Pistol models": 366,
-    "Reach Rank 5 with nine Pistol models": 367,
-    "Contribute nine Pistol models to the cause": 368,
-    "Find ten Pistol models": 369,
-    "Reach Rank 1 with ten Pistol models": 370,
-    "Reach Rank 2 with ten Pistol models": 371,
-    "Reach Rank 3 with ten Pistol models": 372,
-    "Reach Rank 4 with ten Pistol models": 373,
-    "Reach Rank 5 with ten Pistol models": 374,
-    "Contribute ten Pistol models to the cause": 375,
-    "Find all eleven Pistol models": 376,
-    "Reach Rank 1 with all eleven Pistol models": 377,
-    "Reach Rank 2 with all eleven Pistol models": 378,
-    "Reach Rank 3 with all eleven Pistol models": 379,
-    "Reach Rank 4 with all eleven Pistol models": 380,
-    "Reach Rank 5 with all eleven Pistol models": 381,
-    "Contribute all eleven Pistol models to the cause": 382,
+# Castle
+add_game_area_location_details(
+    LocationTags.region_castle,
+    [
+        LocationNames.reach_castle_i,
+        LocationNames.reach_castle_ii,
+        LocationNames.reach_castle_iii,
+    ],
+    LocationNames.boss_st_lucia
+)
 
-    ## 6 Revolver models: .357 Balthazar, Palehorse Topclipper, Snut .38, Wyatt PULSAR, Blackwater, Death's Toll
-    ### Specific Revolver model locations
-    "Find Revolver, .357 Balthazar": 383,
-    "Reach Rank 1 with Revolver, .357 Balthazar": 384,
-    "Reach Rank 2 with Revolver, .357 Balthazar": 385,
-    "Reach Rank 3 with Revolver, .357 Balthazar": 386,
-    "Reach Rank 4 with Revolver, .357 Balthazar": 387,
-    "Reach Rank 5 with Revolver, .357 Balthazar": 388,
-    "Contribute Revolver to the cause, .357 Balthazar": 389,
-    "Find Revolver, Palehorse Topclipper": 390,
-    "Reach Rank 1 with Revolver, Palehorse Topclipper": 391,
-    "Reach Rank 2 with Revolver, Palehorse Topclipper": 392,
-    "Reach Rank 3 with Revolver, Palehorse Topclipper": 393,
-    "Reach Rank 4 with Revolver, Palehorse Topclipper": 394,
-    "Reach Rank 5 with Revolver, Palehorse Topclipper": 395,
-    "Contribute Revolver to the cause, Palehorse Topclipper": 396,
-    "Find Revolver, Snut .38": 397,
-    "Reach Rank 1 with Revolver, Snut .38": 398,
-    "Reach Rank 2 with Revolver, Snut .38": 399,
-    "Reach Rank 3 with Revolver, Snut .38": 400,
-    "Reach Rank 4 with Revolver, Snut .38": 401,
-    "Reach Rank 5 with Revolver, Snut .38": 402,
-    "Contribute Revolver to the cause, Snut .38": 403,
-    "Find Revolver, Wyatt PULSAR": 404,
-    "Reach Rank 1 with Revolver, Wyatt PULSAR": 405,
-    "Reach Rank 2 with Revolver, Wyatt PULSAR": 406,
-    "Reach Rank 3 with Revolver, Wyatt PULSAR": 407,
-    "Reach Rank 4 with Revolver, Wyatt PULSAR": 408,
-    "Reach Rank 5 with Revolver, Wyatt PULSAR": 409,
-    "Contribute Revolver to the cause, Wyatt PULSAR": 410,
-    "Find Revolver, Blackwater": 411,
-    "Reach Rank 1 with Revolver, Blackwater": 412,
-    "Reach Rank 2 with Revolver, Blackwater": 413,
-    "Reach Rank 3 with Revolver, Blackwater": 414,
-    "Reach Rank 4 with Revolver, Blackwater": 415,
-    "Reach Rank 5 with Revolver, Blackwater": 416,
-    "Contribute Revolver to the cause, Blackwater": 417,
-    "Find Revolver, Death's Toll": 418,
-    "Reach Rank 1 with Revolver, Death's Toll": 419,
-    "Reach Rank 2 with Revolver, Death's Toll": 420,
-    "Reach Rank 3 with Revolver, Death's Toll": 421,
-    "Reach Rank 4 with Revolver, Death's Toll": 422,
-    "Reach Rank 5 with Revolver, Death's Toll": 423,
-    "Contribute Revolver to the cause, Death's Toll": 424,
+# Forest
+add_game_area_location_details(
+    LocationTags.region_forest,
+    [
+        LocationNames.reach_forest_i,
+        LocationNames.reach_forest_ii,
+        LocationNames.reach_forest_iii,
+        LocationNames.reach_forest_iv,
+        LocationNames.reach_forest_v,
+    ],
+    LocationNames.boss_terrorbaum
+)
 
-    ### Revolver weapon class locations
-    "Find a Revolver": 425,
-    "Reach Rank 1 with a Revolver": 426,
-    "Reach Rank 2 with a Revolver": 427,
-    "Reach Rank 3 with a Revolver": 428,
-    "Reach Rank 4 with a Revolver": 429,
-    "Reach Rank 5 with a Revolver": 430,
-    "Contribute a Revolver to the cause": 431,
-    "Find two Revolver models": 432,
-    "Reach Rank 1 with two Revolver models": 433,
-    "Reach Rank 2 with two Revolver models": 434,
-    "Reach Rank 3 with two Revolver models": 435,
-    "Reach Rank 4 with two Revolver models": 436,
-    "Reach Rank 5 with two Revolver models": 437,
-    "Contribute two Revolver models to the cause": 438,
-    "Find three Revolver models": 439,
-    "Reach Rank 1 with three Revolver models": 440,
-    "Reach Rank 2 with three Revolver models": 441,
-    "Reach Rank 3 with three Revolver models": 442,
-    "Reach Rank 4 with three Revolver models": 443,
-    "Reach Rank 5 with three Revolver models": 444,
-    "Contribute three Revolver models to the cause": 445,
-    "Find four Revolver models": 446,
-    "Reach Rank 1 with four Revolver models": 447,
-    "Reach Rank 2 with four Revolver models": 448,
-    "Reach Rank 3 with four Revolver models": 449,
-    "Reach Rank 4 with four Revolver models": 450,
-    "Reach Rank 5 with four Revolver models": 451,
-    "Contribute four Revolver models to the cause": 452,
-    "Find five Revolver models": 453,
-    "Reach Rank 1 with five Revolver models": 454,
-    "Reach Rank 2 with five Revolver models": 455,
-    "Reach Rank 3 with five Revolver models": 456,
-    "Reach Rank 4 with five Revolver models": 457,
-    "Reach Rank 5 with five Revolver models": 458,
-    "Contribute five Revolver models to the cause": 459,
-    "Find all six Revolver models": 460,
-    "Reach Rank 1 with all six Revolver models": 461,
-    "Reach Rank 2 with all six Revolver models": 462,
-    "Reach Rank 3 with all six Revolver models": 463,
-    "Reach Rank 4 with all six Revolver models": 464,
-    "Reach Rank 5 with all six Revolver models": 465,
-    "Contribute all six Revolver models to the cause": 466,
+# Fortress
+add_game_area_location_details(
+    LocationTags.region_fortress,
+    [
+        LocationNames.reach_shavwani_bridge,
+        LocationNames.reach_shavwani_fortress_i,
+        LocationNames.reach_shavwani_fortress_ii,
+        LocationNames.reach_shavwani_fortress_iii,
+        LocationNames.reach_shavwani_fortress_iv,
+        LocationNames.reach_shavwani_fortress_v,
+        LocationNames.reach_shavwani_fortress_vi,
+    ],
+    LocationNames.boss_the_emperor
+)
 
-    ## 5 Rifle models: Farsight, Knop .22, M182 Pierre-Fusil, Ramshack, Tailor Marksman MKII
-    ### Specific Rifle model locations
-    "Find Rifle, Farsight": 467,
-    "Reach Rank 1 with Rifle, Farsight": 468,
-    "Reach Rank 2 with Rifle, Farsight": 469,
-    "Reach Rank 3 with Rifle, Farsight": 470,
-    "Reach Rank 4 with Rifle, Farsight": 471,
-    "Reach Rank 5 with Rifle, Farsight": 472,
-    "Contribute Rifle to the cause, Farsight": 473,
-    "Find Rifle, Knop .22": 474,
-    "Reach Rank 1 with Rifle, Knop .22": 475,
-    "Reach Rank 2 with Rifle, Knop .22": 476,
-    "Reach Rank 3 with Rifle, Knop .22": 477,
-    "Reach Rank 4 with Rifle, Knop .22": 478,
-    "Reach Rank 5 with Rifle, Knop .22": 479,
-    "Contribute Rifle to the cause, Knop .22": 480,
-    "Find Rifle, M182 Pierre-Fusil": 481,
-    "Reach Rank 1 with Rifle, M182 Pierre-Fusil": 482,
-    "Reach Rank 2 with Rifle, M182 Pierre-Fusil": 483,
-    "Reach Rank 3 with Rifle, M182 Pierre-Fusil": 484,
-    "Reach Rank 4 with Rifle, M182 Pierre-Fusil": 485,
-    "Reach Rank 5 with Rifle, M182 Pierre-Fusil": 486,
-    "Contribute Rifle to the cause, M182 Pierre-Fusil": 487,
-    "Find Rifle, Ramshack": 488,
-    "Reach Rank 1 with Rifle, Ramshack": 489,
-    "Reach Rank 2 with Rifle, Ramshack": 490,
-    "Reach Rank 3 with Rifle, Ramshack": 491,
-    "Reach Rank 4 with Rifle, Ramshack": 492,
-    "Reach Rank 5 with Rifle, Ramshack": 493,
-    "Contribute Rifle to the cause, Ramshack": 494,
-    "Find Rifle, Tailor Marksman MKII": 495,
-    "Reach Rank 1 with Rifle, Tailor Marksman MKII": 496,
-    "Reach Rank 2 with Rifle, Tailor Marksman MKII": 497,
-    "Reach Rank 3 with Rifle, Tailor Marksman MKII": 498,
-    "Reach Rank 4 with Rifle, Tailor Marksman MKII": 499,
-    "Reach Rank 5 with Rifle, Tailor Marksman MKII": 500,
-    "Contribute Rifle to the cause, Tailor Marksman MKII": 501,
+# Desert
+add_game_area_location_details(
+    LocationTags.region_desert,
+    [
+        LocationNames.reach_desert_i,
+        LocationNames.reach_desert_ii,
+        LocationNames.reach_desert_iii,
+        LocationNames.reach_desert_iv,
+        LocationNames.reach_desert_v,
+    ],
+    LocationNames.boss_desert_claus
+)
 
-    ### Rifle weapon class locations
-    "Find a Rifle": 502,
-    "Reach Rank 1 with a Rifle": 503,
-    "Reach Rank 2 with a Rifle": 504,
-    "Reach Rank 3 with a Rifle": 505,
-    "Reach Rank 4 with a Rifle": 506,
-    "Reach Rank 5 with a Rifle": 507,
-    "Contribute a Rifle to the cause": 508,
-    "Find two Rifle models": 509,
-    "Reach Rank 1 with two Rifle models": 510,
-    "Reach Rank 2 with two Rifle models": 511,
-    "Reach Rank 3 with two Rifle models": 512,
-    "Reach Rank 4 with two Rifle models": 513,
-    "Reach Rank 5 with two Rifle models": 514,
-    "Contribute two Rifle models to the cause": 515,
-    "Find three Rifle models": 516,
-    "Reach Rank 1 with three Rifle models": 517,
-    "Reach Rank 2 with three Rifle models": 518,
-    "Reach Rank 3 with three Rifle models": 519,
-    "Reach Rank 4 with three Rifle models": 520,
-    "Reach Rank 5 with three Rifle models": 521,
-    "Contribute three Rifle models to the cause": 522,
-    "Find four Rifle models": 523,
-    "Reach Rank 1 with four Rifle models": 524,
-    "Reach Rank 2 with four Rifle models": 525,
-    "Reach Rank 3 with four Rifle models": 526,
-    "Reach Rank 4 with four Rifle models": 527,
-    "Reach Rank 5 with four Rifle models": 528,
-    "Contribute four Rifle models to the cause": 529,
-    "Find all five Rifle models": 530,
-    "Reach Rank 1 with all five Rifle models": 531,
-    "Reach Rank 2 with all five Rifle models": 532,
-    "Reach Rank 3 with all five Rifle models": 533,
-    "Reach Rank 4 with all five Rifle models": 534,
-    "Reach Rank 5 with all five Rifle models": 535,
-    "Contribute all five Rifle models to the cause": 536,
+# Beyond the Veil
+add_game_area_location_details(
+    LocationTags.region_beyond_the_veil,
+    [
+        LocationNames.reach_beyond_the_veil,
+    ],
+    LocationNames.boss_the_witch
+)
 
-    ## 7 Shotgun models: Arbiter 2, Augusta, Breacher 8, Flock 76, Majordome, 1889 Mario, Mossman
-    ### Specific Shotgun model locations
-    "Find Shotgun, Arbiter 2": 537,
-    "Reach Rank 1 with Shotgun, Arbiter 2": 538,
-    "Reach Rank 2 with Shotgun, Arbiter 2": 539,
-    "Reach Rank 3 with Shotgun, Arbiter 2": 540,
-    "Reach Rank 4 with Shotgun, Arbiter 2": 541,
-    "Reach Rank 5 with Shotgun, Arbiter 2": 542,
-    "Contribute Shotgun to the cause, Arbiter 2": 543,
-    "Find Shotgun, Augusta": 544,
-    "Reach Rank 1 with Shotgun, Augusta": 545,
-    "Reach Rank 2 with Shotgun, Augusta": 546,
-    "Reach Rank 3 with Shotgun, Augusta": 547,
-    "Reach Rank 4 with Shotgun, Augusta": 548,
-    "Reach Rank 5 with Shotgun, Augusta": 549,
-    "Contribute Shotgun to the cause, Augusta": 550,
-    "Find Shotgun, Breacher 8": 551,
-    "Reach Rank 1 with Shotgun, Breacher 8": 552,
-    "Reach Rank 2 with Shotgun, Breacher 8": 553,
-    "Reach Rank 3 with Shotgun, Breacher 8": 554,
-    "Reach Rank 4 with Shotgun, Breacher 8": 555,
-    "Reach Rank 5 with Shotgun, Breacher 8": 556,
-    "Contribute Shotgun to the cause, Breacher 8": 557,
-    "Find Shotgun, Flock 76": 558,
-    "Reach Rank 1 with Shotgun, Flock 76": 559,
-    "Reach Rank 2 with Shotgun, Flock 76": 560,
-    "Reach Rank 3 with Shotgun, Flock 76": 561,
-    "Reach Rank 4 with Shotgun, Flock 76": 562,
-    "Reach Rank 5 with Shotgun, Flock 76": 563,
-    "Contribute Shotgun to the cause, Flock 76": 564,
-    "Find Shotgun, Majordome": 565,
-    "Reach Rank 1 with Shotgun, Majordome": 566,
-    "Reach Rank 2 with Shotgun, Majordome": 567,
-    "Reach Rank 3 with Shotgun, Majordome": 568,
-    "Reach Rank 4 with Shotgun, Majordome": 569,
-    "Reach Rank 5 with Shotgun, Majordome": 570,
-    "Contribute Shotgun to the cause, Majordome": 571,
-    "Find Shotgun, 1889 Mario": 572,
-    "Reach Rank 1 with Shotgun, 1889 Mario": 573,
-    "Reach Rank 2 with Shotgun, 1889 Mario": 574,
-    "Reach Rank 3 with Shotgun, 1889 Mario": 575,
-    "Reach Rank 4 with Shotgun, 1889 Mario": 576,
-    "Reach Rank 5 with Shotgun, 1889 Mario": 577,
-    "Contribute Shotgun to the cause, 1889 Mario": 578,
-    "Find Shotgun, Mossman": 579,
-    "Reach Rank 1 with Shotgun, Mossman": 580,
-    "Reach Rank 2 with Shotgun, Mossman": 581,
-    "Reach Rank 3 with Shotgun, Mossman": 582,
-    "Reach Rank 4 with Shotgun, Mossman": 583,
-    "Reach Rank 5 with Shotgun, Mossman": 584,
-    "Contribute Shotgun to the cause, Mossman": 585,
+# Weapons
+WEAPON_LOCATION_IDS_START = CURRENT_LOCATION_ID
+WEAPON_LOCATIONS_EACH = 14
+def add_specific_gun_location_details(weapon_type: str, names: list[str]):
+    for name in names:
+        LOCATIONS.extend([
+            LocationDetails(
+                f"Find {name}",
+                [LocationTags.find_specific_weapon, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Contribute {name} to the cause",
+                [LocationTags.sacrifice_specific_weapon, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 1 with {name}",
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 2 with {name}",
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 3 with {name}",
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 4 with {name}",
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 5 with {name}",
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+            ),
+        ])
 
-    ### Shotgun weapon class locations
-    "Find a Shotgun": 586,
-    "Reach Rank 1 with a Shotgun": 587,
-    "Reach Rank 2 with a Shotgun": 588,
-    "Reach Rank 3 with a Shotgun": 589,
-    "Reach Rank 4 with a Shotgun": 590,
-    "Reach Rank 5 with a Shotgun": 591,
-    "Contribute a Shotgun to the cause": 592,
-    "Find two Shotgun models": 593,
-    "Reach Rank 1 with two Shotgun models": 594,
-    "Reach Rank 2 with two Shotgun models": 595,
-    "Reach Rank 3 with two Shotgun models": 596,
-    "Reach Rank 4 with two Shotgun models": 597,
-    "Reach Rank 5 with two Shotgun models": 598,
-    "Contribute two Shotgun models to the cause": 599,
-    "Find three Shotgun models": 600,
-    "Reach Rank 1 with three Shotgun models": 601,
-    "Reach Rank 2 with three Shotgun models": 602,
-    "Reach Rank 3 with three Shotgun models": 603,
-    "Reach Rank 4 with three Shotgun models": 604,
-    "Reach Rank 5 with three Shotgun models": 605,
-    "Contribute three Shotgun models to the cause": 606,
-    "Find four Shotgun models": 607,
-    "Reach Rank 1 with four Shotgun models": 608,
-    "Reach Rank 2 with four Shotgun models": 609,
-    "Reach Rank 3 with four Shotgun models": 610,
-    "Reach Rank 4 with four Shotgun models": 611,
-    "Reach Rank 5 with four Shotgun models": 612,
-    "Contribute four Shotgun models to the cause": 613,
-    "Find five Shotgun models": 614,
-    "Reach Rank 1 with five Shotgun models": 615,
-    "Reach Rank 2 with five Shotgun models": 616,
-    "Reach Rank 3 with five Shotgun models": 617,
-    "Reach Rank 4 with five Shotgun models": 618,
-    "Reach Rank 5 with five Shotgun models": 619,
-    "Contribute five Shotgun models to the cause": 620,
-    "Find six Shotgun models": 621,
-    "Reach Rank 1 with six Shotgun models": 622,
-    "Reach Rank 2 with six Shotgun models": 623,
-    "Reach Rank 3 with six Shotgun models": 624,
-    "Reach Rank 4 with six Shotgun models": 625,
-    "Reach Rank 5 with six Shotgun models": 626,
-    "Contribute six Shotgun models to the cause": 627,
-    "Find all seven Shotgun models": 628,
-    "Reach Rank 1 with all seven Shotgun models": 629,
-    "Reach Rank 2 with all seven Shotgun models": 630,
-    "Reach Rank 3 with all seven Shotgun models": 631,
-    "Reach Rank 4 with all seven Shotgun models": 632,
-    "Reach Rank 5 with all seven Shotgun models": 633,
-    "Contribute all seven Shotgun models to the cause": 634,
+amount_strings = [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+]
+def add_weapon_type_gun_location_details(weapon_type: str, amount: int, a_or_an: str):
+    for i in range(amount):
+        model_or_models = "" if i > 0 else " models"
+        amount_string = a_or_an if i > 0 else amount_strings[i]
+        amount_string = f"all {amount_string}" if i + 1 > amount else amount_string
+        LOCATIONS.extend([
+            LocationDetails(
+                f"Find {amount_string} {weapon_type}{model_or_models}",
+                [LocationTags.find_weapon_model, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Contribute {amount_string} {weapon_type}{model_or_models} to the cause",
+                [LocationTags.sacrifice_weapon_model, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 1 with {amount_string} {weapon_type}{model_or_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 2 with {amount_string} {weapon_type}{model_or_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 3 with {amount_string} {weapon_type}{model_or_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 4 with {amount_string} {weapon_type}{model_or_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+            ),
+            LocationDetails(
+                f"Reach Rank 5 with {amount_string} {weapon_type}{model_or_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+            ),
+        ])
 
-    ## 9 Sub-Machine Gun models: Deathstar PG, Drifter 9, Ferryman, Ploika Compact, M3 Termite, Valet, Vrede, Songbird, Chimera Rapid
-    ### Specific Sub-Machine Gun model locations
-    "Find Sub-Machine Gun, Deathstar PG": 635,
-    "Reach Rank 1 with Sub-Machine Gun, Deathstar PG": 636,
-    "Reach Rank 2 with Sub-Machine Gun, Deathstar PG": 637,
-    "Reach Rank 3 with Sub-Machine Gun, Deathstar PG": 638,
-    "Reach Rank 4 with Sub-Machine Gun, Deathstar PG": 639,
-    "Reach Rank 5 with Sub-Machine Gun, Deathstar PG": 640,
-    "Contribute Sub-Machine Gun to the cause, Deathstar PG": 641,
-    "Find Sub-Machine Gun, Drifter 9": 642,
-    "Reach Rank 1 with Sub-Machine Gun, Drifter 9": 643,
-    "Reach Rank 2 with Sub-Machine Gun, Drifter 9": 644,
-    "Reach Rank 3 with Sub-Machine Gun, Drifter 9": 645,
-    "Reach Rank 4 with Sub-Machine Gun, Drifter 9": 646,
-    "Reach Rank 5 with Sub-Machine Gun, Drifter 9": 647,
-    "Contribute Sub-Machine Gun to the cause, Drifter 9": 648,
-    "Find Sub-Machine Gun, Ferryman": 649,
-    "Reach Rank 1 with Sub-Machine Gun, Ferryman": 650,
-    "Reach Rank 2 with Sub-Machine Gun, Ferryman": 651,
-    "Reach Rank 3 with Sub-Machine Gun, Ferryman": 652,
-    "Reach Rank 4 with Sub-Machine Gun, Ferryman": 653,
-    "Reach Rank 5 with Sub-Machine Gun, Ferryman": 654,
-    "Contribute Sub-Machine Gun to the cause, Ferryman": 655,
-    "Find Sub-Machine Gun, Ploika Compact": 656,
-    "Reach Rank 1 with Sub-Machine Gun, Ploika Compact": 657,
-    "Reach Rank 2 with Sub-Machine Gun, Ploika Compact": 658,
-    "Reach Rank 3 with Sub-Machine Gun, Ploika Compact": 659,
-    "Reach Rank 4 with Sub-Machine Gun, Ploika Compact": 660,
-    "Reach Rank 5 with Sub-Machine Gun, Ploika Compact": 661,
-    "Contribute Sub-Machine Gun to the cause, Ploika Compact": 662,
-    "Find Sub-Machine Gun, M3 Termite": 663,
-    "Reach Rank 1 with Sub-Machine Gun, M3 Termite": 664,
-    "Reach Rank 2 with Sub-Machine Gun, M3 Termite": 665,
-    "Reach Rank 3 with Sub-Machine Gun, M3 Termite": 666,
-    "Reach Rank 4 with Sub-Machine Gun, M3 Termite": 667,
-    "Reach Rank 5 with Sub-Machine Gun, M3 Termite": 668,
-    "Contribute Sub-Machine Gun to the cause, M3 Termite": 669,
-    "Find Sub-Machine Gun, Valet": 670,
-    "Reach Rank 1 with Sub-Machine Gun, Valet": 671,
-    "Reach Rank 2 with Sub-Machine Gun, Valet": 672,
-    "Reach Rank 3 with Sub-Machine Gun, Valet": 673,
-    "Reach Rank 4 with Sub-Machine Gun, Valet": 674,
-    "Reach Rank 5 with Sub-Machine Gun, Valet": 675,
-    "Contribute Sub-Machine Gun to the cause, Valet": 676,
-    "Find Sub-Machine Gun, Vrede": 677,
-    "Reach Rank 1 with Sub-Machine Gun, Vrede": 678,
-    "Reach Rank 2 with Sub-Machine Gun, Vrede": 679,
-    "Reach Rank 3 with Sub-Machine Gun, Vrede": 680,
-    "Reach Rank 4 with Sub-Machine Gun, Vrede": 681,
-    "Reach Rank 5 with Sub-Machine Gun, Vrede": 682,
-    "Contribute Sub-Machine Gun to the cause, Vrede": 683,
-    "Find Sub-Machine Gun, Songbird": 684,
-    "Reach Rank 1 with Sub-Machine Gun, Songbird": 685,
-    "Reach Rank 2 with Sub-Machine Gun, Songbird": 686,
-    "Reach Rank 3 with Sub-Machine Gun, Songbird": 687,
-    "Reach Rank 4 with Sub-Machine Gun, Songbird": 688,
-    "Reach Rank 5 with Sub-Machine Gun, Songbird": 689,
-    "Contribute Sub-Machine Gun to the cause, Songbird": 690,
-    "Find Sub-Machine Gun, Chimera Rapid": 691,
-    "Reach Rank 1 with Sub-Machine Gun, Chimera Rapid": 692,
-    "Reach Rank 2 with Sub-Machine Gun, Chimera Rapid": 693,
-    "Reach Rank 3 with Sub-Machine Gun, Chimera Rapid": 694,
-    "Reach Rank 4 with Sub-Machine Gun, Chimera Rapid": 695,
-    "Reach Rank 5 with Sub-Machine Gun, Chimera Rapid": 696,
-    "Contribute Sub-Machine Gun to the cause, Chimera Rapid": 697,
+def add_weapon_locations(weapon_type: str, a_or_an: str, names: list[str]):
+    add_specific_gun_location_details(weapon_type, names)
+    add_weapon_type_gun_location_details(weapon_type, len(names), a_or_an)
 
-    ### Sub-Machine Gun weapon class locations
-    "Find a Sub-Machine Gun": 698,
-    "Reach Rank 1 with a Sub-Machine Gun": 699,
-    "Reach Rank 2 with a Sub-Machine Gun": 700,
-    "Reach Rank 3 with a Sub-Machine Gun": 701,
-    "Reach Rank 4 with a Sub-Machine Gun": 702,
-    "Reach Rank 5 with a Sub-Machine Gun": 703,
-    "Contribute a Sub-Machine Gun to the cause": 704,
-    "Find two Sub-Machine Gun models": 705,
-    "Reach Rank 1 with two Sub-Machine Gun models": 706,
-    "Reach Rank 2 with two Sub-Machine Gun models": 707,
-    "Reach Rank 3 with two Sub-Machine Gun models": 708,
-    "Reach Rank 4 with two Sub-Machine Gun models": 709,
-    "Reach Rank 5 with two Sub-Machine Gun models": 710,
-    "Contribute two Sub-Machine Gun models to the cause": 711,
-    "Find three Sub-Machine Gun models": 712,
-    "Reach Rank 1 with three Sub-Machine Gun models": 713,
-    "Reach Rank 2 with three Sub-Machine Gun models": 714,
-    "Reach Rank 3 with three Sub-Machine Gun models": 715,
-    "Reach Rank 4 with three Sub-Machine Gun models": 716,
-    "Reach Rank 5 with three Sub-Machine Gun models": 717,
-    "Contribute three Sub-Machine Gun models to the cause": 718,
-    "Find four Sub-Machine Gun models": 719,
-    "Reach Rank 1 with four Sub-Machine Gun models": 720,
-    "Reach Rank 2 with four Sub-Machine Gun models": 721,
-    "Reach Rank 3 with four Sub-Machine Gun models": 722,
-    "Reach Rank 4 with four Sub-Machine Gun models": 723,
-    "Reach Rank 5 with four Sub-Machine Gun models": 724,
-    "Contribute four Sub-Machine Gun models to the cause": 725,
-    "Find five Sub-Machine Gun models": 726,
-    "Reach Rank 1 with five Sub-Machine Gun models": 727,
-    "Reach Rank 2 with five Sub-Machine Gun models": 728,
-    "Reach Rank 3 with five Sub-Machine Gun models": 729,
-    "Reach Rank 4 with five Sub-Machine Gun models": 730,
-    "Reach Rank 5 with five Sub-Machine Gun models": 731,
-    "Contribute five Sub-Machine Gun models to the cause": 732,
-    "Find six Sub-Machine Gun models": 733,
-    "Reach Rank 1 with six Sub-Machine Gun models": 734,
-    "Reach Rank 2 with six Sub-Machine Gun models": 735,
-    "Reach Rank 3 with six Sub-Machine Gun models": 736,
-    "Reach Rank 4 with six Sub-Machine Gun models": 737,
-    "Reach Rank 5 with six Sub-Machine Gun models": 738,
-    "Contribute six Sub-Machine Gun models to the cause": 739,
-    "Find seven Sub-Machine Gun models": 740,
-    "Reach Rank 1 with seven Sub-Machine Gun models": 741,
-    "Reach Rank 2 with seven Sub-Machine Gun models": 742,
-    "Reach Rank 3 with seven Sub-Machine Gun models": 743,
-    "Reach Rank 4 with seven Sub-Machine Gun models": 744,
-    "Reach Rank 5 with seven Sub-Machine Gun models": 745,
-    "Contribute seven Sub-Machine Gun models to the cause": 746,
-    "Find eight Sub-Machine Gun models": 747,
-    "Reach Rank 1 with eight Sub-Machine Gun models": 748,
-    "Reach Rank 2 with eight Sub-Machine Gun models": 749,
-    "Reach Rank 3 with eight Sub-Machine Gun models": 750,
-    "Reach Rank 4 with eight Sub-Machine Gun models": 751,
-    "Reach Rank 5 with eight Sub-Machine Gun models": 752,
-    "Contribute eight Sub-Machine Gun models to the cause": 753,
-    "Find all nine Sub-Machine Gun models": 754,
-    "Reach Rank 1 with all nine Sub-Machine Gun models": 755,
-    "Reach Rank 2 with all nine Sub-Machine Gun models": 756,
-    "Reach Rank 3 with all nine Sub-Machine Gun models": 757,
-    "Reach Rank 4 with all nine Sub-Machine Gun models": 758,
-    "Reach Rank 5 with all nine Sub-Machine Gun models": 759,
-    "Contribute all nine Sub-Machine Gun models to the cause": 760,
+add_weapon_locations(
+    WeaponTypes.assault_rifle,
+    "an",
+    [
+        ItemNames.Weapon_Catacoil,
+        ItemNames.Weapon_Corpsemaker,
+        ItemNames.Weapon_M11Ramshack,
+        ItemNames.Weapon_Typhoon,
+        ItemNames.Weapon_Wingman,
+        ItemNames.Weapon_SocomACR,
+        ItemNames.Weapon_CYB47,
+    ]
+)
 
-    ## 5 Sniper models: D4RT, Dolphin 99, Impala Gravita, Rokua .308, Longboy
-    ### Specific Sniper model locations
-    "Find Sniper, D4RT": 761,
-    "Reach Rank 1 with Sniper, D4RT": 762,
-    "Reach Rank 2 with Sniper, D4RT": 763,
-    "Reach Rank 3 with Sniper, D4RT": 764,
-    "Reach Rank 4 with Sniper, D4RT": 765,
-    "Reach Rank 5 with Sniper, D4RT": 766,
-    "Contribute Sniper to the cause, D4RT": 767,
-    "Find Sniper, Dolphin 99": 768,
-    "Reach Rank 1 with Sniper, Dolphin 99": 769,
-    "Reach Rank 2 with Sniper, Dolphin 99": 770,
-    "Reach Rank 3 with Sniper, Dolphin 99": 771,
-    "Reach Rank 4 with Sniper, Dolphin 99": 772,
-    "Reach Rank 5 with Sniper, Dolphin 99": 773,
-    "Contribute Sniper to the cause, Dolphin 99": 774,
-    "Find Sniper, Impala Gravita": 775,
-    "Reach Rank 1 with Sniper, Impala Gravita": 776,
-    "Reach Rank 2 with Sniper, Impala Gravita": 777,
-    "Reach Rank 3 with Sniper, Impala Gravita": 778,
-    "Reach Rank 4 with Sniper, Impala Gravita": 779,
-    "Reach Rank 5 with Sniper, Impala Gravita": 780,
-    "Contribute Sniper to the cause, Impala Gravita": 781,
-    "Find Sniper, Rokua .308": 782,
-    "Reach Rank 1 with Sniper, Rokua .308": 783,
-    "Reach Rank 2 with Sniper, Rokua .308": 784,
-    "Reach Rank 3 with Sniper, Rokua .308": 785,
-    "Reach Rank 4 with Sniper, Rokua .308": 786,
-    "Reach Rank 5 with Sniper, Rokua .308": 787,
-    "Contribute Sniper to the cause, Rokua .308": 788,
-    "Find Sniper, Longboy": 789,
-    "Reach Rank 1 with Sniper, Longboy": 790,
-    "Reach Rank 2 with Sniper, Longboy": 791,
-    "Reach Rank 3 with Sniper, Longboy": 792,
-    "Reach Rank 4 with Sniper, Longboy": 793,
-    "Reach Rank 5 with Sniper, Longboy": 794,
-    "Contribute Sniper to the cause, Longboy": 795,
+add_weapon_locations(
+    WeaponTypes.light_machine_gun,
+    "a",
+    [
+        ItemNames.Weapon_Duhar,
+        ItemNames.Weapon_NeuraxisF22,
+        ItemNames.Weapon_Rektor,
+        ItemNames.Weapon_Warpig,
+        ItemNames.Weapon_Chat_Pardeur98,
+    ]
+)
 
-    ### Sniper weapon class locations
-    "Find a Sniper": 796,
-    "Reach Rank 1 with a Sniper": 797,
-    "Reach Rank 2 with a Sniper": 798,
-    "Reach Rank 3 with a Sniper": 799,
-    "Reach Rank 4 with a Sniper": 800,
-    "Reach Rank 5 with a Sniper": 801,
-    "Contribute a Sniper to the cause": 802,
-    "Find two Sniper models": 803,
-    "Reach Rank 1 with two Sniper models": 804,
-    "Reach Rank 2 with two Sniper models": 805,
-    "Reach Rank 3 with two Sniper models": 806,
-    "Reach Rank 4 with two Sniper models": 807,
-    "Reach Rank 5 with two Sniper models": 808,
-    "Contribute two Sniper models to the cause": 809,
-    "Find three Sniper models": 810,
-    "Reach Rank 1 with three Sniper models": 811,
-    "Reach Rank 2 with three Sniper models": 812,
-    "Reach Rank 3 with three Sniper models": 813,
-    "Reach Rank 4 with three Sniper models": 814,
-    "Reach Rank 5 with three Sniper models": 815,
-    "Contribute three Sniper models to the cause": 816,
-    "Find four Sniper models": 817,
-    "Reach Rank 1 with four Sniper models": 818,
-    "Reach Rank 2 with four Sniper models": 819,
-    "Reach Rank 3 with four Sniper models": 820,
-    "Reach Rank 4 with four Sniper models": 821,
-    "Reach Rank 5 with four Sniper models": 822,
-    "Contribute four Sniper models to the cause": 823,
-    "Find all five Sniper models": 824,
-    "Reach Rank 1 with all five Sniper models": 825,
-    "Reach Rank 2 with all five Sniper models": 826,
-    "Reach Rank 3 with all five Sniper models": 827,
-    "Reach Rank 4 with all five Sniper models": 828,
-    "Reach Rank 5 with all five Sniper models": 829,
-    "Contribute all five Sniper models to the cause": 830,
+add_weapon_locations(
+    WeaponTypes.pistol,
+    "a",
+    [
+        ItemNames.Weapon_Beck,
+        ItemNames.Weapon_Bronco,
+        ItemNames.Weapon_Dirk,
+        ItemNames.Weapon_FlickerZip,
+        ItemNames.Weapon_Gravekeeper,
+        ItemNames.Weapon_Salamander,
+        ItemNames.Weapon_Socom9,
+        ItemNames.Weapon_Unknown,
+        ItemNames.Weapon_HellnBack,
+        ItemNames.Weapon_StarAndWitness,
+        ItemNames.Weapon_Cavalier,
+        ItemNames.Weapon_TerrierURB,
+    ]
+)
 
-    # Storage locations
-    ## Requires extract
-    "Find the Suitcase": 831,
-    "Bring your Suitcase back to the church": 832,
-    "Find the Refrigerator": 833,
-    "Plug in a Refrigerator": 834,
-    "Find the Chest of Drawers": 835,
-    "Put the Chest of Drawers in the church": 836,
+add_weapon_locations(
+    WeaponTypes.revolver,
+    "a",
+    [
+        ItemNames.Weapon_Balthazar,
+        ItemNames.Weapon_PalehorseTopclipper,
+        ItemNames.Weapon_Snut38,
+        ItemNames.Weapon_WyattPulsar,
+        ItemNames.Weapon_Blackwater,
+        ItemNames.Weapon_DeathsToll,
+    ]
+)
 
-    ## Stamp trading with Arthur
-    "Trade Stamps for the Small Golden Wall Frame": 837,
-    "Trade Stamps for the Withered Wood Wall Frame": 838,
-    "Trade Stamps for the Cherry Wood Wall Frame": 839,
-    "Trade Stamps for the Luxurious Wall Frame": 840,
-    "Trade Stamps for the Bulk Ammo Box": 841,
-    "Trade Stamps for the Baptismal Font": 842,
-    "Trade Stamps for the Left Wall Mount": 843,
-    "Trade Stamps for the Center Wall Mount": 844,
-    "Trade Stamps for the Right Wall Mount": 845,
-    "Trade Stamps for the Snake Basket": 846,
-    "Trade Stamps for the Safe": 847,
-    "Trade Stamps for the Toilet": 848,
-    "Trade Stamps for the Wardrobe": 849,
-    "Trade Stamps for the Coffin": 850,
-    "Trade Stamps for the Gun Cabinet": 851,
-    "Trade Stamps for the Chrismatory": 852,
-    "Trade Stamps for the first Weapon Rack": 853,
-    "Trade Stamps for the second Weapon Rack": 854,
-    "Trade Stamps for the Delivery Demon": 855,
-    "Trade Stamps for the Holoreality Projector": 856,
+add_weapon_locations(
+    WeaponTypes.rifle,
+    "a",
+    [
+        ItemNames.Weapon_Farsight,
+        ItemNames.Weapon_Knop,
+        ItemNames.Weapon_PierreFusil,
+        ItemNames.Weapon_TailorMarksman,
+    ]
+)
 
-    # Crafting locations
-    ## Scroll crafting
-    "Mix the magic 'Scroll of Aftershock'": 857,
-    "Mix the magic 'Scroll of Chain Lightning'": 858,
-    "Mix the magic 'Scroll of Chaos Strike'": 859,
-    "Mix the magic 'Scroll of Charm'": 860,
-    "Mix the magic 'Scroll of Corpse Explosion'": 861,
-    "Mix the magic 'Scroll of Poison Blood'": 862,
-    "Mix the magic 'Scroll of Crusader'": 863,
-    "Mix the magic 'Scroll of Fear'": 864,
-    "Mix the magic 'Scroll of Flame Thrower'": 865,
-    "Mix the magic 'Scroll of Holy Fire'": 866,
-    "Mix the magic 'Scroll of Holy Purge'": 867,
-    "Mix the magic 'Scroll of Lava'": 868,
-    "Mix the magic 'Scroll of Least Resistance'": 869,
-    "Mix the magic 'Scroll of Noxiosa'": 870,
-    "Mix the magic 'Scroll of Pesticide'": 871,
-    "Mix the magic 'Scroll of Petrification'": 872,
-    "Mix the magic 'Scroll of Petroleum'": 873,
-    "Mix the magic 'Scroll of Prism'": 874,
-    "Mix the magic 'Scroll of Explosions'": 875,
-    "Mix the magic 'Scroll of Rocket Launcher'": 876,
-    "Mix the magic 'Scroll of Sacrifice'": 877,
-    "Mix the magic 'Scroll of Slush'": 878,
-    "Mix the magic 'Scroll of Storm Surge'": 879,
-    "Mix the magic 'Scroll of Thunderbolt'": 880,
-    "Mix the magic 'Scroll of Toxic Lobotomy'": 881,
-    "Mix the magic 'Scroll of Voodoo'": 882,
-    "Mix the magic 'Scroll of Water'": 883,
-}
+add_weapon_locations(
+    WeaponTypes.shotgun,
+    "a",
+    [
+        ItemNames.Weapon_Arbiter2,
+        ItemNames.Weapon_Augusta,
+        ItemNames.Weapon_Breacher8,
+        ItemNames.Weapon_Flock,
+        ItemNames.Weapon_Majordome,
+        ItemNames.Weapon_Mario,
+        ItemNames.Weapon_Mossman,
+    ]
+)
+
+add_weapon_locations(
+    WeaponTypes.submachine_gun,
+    "a",
+    [
+        ItemNames.Weapon_DeathStar,
+        ItemNames.Weapon_Drifter9,
+        ItemNames.Weapon_Ferryman,
+        ItemNames.Weapon_PloikaC,
+        ItemNames.Weapon_Termite,
+        ItemNames.Weapon_Valet,
+        ItemNames.Weapon_Vrede,
+        ItemNames.Weapon_Songbird,
+        ItemNames.Weapon_ChimeraRapid,
+    ]
+)
+
+add_weapon_locations(
+    WeaponTypes.sniper,
+    "a",
+    [
+        ItemNames.Weapon_D4RT,
+        ItemNames.Weapon_Dolphin99,
+        ItemNames.Weapon_ImpalaGravita,
+        ItemNames.Weapon_Rokua,
+        ItemNames.Weapon_Longboy,
+    ]
+)
+
+LOCATIONS.extend([
+    LocationDetails(
+        f"Find {ItemNames.Weapon_Bo}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {ItemNames.Weapon_Katana}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {ItemNames.Weapon_Nunchaku}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {ItemNames.Weapon_Sai}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {ItemNames.Weapon_Wakizashi}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find a {WeaponTypes.melee}",
+        [LocationTags.find_weapon_model, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {amount_strings[1]} different {WeaponTypes.melee}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {amount_strings[2]}  different {WeaponTypes.melee}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {amount_strings[3]}  different {WeaponTypes.melee}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+    LocationDetails(
+        f"Find {amount_strings[4]}  different {WeaponTypes.melee}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+    ),
+])
+
+# Storage locations
+LOCATIONS.extend([
+    LocationDetails(
+        LocationNames.furniture_find_suitcase,
+        [LocationTags.find_furniture, LocationTags.region_sulfur_caves]
+    ),
+    LocationDetails(
+        LocationNames.furniture_place_suitcase,
+        [LocationTags.place_furniture, LocationTags.region_sulfur_caves]
+    ),
+    LocationDetails(
+        LocationNames.furniture_find_refrigerator,
+        [LocationTags.find_furniture, LocationTags.region_sewers]
+    ),
+    LocationDetails(
+        LocationNames.furniture_place_refrigerator,
+        [LocationTags.place_furniture, LocationTags.region_sewers]
+    ),
+    LocationDetails(
+        LocationNames.furniture_find_chest_of_drawers,
+        [LocationTags.find_furniture, LocationTags.region_castle]
+    ),
+    LocationDetails(
+        LocationNames.furniture_place_chest_of_drawers,
+        [LocationTags.place_furniture, LocationTags.region_castle]
+    ),
+])
+
+for item in [
+    ItemNames.Item_Painting1,
+    ItemNames.Item_Painting2,
+    ItemNames.Item_Painting3,
+    ItemNames.Item_Painting4,
+    ItemNames.Item_BulkAmmoBox,
+    ItemNames.Item_BaptismalFont,
+    ItemNames.Item_WallMount0,
+    ItemNames.Item_WallMount1,
+    ItemNames.Item_WallMount2,
+    ItemNames.Item_SnakeBasket,
+    ItemNames.Item_Safe,
+    ItemNames.Item_Toilet,
+    ItemNames.Item_Wardrobe,
+    ItemNames.Item_Coffin,
+    ItemNames.Item_GunCabinet,
+    ItemNames.Item_Chrismatory,
+    ItemNames.Item_WeaponRack0,
+    ItemNames.Item_WeaponRack1,
+    ItemNames.Item_DeliveryDemon,
+    ItemNames.Item_HolorealityProjector,
+]:
+    LocationDetails(
+        f"Trade stamps for the {item}",
+        [LocationTags.stamp_trading, LocationTags.region_full_church]
+    ),
+
+for item in [
+    ItemNames.Enchantment_Aftershock,
+    ItemNames.Enchantment_ChainLightning,
+    ItemNames.Enchantment_ChaosStrike,
+    ItemNames.Enchantment_Charm,
+    ItemNames.Enchantment_CorpseExplosion,
+    ItemNames.Enchantment_CorrosiveBlood,
+    ItemNames.Enchantment_Crusader,
+    ItemNames.Enchantment_Fear,
+    ItemNames.Enchantment_FlameThrower,
+    ItemNames.Enchantment_HolyFire,
+    ItemNames.Enchantment_HolyPurge,
+    ItemNames.Enchantment_Lava,
+    ItemNames.Enchantment_LeastResistance,
+    ItemNames.Enchantment_Noxiosa,
+    ItemNames.Enchantment_Pesticide,
+    ItemNames.Enchantment_Petrification,
+    ItemNames.Enchantment_Petroleum,
+    ItemNames.Enchantment_Prism,
+    ItemNames.Enchantment_Pyroclasm,
+    ItemNames.Enchantment_RocketLauncher,
+    ItemNames.Enchantment_Sacrifice,
+    ItemNames.Enchantment_Slush,
+    ItemNames.Enchantment_StormSurge,
+    ItemNames.Enchantment_Thunderbolt,
+    ItemNames.Enchantment_ToxicLobotomy,
+    ItemNames.Enchantment_Voodoo,
+    ItemNames.Enchantment_Water,
+]:
+    LocationDetails(
+        f"Mix the magic '{item}'",
+        [LocationTags.mix_magic, LocationTags.region_church]
+    )

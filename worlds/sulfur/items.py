@@ -7,6 +7,8 @@ from BaseClasses import Item, ItemClassification
 from .item_names import *
 from .item_tags import ItemTags
 
+class SulfurItem(Item):
+    game = "SULFUR"
 
 class ItemDetails:
     def __init__(
@@ -30,10 +32,6 @@ class ItemDetails:
             return False
         return True
 
-
-class SulfurItem(Item):
-    game = "SULFUR"
-
 def item_name_to_id() -> dict[str, int]:
     return_dict: dict[str, int] = {}
     for details in ITEMS:
@@ -43,6 +41,8 @@ def item_name_to_id() -> dict[str, int]:
 def item_identifier_to_details() -> dict[str, ItemDetails]:
     return_dict: dict[str, ItemDetails] = {}
     for details in ITEMS:
+        if details.name in return_dict:
+            print(details.name + " already in dict")
         return_dict[details.name] = details
     return return_dict
 
