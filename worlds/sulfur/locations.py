@@ -4,6 +4,13 @@
 class SulfurLocation(Location):
     game = "SULFUR"
 
+
+def get_location_names_with_ids(location_names: list[str]) -> dict[
+    str, int | None]:
+    return {location_name: LOCATION_NAME_TO_ID[location_name] for location_name
+            in location_names}
+
+
 LOCATION_NAME_TO_ID = {
     # Places and bosses
     "The Church": 0,
@@ -57,7 +64,6 @@ LOCATION_NAME_TO_ID = {
     "Desert Claus": 48,
     "Beyond the Veil": 49,
     "The Witch": 50,
-
 
     # Weapon locations
     ## 7 Assault Rifle models: Catacoil Rapid X, Corpsemaker, M11A2 Fisk, Type 80 Typhoon, Wingman, Socom ACR, CYB47
@@ -884,7 +890,6 @@ LOCATION_NAME_TO_ID = {
     "Reach Rank 4 with all five Sniper models": 828,
     "Reach Rank 5 with all five Sniper models": 829,
     "Contribute all five Sniper models to the cause": 830,
-
 
     # Storage locations
     ## Requires extract
