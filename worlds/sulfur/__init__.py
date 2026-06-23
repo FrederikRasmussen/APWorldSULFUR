@@ -5,7 +5,8 @@ from Options import Toggle, Range, Choice, PerGameCommonOptions
 from dataclasses import dataclass
 
 from .item_names import ItemNames
-from .items import SulfurItem
+from .item_tags import ItemTags
+from .items import SulfurItem, ITEMS, ItemDetails
 from .locations import LOCATION_NAME_TO_ID, SulfurLocation, \
     get_location_names_with_ids
 
@@ -39,17 +40,6 @@ class SulfurOptions(PerGameCommonOptions):
     starting_weapon: StartingWeapon
     average_sulf_per_filler: AverageSulfPerFiller
 
-
-ITEM_NAME_TO_ID = items.item_name_to_id()
-
-# The rest
-sulfur_items = ITEM_NAME_TO_ID.keys()
-
-sulfur_locations = [
-    "Sulfur Caves",
-]
-
-
 class SulfurWorld(World):
     """A priest is stuck at the whims of a witch in SULFUR."""
     game = "SULFUR"
@@ -60,10 +50,40 @@ class SulfurWorld(World):
 
     base_id = 1
 
-    item_name_to_id = ITEM_NAME_TO_ID
+    item_name_to_details = items.item_identifier_to_details()
+    item_name_to_id = items.item_name_to_id()
     location_name_to_id = LOCATION_NAME_TO_ID
 
-    item_name_group = {
+
+    item_name_groups = {
+        ItemTags.accessory: items.get_item_names_from_tag(ItemTags.accessory),
+        ItemTags.ammunition: items.get_item_names_from_tag(ItemTags.ammunition),
+        ItemTags.armour: items.get_item_names_from_tag(ItemTags.armour),
+        ItemTags.boots: items.get_item_names_from_tag(ItemTags.boots),
+        ItemTags.chambering_tools: items.get_item_names_from_tag(
+            ItemTags.chambering_tools
+        ),
+        ItemTags.explosive: items.get_item_names_from_tag(ItemTags.explosive),
+        ItemTags.food: items.get_item_names_from_tag(ItemTags.food),
+        ItemTags.furniture: items.get_item_names_from_tag(ItemTags.furniture),
+        ItemTags.gun: items.get_item_names_from_tag(ItemTags.gun),
+        ItemTags.helmet: items.get_item_names_from_tag(ItemTags.helmet),
+        ItemTags.melee: items.get_item_names_from_tag(ItemTags.melee),
+        ItemTags.oil: items.get_item_names_from_tag(ItemTags.oil),
+        ItemTags.recipe_book: items.get_item_names_from_tag(
+            ItemTags.recipe_book
+        ),
+        ItemTags.repair: items.get_item_names_from_tag(ItemTags.repair),
+        ItemTags.scroll_ingredient: items.get_item_names_from_tag(
+            ItemTags.scroll_ingredient
+        ),
+        ItemTags.scroll: items.get_item_names_from_tag(ItemTags.scroll),
+        ItemTags.sulf: items.get_item_names_from_tag(ItemTags.sulf),
+        ItemTags.throwable: items.get_item_names_from_tag(ItemTags.throwable),
+        ItemTags.valuable: items.get_item_names_from_tag(ItemTags.valuable),
+        ItemTags.weapon_attachment: items.get_item_names_from_tag(
+            ItemTags.weapon_attachment
+        ),
     }
 
     def generate_early(self) -> None:
@@ -123,12 +143,12 @@ class SulfurWorld(World):
 
         self.multiworld.regions.append(church_region)
 
-    def create_item(self, item: str) -> SulfurItem:
+    def create_item(self, item: ItemDetails) -> SulfurItem:
         classification = ItemClassification.filler
         return SulfurItem(
-            item,
+            item.name,
             classification,
-            self.item_name_to_id[item],
+            item.id,
             self.player,
         )
 
@@ -144,7 +164,7 @@ class SulfurWorld(World):
         return ItemNames.Currency_SulfCoin
 
     def create_items(self) -> None:
-        for item in map(self.create_item, sulfur_items):
+        for item in map(self.create_item, ITEMS):
             self.multiworld.itempool.append(item)
         #number_of_items = 0
         #itempool: list[Item] = []
