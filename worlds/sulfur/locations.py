@@ -1,7 +1,7 @@
 ﻿from typing import List
 
 from BaseClasses import Location
-from worlds.sulfur import ItemTags, ItemNames
+from worlds.sulfur import ItemNames
 from worlds.sulfur.location_names import LocationNames
 from worlds.sulfur.location_tags import LocationTags
 from worlds.sulfur.weapon_types import WeaponTypes
@@ -21,20 +21,36 @@ class LocationDetails:
             self,
             name: str,
             tags: List[str],
+            required_item: str = None,
+            requires_multiple_items: list[str] = None,
+            required_amount: int = 0,
     ):
+        self.requires_item = required_item
+        self.requires_multiple_items = requires_multiple_items
+        self.required_amount = required_amount
         self.id: int = get_and_increment_current_location_id()
         self.name: str = name
         self.tags: List[str] = tags
 
-def get_location_names_with_ids(location_names: list[str]) -> dict[
-    str, int | None]:
-    return {location_name: location_name_to_id()[location_name] for location_name
-            in location_names}
+def get_location_names_with_ids(locations: list[LocationDetails]) -> dict[str, int | None]:
+    return_dict = {}
+    for location in locations:
+        return_dict[location.name] = location.id
+    return return_dict
 
 def location_name_to_id() -> dict[str, int]:
     return_dict: dict[str, int] = {}
     for details in LOCATIONS:
         return_dict[details.name] = details.id
+    return return_dict
+
+def tag_to_locations():
+    return_dict = {}
+    for details in LOCATIONS:
+        for tag in details.tags:
+            if not tag in return_dict:
+                return_dict[tag] = []
+            return_dict[tag].append(details)
     return return_dict
 
 LOCATIONS = []
@@ -55,7 +71,7 @@ def add_game_area_location_details(
         LOCATIONS.append(
             LocationDetails(
                 boss,
-                [region, LocationTags.boss]
+                [region, LocationTags.boss],
             )
         )
 
@@ -183,8 +199,7 @@ add_game_area_location_details(
     LocationTags.region_beyond_the_veil,
     [
         LocationNames.reach_beyond_the_veil,
-    ],
-    LocationNames.boss_the_witch
+    ]
 )
 
 # Weapons
@@ -195,31 +210,38 @@ def add_specific_gun_location_details(weapon_type: str, names: list[str]):
         LOCATIONS.extend([
             LocationDetails(
                 f"Find {name}",
-                [LocationTags.find_specific_weapon, weapon_type, LocationTags.region_full_church]
+                [LocationTags.find_specific_weapon, weapon_type, LocationTags.region_full_church],
+                required_item=name
             ),
             LocationDetails(
                 f"Contribute {name} to the cause",
-                [LocationTags.sacrifice_specific_weapon, weapon_type, LocationTags.region_full_church]
+                [LocationTags.sacrifice_specific_weapon, weapon_type, LocationTags.region_full_church],
+                required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 1 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 2 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 3 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 4 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 5 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church]
+                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                required_item=name
             ),
         ])
 
@@ -237,45 +259,59 @@ amount_strings = [
     "eleven",
     "twelve",
 ]
-def add_weapon_type_gun_location_details(weapon_type: str, amount: int, a_or_an: str):
-    for i in range(amount):
-        model_or_models = "" if i > 0 else " models"
-        amount_string = a_or_an if i > 0 else amount_strings[i]
-        amount_string = f"all {amount_string}" if i + 1 > amount else amount_string
+def add_weapon_type_gun_location_details(weapon_type: str, names: list[str], a_or_an: str):
+    for i in range(len(names)):
+        space_and_models = "" if i == 0 else " models"
+        amount_string = a_or_an if i == 0 else amount_strings[i]
+        amount_string = f"all {amount_string}" if i + 1 >= len(names) else amount_string
         LOCATIONS.extend([
             LocationDetails(
-                f"Find {amount_string} {weapon_type}{model_or_models}",
-                [LocationTags.find_weapon_model, weapon_type, LocationTags.region_full_church]
+                f"Find {amount_string} {weapon_type}{space_and_models}",
+                [LocationTags.find_weapon_model, weapon_type, LocationTags.region_full_church],
+                requires_multiple_items=names,
+                required_amount=i+1,
             ),
             LocationDetails(
-                f"Contribute {amount_string} {weapon_type}{model_or_models} to the cause",
-                [LocationTags.sacrifice_weapon_model, weapon_type, LocationTags.region_full_church]
+                f"Contribute {amount_string} {weapon_type}{space_and_models} to the cause",
+                [LocationTags.sacrifice_weapon_model, weapon_type, LocationTags.region_full_church],
+                requires_multiple_items=names,
+                required_amount=i+1,
             ),
             LocationDetails(
-                f"Reach Rank 1 with {amount_string} {weapon_type}{model_or_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+                f"Reach Rank 1 with {amount_string} {weapon_type}{space_and_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                requires_multiple_items=names,
+                required_amount=i+1,
             ),
             LocationDetails(
-                f"Reach Rank 2 with {amount_string} {weapon_type}{model_or_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+                f"Reach Rank 2 with {amount_string} {weapon_type}{space_and_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                requires_multiple_items=names,
+                required_amount=i+1,
             ),
             LocationDetails(
-                f"Reach Rank 3 with {amount_string} {weapon_type}{model_or_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+                f"Reach Rank 3 with {amount_string} {weapon_type}{space_and_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                requires_multiple_items=names,
+                required_amount=i+1,
             ),
             LocationDetails(
-                f"Reach Rank 4 with {amount_string} {weapon_type}{model_or_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+                f"Reach Rank 4 with {amount_string} {weapon_type}{space_and_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                requires_multiple_items=names,
+                required_amount=i+1,
             ),
             LocationDetails(
-                f"Reach Rank 5 with {amount_string} {weapon_type}{model_or_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church]
+                f"Reach Rank 5 with {amount_string} {weapon_type}{space_and_models}",
+                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                requires_multiple_items=names,
+                required_amount=i+1,
             ),
         ])
 
 def add_weapon_locations(weapon_type: str, a_or_an: str, names: list[str]):
     add_specific_gun_location_details(weapon_type, names)
-    add_weapon_type_gun_location_details(weapon_type, len(names), a_or_an)
+    add_weapon_type_gun_location_details(weapon_type, names, a_or_an)
 
 add_weapon_locations(
     WeaponTypes.assault_rifle,
@@ -391,43 +427,58 @@ add_weapon_locations(
 LOCATIONS.extend([
     LocationDetails(
         f"Find {ItemNames.Weapon_Bo}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        required_item=ItemNames.Weapon_Bo
     ),
     LocationDetails(
         f"Find {ItemNames.Weapon_Katana}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        required_item=ItemNames.Weapon_Katana
     ),
     LocationDetails(
         f"Find {ItemNames.Weapon_Nunchaku}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        required_item=ItemNames.Weapon_Nunchaku
     ),
     LocationDetails(
         f"Find {ItemNames.Weapon_Sai}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        required_item=ItemNames.Weapon_Sai
     ),
     LocationDetails(
         f"Find {ItemNames.Weapon_Wakizashi}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        required_item=ItemNames.Weapon_Wakizashi
     ),
     LocationDetails(
         f"Find a {WeaponTypes.melee}",
-        [LocationTags.find_weapon_model, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_weapon_model, WeaponTypes.melee, LocationTags.region_church],
+        requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
+        required_amount=1,
     ),
     LocationDetails(
         f"Find {amount_strings[1]} different {WeaponTypes.melee}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
+        required_amount=2,
     ),
     LocationDetails(
-        f"Find {amount_strings[2]}  different {WeaponTypes.melee}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        f"Find {amount_strings[2]} different {WeaponTypes.melee}",
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
+        required_amount=3,
     ),
     LocationDetails(
         f"Find {amount_strings[3]}  different {WeaponTypes.melee}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
+        required_amount=4,
     ),
     LocationDetails(
         f"Find {amount_strings[4]}  different {WeaponTypes.melee}",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church]
+        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
+        required_amount=5,
     ),
 ])
 
@@ -435,27 +486,33 @@ LOCATIONS.extend([
 LOCATIONS.extend([
     LocationDetails(
         LocationNames.furniture_find_suitcase,
-        [LocationTags.find_furniture, LocationTags.region_sulfur_caves]
+        [LocationTags.find_furniture, LocationTags.region_sulfur_caves],
+        required_item=ItemNames.Item_Suitcase,
     ),
     LocationDetails(
         LocationNames.furniture_place_suitcase,
-        [LocationTags.place_furniture, LocationTags.region_sulfur_caves]
+        [LocationTags.place_furniture, LocationTags.region_sulfur_caves],
+        required_item=ItemNames.Item_Suitcase,
     ),
     LocationDetails(
         LocationNames.furniture_find_refrigerator,
-        [LocationTags.find_furniture, LocationTags.region_sewers]
+        [LocationTags.find_furniture, LocationTags.region_sewers],
+        required_item=ItemNames.Item_Refrigerator,
     ),
     LocationDetails(
         LocationNames.furniture_place_refrigerator,
-        [LocationTags.place_furniture, LocationTags.region_sewers]
+        [LocationTags.place_furniture, LocationTags.region_sewers],
+        required_item=ItemNames.Item_Refrigerator,
     ),
     LocationDetails(
         LocationNames.furniture_find_chest_of_drawers,
-        [LocationTags.find_furniture, LocationTags.region_castle]
+        [LocationTags.find_furniture, LocationTags.region_castle],
+        required_item=ItemNames.Item_ChestOfDrawers,
     ),
     LocationDetails(
         LocationNames.furniture_place_chest_of_drawers,
-        [LocationTags.place_furniture, LocationTags.region_castle]
+        [LocationTags.place_furniture, LocationTags.region_castle],
+        required_item=ItemNames.Item_ChestOfDrawers,
     ),
 ])
 
@@ -484,7 +541,7 @@ for item in [
     LocationDetails(
         f"Trade stamps for the {item}",
         [LocationTags.stamp_trading, LocationTags.region_full_church]
-    ),
+    )
 
 for item in [
     ItemNames.Enchantment_Aftershock,

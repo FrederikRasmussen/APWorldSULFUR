@@ -1,13 +1,19 @@
 import typing
+
+from Utils import visualize_regions
+from rule_builder.rules import Has, HasFromList
 from worlds.AutoWorld import World
-from BaseClasses import Region, Location, Entrance, Item, ItemClassification
+from BaseClasses import Region, Location, Entrance, Item, ItemClassification, \
+    CollectionState
 from Options import Toggle, Range, Choice, PerGameCommonOptions
 from dataclasses import dataclass
 
-from .item_names import ItemNames
+from . import item_names
+from .item_names import ItemNames, VirtualNames
 from .item_tags import ItemTags
 from .items import SulfurItem, ITEMS, ItemDetails
 from .location_names import LocationNames
+from .location_tags import LocationTags
 from .locations import SulfurLocation, LOCATIONS, LocationDetails, \
     get_location_names_with_ids
 
@@ -47,10 +53,11 @@ class SulfurWorld(World):
     options_dataclass = SulfurOptions
     options: SulfurOptions
     topology_present = True
-    origin_region_name = "Church"
+    origin_region_name = LocationTags.region_church
 
     base_id = 1
 
+    locations_by_tag = locations.tag_to_locations()
     item_name_to_details = items.item_identifier_to_details()
     item_name_to_id = items.item_name_to_id()
     location_name_to_id = locations.location_name_to_id()
@@ -89,66 +96,61 @@ class SulfurWorld(World):
     def generate_early(self) -> None:
         self.noop = True
 
+    def create_region_with_connection(self, region_connection, region_name, required_item) -> Region:
+        new_region = Region(region_name, self.player, self.multiworld)
+        new_locations = []
+        location_details: LocationDetails
+        for location_details in self.locations_by_tag[region_name]:
+            new_location = SulfurLocation(self.player, location_details.name, parent=new_region)
+            if location_details.requires_item is not None:
+                self.set_rule(new_location, Has(location_details.requires_item))
+            if location_details.requires_multiple_items is not None:
+                self.set_rule(new_location, HasFromList(
+                    *location_details.requires_multiple_items,
+                    count=location_details.required_amount,
+                ))
+            new_locations.append(new_location)
+        new_region.locations.extend(new_locations)
+        region_connection.connect(
+            new_region, f"{region_name} to {region_connection.name}",
+            rule=Has(required_item)
+        )
+        self.multiworld.regions.append(new_region)
+        return new_region
+
     def create_regions(self) -> None:
-        church_region = Region("Church", self.player, self.multiworld)
+        church_region = Region(LocationTags.region_church, self.player, self.multiworld)
         church_region.add_locations(
             get_location_names_with_ids(
-                [
-                    LocationNames.reach_sulfur_caves_i,
-                    LocationNames.reach_sulfur_caves_ii,
-                    LocationNames.reach_sulfur_caves_iii,
-                    LocationNames.reach_sulfur_caves_iv,
-                    LocationNames.reach_sulfur_caves_v,
-                    LocationNames.reach_sulfur_caves_vi,
-                    LocationNames.reach_sulfur_caves_vii,
-                ],
+                self.locations_by_tag[LocationTags.region_church],
             ),
-            SulfurLocation,
+            SulfurLocation
         )
-        church_region.add_event(
-            LocationNames.reach_sulfur_caves_vii,
+        self.multiworld.regions.append(church_region)
+
+        full_church_region = self.create_region_with_connection(church_region, LocationTags.region_full_church, VirtualNames.UnlockAreaChurchGrounds)
+        town_region = self.create_region_with_connection(full_church_region, LocationTags.region_town, VirtualNames.UnlockAreaTown)
+        sewers_region = self.create_region_with_connection(full_church_region, LocationTags.region_sewers, VirtualNames.UnlockAreaSewers)
+        hedge_maze_region = self.create_region_with_connection(full_church_region, LocationTags.region_hedge_maze, VirtualNames.UnlockAreaHedgeMaze)
+        dungeon_region = self.create_region_with_connection(full_church_region, LocationTags.region_dungeon, VirtualNames.UnlockAreaDungeon)
+        castle_region = self.create_region_with_connection(full_church_region, LocationTags.region_castle, VirtualNames.UnlockAreaCastle)
+        forest_region = self.create_region_with_connection(full_church_region, LocationTags.region_forest, VirtualNames.UnlockAreaForest)
+        fortress_region = self.create_region_with_connection(full_church_region, LocationTags.region_fortress, VirtualNames.UnlockAreaBridge)
+        desert_region = self.create_region_with_connection(full_church_region, LocationTags.region_desert, VirtualNames.UnlockAreaDesert)
+        beyond_the_veil_region = self.create_region_with_connection(full_church_region, LocationTags.region_beyond_the_veil, VirtualNames.UnlockAreaVeil)
+        beyond_the_veil_region.add_event(
+            LocationNames.boss_the_witch,
             "Victory",
             location_type=SulfurLocation,
             item_type=SulfurItem,
         )
 
-        #town_region = Region("Town", self.player, self.multiworld)
-        #town_region.add_locations(
-        #    get_location_names_with_ids(
-        #        [
-        #            "Trade Stamps for the Small Golden Wall Frame",
-        #            "Trade Stamps for the Withered Wood Wall Frame",
-        #            "Trade Stamps for the Cherry Wood Wall Frame",
-        #            "Trade Stamps for the Luxurious Wall Frame",
-        #            "Trade Stamps for the Bulk Ammo Box",
-        #            "Trade Stamps for the Baptismal Font",
-        #            "Trade Stamps for the Left Wall Mount",
-        #            "Trade Stamps for the Center Wall Mount",
-        #            "Trade Stamps for the Right Wall Mount",
-        #            "Trade Stamps for the Snake Basket",
-        #            "Trade Stamps for the Safe",
-        #            "Trade Stamps for the Toilet",
-        #            "Trade Stamps for the Wardrobe",
-        #            "Trade Stamps for the Coffin",
-        #            "Trade Stamps for the Gun Cabinet",
-        #            "Trade Stamps for the Chrismatory",
-        #            "Trade Stamps for the first Weapon Rack",
-        #            "Trade Stamps for the second Weapon Rack",
-        #            "Trade Stamps for the Delivery Demon",
-        #            "Trade Stamps for the Holoreality Projector",
-        #        ],
-        #    ),
-        #    SulfurLocation,
-        #)
-        #church_region.connect(town_region, "Church to Town")
-
-        self.multiworld.regions.append(church_region)
-
     def create_item(self, item: ItemDetails) -> SulfurItem:
-        classification = ItemClassification.filler
+        if item.default_classification is None:
+            item.default_classification = ItemClassification.filler
         return SulfurItem(
             item.name,
-            classification,
+            item.default_classification,
             item.id,
             self.player,
         )
@@ -165,19 +167,10 @@ class SulfurWorld(World):
         return ItemNames.Currency_SulfCoin
 
     def create_items(self) -> None:
-        for item in map(self.create_item, ITEMS):
-            self.multiworld.itempool.append(item)
-        #number_of_items = 0
-        #itempool: list[Item] = []
-        #number_of_unfilled_locations = len(
-        #    self.multiworld.get_unfilled_locations(self.player)
-        #)
-        #needed_number_of_filler_items = number_of_unfilled_locations - number_of_items
-        #itempool += [self.create_filler() for _ in
-        #             range(needed_number_of_filler_items)]
-        #junk = 0  # calculate this based on player options
-        #self.multiworld.itempool += [self.create_item(ItemNames.Currency_SulfCoin) for _
-        #                             in range(junk)]
+        for item in ITEMS:
+            if (ItemTags.unknown or ItemTags.do_not_generate) in item.tags:
+                continue
+            self.multiworld.itempool.append(self.create_item(item))
 
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = lambda \

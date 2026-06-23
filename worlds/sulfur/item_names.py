@@ -1,11 +1,14 @@
 ﻿class VirtualNames:
+    UnlockAreaVeil = "Unlock Beyond the Veil shortcut"
+    UnlockAreaTown = "Unlock Town"
     UnlockAreaDesert = "Unlock Desert shortcut"
     UnlockAreaBridge = "Unlock Shav'Wani Fortress Bridge shortcut"
     UnlockAreaForest = "Unlock Forest shortcut"
-    UnlockChurchGrounds = "Unlock full Church grounds (and Town)"
+    UnlockAreaChurchGrounds = "Unlock Church Grounds"
     UnlockAreaSewers = "Unlock Sewer shortcut"
-    UnlockAreaHedgeMaze = "Unlock Hedge Maze shortcut (and Dungeon)"
+    UnlockAreaHedgeMaze = "Unlock Hedge Maze shortcut"
     UnlockAreaCastle = "Unlock Castle shortcut after Hedge Maze"
+    UnlockAreaDungeon = "Unlock Dungeon entrance after Hedge Maze"
 
 class ItemNames:
     Ammo_12Ga = "Ammo Box (12ga)"

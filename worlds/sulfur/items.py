@@ -2413,7 +2413,7 @@ ITEMS = {
     ItemDetails(
         393,
         ItemNames.Item_ChestOfDrawers,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.furniture],
     ),
     ItemDetails(
@@ -3811,7 +3811,7 @@ ITEMS = {
     ItemDetails(
         626,
         ItemNames.Item_Refrigerator,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.furniture],
     ),
     ItemDetails(
@@ -4309,7 +4309,7 @@ ITEMS = {
     ItemDetails(
         709,
         ItemNames.Item_Suitcase,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.furniture],
     ),
     ItemDetails(
@@ -5269,43 +5269,43 @@ ITEMS = {
     ItemDetails(
         869,
         ItemNames.Weapon_Arbiter2,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         871,
         ItemNames.Weapon_Augusta,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         872,
         ItemNames.Weapon_Balthazar,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         873,
         ItemNames.Weapon_Beck,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         875,
         ItemNames.Weapon_Bo,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.melee],
     ),
     ItemDetails(
         876,
         ItemNames.Weapon_Breacher8,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         877,
         ItemNames.Weapon_Bronco,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5317,13 +5317,13 @@ ITEMS = {
     ItemDetails(
         885,
         ItemNames.Weapon_Catacoil,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         886,
         ItemNames.Weapon_Corpsemaker,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5335,37 +5335,37 @@ ITEMS = {
     ItemDetails(
         890,
         ItemNames.Weapon_D4RT,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         891,
         ItemNames.Weapon_DeathStar,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         892,
         ItemNames.Weapon_Dirk,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         893,
         ItemNames.Weapon_Dolphin99,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         894,
         ItemNames.Weapon_Drifter9,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         895,
         ItemNames.Weapon_Duhar,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5377,37 +5377,37 @@ ITEMS = {
     ItemDetails(
         898,
         ItemNames.Weapon_Farsight,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         899,
         ItemNames.Weapon_Ferryman,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         900,
         ItemNames.Weapon_FlickerZip,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         901,
         ItemNames.Weapon_Flock,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         909,
         ItemNames.Weapon_Gravekeeper,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         916,
         ItemNames.Weapon_ImpalaGravita,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5419,31 +5419,31 @@ ITEMS = {
     ItemDetails(
         918,
         ItemNames.Weapon_Katana,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.melee],
     ),
     ItemDetails(
         919,
         ItemNames.Weapon_Knop,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         920,
         ItemNames.Weapon_M11Ramshack,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         921,
         ItemNames.Weapon_Majordome,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         922,
         ItemNames.Weapon_Mario,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5455,31 +5455,31 @@ ITEMS = {
     ItemDetails(
         925,
         ItemNames.Weapon_Mossman,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         926,
         ItemNames.Weapon_NeuraxisF22,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         928,
         ItemNames.Weapon_Nunchaku,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.melee],
     ),
     ItemDetails(
         929,
         ItemNames.Weapon_PalehorseTopclipper,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         930,
         ItemNames.Weapon_PierreFusil,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5491,7 +5491,7 @@ ITEMS = {
     ItemDetails(
         932,
         ItemNames.Weapon_PloikaC,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5509,25 +5509,25 @@ ITEMS = {
     ItemDetails(
         936,
         ItemNames.Weapon_Rektor,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         938,
         ItemNames.Weapon_Rokua,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         939,
         ItemNames.Weapon_Sai,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.melee],
     ),
     ItemDetails(
         940,
         ItemNames.Weapon_Salamander,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5539,19 +5539,19 @@ ITEMS = {
     ItemDetails(
         943,
         ItemNames.Weapon_Snut38,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         944,
         ItemNames.Weapon_Socom9,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         945,
         ItemNames.Weapon_StarAndWitness,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5569,13 +5569,13 @@ ITEMS = {
     ItemDetails(
         948,
         ItemNames.Weapon_TailorMarksman,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         949,
         ItemNames.Weapon_Termite,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5587,37 +5587,37 @@ ITEMS = {
     ItemDetails(
         952,
         ItemNames.Weapon_Typhoon,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         953,
         ItemNames.Weapon_Unknown,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         954,
         ItemNames.Weapon_Valet,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         955,
         ItemNames.Weapon_Vrede,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         956,
         ItemNames.Weapon_Wakizashi,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.melee],
     ),
     ItemDetails(
         959,
         ItemNames.Weapon_WyattPulsar,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(961,
@@ -5658,7 +5658,7 @@ ITEMS = {
     ItemDetails(
         967,
         ItemNames.Weapon_Longboy,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5724,13 +5724,13 @@ ITEMS = {
     ItemDetails(
         978,
         ItemNames.Weapon_HellnBack,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         979,
         ItemNames.Weapon_Wingman,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5754,13 +5754,13 @@ ITEMS = {
     ItemDetails(
         983,
         ItemNames.Weapon_Warpig,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         984,
         ItemNames.Weapon_Cavalier,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5772,19 +5772,19 @@ ITEMS = {
     ItemDetails(
         986,
         ItemNames.Weapon_Chat_Pardeur98,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         987,
         ItemNames.Weapon_Songbird,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         988,
         ItemNames.Weapon_SocomACR,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5898,31 +5898,31 @@ ITEMS = {
     ItemDetails(
         1007,
         ItemNames.Weapon_TerrierURB,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         1008,
         ItemNames.Weapon_Blackwater,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         1009,
         ItemNames.Weapon_ChimeraRapid,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         1010,
         ItemNames.Weapon_CYB47,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
         1011,
         ItemNames.Weapon_DeathsToll,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.gun],
     ),
     ItemDetails(
@@ -5933,7 +5933,7 @@ ITEMS = {
     ),
     ItemDetails(
         1013,
-        VirtualNames.UnlockChurchGrounds,
+        VirtualNames.UnlockAreaChurchGrounds,
         ItemClassification.progression,
         [ItemTags.virtual],
     ),
@@ -5970,6 +5970,24 @@ ITEMS = {
     ItemDetails(
         1021,
         VirtualNames.UnlockAreaDesert,
+        ItemClassification.progression,
+        [ItemTags.virtual]
+    ),
+    ItemDetails(
+        1022,
+        VirtualNames.UnlockAreaVeil,
+        ItemClassification.progression,
+        [ItemTags.virtual]
+    ),
+    ItemDetails(
+        1023,
+        VirtualNames.UnlockAreaTown,
+        ItemClassification.progression,
+        [ItemTags.virtual]
+    ),
+    ItemDetails(
+        1024,
+        VirtualNames.UnlockAreaDungeon,
         ItemClassification.progression,
         [ItemTags.virtual]
     ),
