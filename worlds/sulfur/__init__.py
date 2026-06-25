@@ -1,14 +1,9 @@
-import typing
-
-from Utils import visualize_regions
-from rule_builder.rules import Has, HasFromList
+from rule_builder.rules import Has, HasAll, HasFromListUnique
 from worlds.AutoWorld import World
-from BaseClasses import Region, Location, Entrance, Item, ItemClassification, \
-    CollectionState
+from BaseClasses import Region, ItemClassification
 from Options import Toggle, Range, Choice, PerGameCommonOptions
 from dataclasses import dataclass
 
-from . import item_names
 from .item_names import ItemNames, VirtualNames
 from .item_tags import ItemTags
 from .items import SulfurItem, ITEMS, ItemDetails
@@ -93,42 +88,57 @@ class SulfurWorld(World):
         ),
     }
 
+    location_name_groups = {
+        LocationTags.stamp_trading: map(lambda details : details.name, locations_by_tag[LocationTags.stamp_trading])
+    }
+
     def generate_early(self) -> None:
         self.noop = True
 
-    def create_region_with_connection(self, region_connection, region_name, required_item) -> Region:
+    def create_region(self, region_name) -> Region:
         new_region = Region(region_name, self.player, self.multiworld)
         new_locations = []
         location_details: LocationDetails
         for location_details in self.locations_by_tag[region_name]:
-            new_location = SulfurLocation(self.player, location_details.name, parent=new_region)
+            new_location = SulfurLocation(
+                self.player,
+                location_details.name,
+                address=location_details.id,
+                parent=new_region
+            )
             if location_details.requires_item is not None:
                 self.set_rule(new_location, Has(location_details.requires_item))
             if location_details.requires_multiple_items is not None:
-                self.set_rule(new_location, HasFromList(
-                    *location_details.requires_multiple_items,
-                    count=location_details.required_amount,
-                ))
+                self.set_rule(
+                    new_location, HasFromListUnique(
+                        *location_details.requires_multiple_items,
+                        count=location_details.required_amount,
+                    )
+                )
+            if location_details.requires_all_items is not None:
+                self.set_rule(
+                    new_location, HasAll(
+                        *location_details.requires_all_items
+                    )
+                )
             new_locations.append(new_location)
-        new_region.locations.extend(new_locations)
+        new_region.set_locations(new_locations)
+        self.multiworld.regions.append(new_region)
+        return new_region
+
+    def create_region_with_connection(self, region_connection, region_name, required_item) -> Region:
+        new_region = self.create_region(region_name)
         region_connection.connect(
             new_region, f"{region_name} to {region_connection.name}",
             rule=Has(required_item)
         )
-        self.multiworld.regions.append(new_region)
         return new_region
 
     def create_regions(self) -> None:
-        church_region = Region(LocationTags.region_church, self.player, self.multiworld)
-        church_region.add_locations(
-            get_location_names_with_ids(
-                self.locations_by_tag[LocationTags.region_church],
-            ),
-            SulfurLocation
-        )
-        self.multiworld.regions.append(church_region)
+        church_region = self.create_region(LocationTags.region_church)
 
         full_church_region = self.create_region_with_connection(church_region, LocationTags.region_full_church, VirtualNames.UnlockAreaChurchGrounds)
+        sulfur_caves_region = self.create_region_with_connection(church_region, LocationTags.region_sulfur_caves, VirtualNames.UnlockAreaSulfurCaves)
         town_region = self.create_region_with_connection(full_church_region, LocationTags.region_town, VirtualNames.UnlockAreaTown)
         sewers_region = self.create_region_with_connection(full_church_region, LocationTags.region_sewers, VirtualNames.UnlockAreaSewers)
         hedge_maze_region = self.create_region_with_connection(full_church_region, LocationTags.region_hedge_maze, VirtualNames.UnlockAreaHedgeMaze)
@@ -151,8 +161,8 @@ class SulfurWorld(World):
         return SulfurItem(
             item.name,
             item.default_classification,
-            item.id,
-            self.player,
+            code=item.id,
+            player=self.player,
         )
 
     def create_event(self, event: str) -> SulfurItem:
@@ -167,10 +177,20 @@ class SulfurWorld(World):
         return ItemNames.Currency_SulfCoin
 
     def create_items(self) -> None:
+        generated_item_details: list[ItemDetails] = []
         for item in ITEMS:
             if (ItemTags.unknown or ItemTags.do_not_generate) in item.tags:
                 continue
             self.multiworld.itempool.append(self.create_item(item))
+            generated_item_details.append(item)
+        #generated_item_details.sort(key=lambda d: d.id)
+        #print(ItemNames.__dict__)
+        #item_name_to_enum = {v: k for k, v in ItemNames.__dict__.items()}
+        #for details in generated_item_details:
+            #if details.name in item_name_to_enum:
+                #print(f"new ItemSulfur({details.id}, \"{details.name}\", ItemIds.{item_name_to_enum[details.name]}),")
+            #else:
+                #print(f"new ItemCheckpoint({details.id}, \"{details.name}\"),")
 
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = lambda \

@@ -1,4 +1,5 @@
 ﻿class VirtualNames:
+    UnlockAreaSulfurCaves = "Unlock Sulfur Caves"
     UnlockAreaVeil = "Unlock Beyond the Veil shortcut"
     UnlockAreaTown = "Unlock Town"
     UnlockAreaDesert = "Unlock Desert shortcut"
@@ -918,7 +919,7 @@ class ItemNames:
     ValuableSoulResin = "Soul Resin"
     ValuableTheCost = "The Cost"
     Weapon_Arbiter2 = "Arbiter 2"
-    Weapon_Arbiter2NotUse = "Arbiter 2"
+    Weapon_Arbiter2NotUse = "Arbiter 2 (Unused)"
     Weapon_Augusta = "Augusta"
     Weapon_Balthazar = ".357 Balthazar"
     Weapon_Beck = "Beck 8"
@@ -992,4 +993,4 @@ class ItemNames:
     Weapon_Warpig = "Warpig"
     Weapon_Wingman = "Wingman"
     Weapon_WyattPulsar = "Wyatt PULSAR"
-    Weapon_WyattPulsarNotUse = "Wyatt PULSAR"
+    Weapon_WyattPulsarNotUse = "Wyatt PULSAR (Unused)"

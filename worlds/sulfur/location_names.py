@@ -1,5 +1,5 @@
 ﻿class LocationNames:
-    reach_church = "The Church"
+    reach_church = "Reach The Church"
     reach_sulfur_caves_i = "Reach Sulfur Caves I"
     reach_sulfur_caves_ii = "Reach Sulfur Caves II"
     reach_sulfur_caves_iii = "Reach Sulfur Caves III"

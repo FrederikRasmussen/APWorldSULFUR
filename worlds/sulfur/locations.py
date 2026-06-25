@@ -24,10 +24,12 @@ class LocationDetails:
             required_item: str = None,
             requires_multiple_items: list[str] = None,
             required_amount: int = 0,
+            requires_all_items: list[str] = None,
     ):
         self.requires_item = required_item
         self.requires_multiple_items = requires_multiple_items
         self.required_amount = required_amount
+        self.requires_all_items = requires_all_items
         self.id: int = get_and_increment_current_location_id()
         self.name: str = name
         self.tags: List[str] = tags
@@ -108,7 +110,6 @@ add_game_area_location_details(
         LocationNames.reach_town_iv,
         LocationNames.reach_town_v,
     ],
-    LocationNames.boss_black_guild_cardinals
 )
 
 # Sewers
@@ -139,7 +140,6 @@ add_game_area_location_details(
         LocationNames.reach_dungeon_iii,
         LocationNames.reach_dungeon_iv,
     ],
-    LocationNames.boss_novanian_guard
 )
 
 # Castle
@@ -457,25 +457,25 @@ LOCATIONS.extend([
         required_amount=1,
     ),
     LocationDetails(
-        f"Find {amount_strings[1]} different {WeaponTypes.melee}",
+        f"Find {amount_strings[1]} different {WeaponTypes.melee}s",
         [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=2,
     ),
     LocationDetails(
-        f"Find {amount_strings[2]} different {WeaponTypes.melee}",
+        f"Find {amount_strings[2]} different {WeaponTypes.melee}s",
         [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=3,
     ),
     LocationDetails(
-        f"Find {amount_strings[3]}  different {WeaponTypes.melee}",
+        f"Find {amount_strings[3]} different {WeaponTypes.melee}s",
         [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=4,
     ),
     LocationDetails(
-        f"Find {amount_strings[4]}  different {WeaponTypes.melee}",
+        f"Find {amount_strings[4]} different {WeaponTypes.melee}s",
         [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=5,
@@ -538,41 +538,54 @@ for item in [
     ItemNames.Item_DeliveryDemon,
     ItemNames.Item_HolorealityProjector,
 ]:
-    LocationDetails(
-        f"Trade stamps for the {item}",
-        [LocationTags.stamp_trading, LocationTags.region_full_church]
+    LOCATIONS.append(
+        LocationDetails(
+            f"Trade stamps for the {item}",
+            [LocationTags.stamp_trading, LocationTags.region_full_church]
+        )
     )
 
-for item in [
-    ItemNames.Enchantment_Aftershock,
-    ItemNames.Enchantment_ChainLightning,
-    ItemNames.Enchantment_ChaosStrike,
-    ItemNames.Enchantment_Charm,
-    ItemNames.Enchantment_CorpseExplosion,
-    ItemNames.Enchantment_CorrosiveBlood,
-    ItemNames.Enchantment_Crusader,
-    ItemNames.Enchantment_Fear,
-    ItemNames.Enchantment_FlameThrower,
-    ItemNames.Enchantment_HolyFire,
-    ItemNames.Enchantment_HolyPurge,
-    ItemNames.Enchantment_Lava,
-    ItemNames.Enchantment_LeastResistance,
-    ItemNames.Enchantment_Noxiosa,
-    ItemNames.Enchantment_Pesticide,
-    ItemNames.Enchantment_Petrification,
-    ItemNames.Enchantment_Petroleum,
-    ItemNames.Enchantment_Prism,
-    ItemNames.Enchantment_Pyroclasm,
-    ItemNames.Enchantment_RocketLauncher,
-    ItemNames.Enchantment_Sacrifice,
-    ItemNames.Enchantment_Slush,
-    ItemNames.Enchantment_StormSurge,
-    ItemNames.Enchantment_Thunderbolt,
-    ItemNames.Enchantment_ToxicLobotomy,
-    ItemNames.Enchantment_Voodoo,
-    ItemNames.Enchantment_Water,
+class MixMagic:
+    def __init__(self, item_name: str, required_scrolls: list[str]) -> None:
+        self.item_name: str = item_name
+        self.required_scrolls: list[str] = required_scrolls
+
+    def as_location_details(self):
+        return LocationDetails(
+            f"Mix the magic '{self.item_name}'",
+        [LocationTags.mix_magic, LocationTags.region_church],
+            requires_all_items = self.required_scrolls
+        )
+
+for magicMixing in [
+    MixMagic(ItemNames.Enchantment_Aftershock, [ItemNames.Enchantment_Earth]),
+    MixMagic(ItemNames.Enchantment_ChainLightning, [ItemNames.Enchantment_Electricity]),
+    MixMagic(ItemNames.Enchantment_ChaosStrike, [ItemNames.Enchantment_Dark, ItemNames.Enchantment_Electricity]),
+    MixMagic(ItemNames.Enchantment_Charm, [ItemNames.Enchantment_Light, ItemNames.Enchantment_Nature]),
+    MixMagic(ItemNames.Enchantment_CorpseExplosion, [ItemNames.Enchantment_Fire, ItemNames.Enchantment_Poison]),
+    MixMagic(ItemNames.Enchantment_CorrosiveBlood, [ItemNames.Enchantment_Poison]),
+    MixMagic(ItemNames.Enchantment_Crusader, [ItemNames.Enchantment_Light, ItemNames.Enchantment_Poison]),
+    MixMagic(ItemNames.Enchantment_Fear, [ItemNames.Enchantment_Dark, ItemNames.Enchantment_Nature]),
+    MixMagic(ItemNames.Enchantment_FlameThrower, [ItemNames.Enchantment_Dark, ItemNames.Enchantment_Fire]),
+    MixMagic(ItemNames.Enchantment_HolyFire, [ItemNames.Enchantment_Fire, ItemNames.Enchantment_Light]),
+    MixMagic(ItemNames.Enchantment_HolyPurge, [ItemNames.Enchantment_Light]),
+    MixMagic(ItemNames.Enchantment_Lava, [ItemNames.Enchantment_Earth, ItemNames.Enchantment_Fire]),
+    MixMagic(ItemNames.Enchantment_LeastResistance, [ItemNames.Enchantment_Electricity, ItemNames.Enchantment_Nature]),
+    MixMagic(ItemNames.Enchantment_Noxiosa, [ItemNames.Enchantment_Earth, ItemNames.Enchantment_Poison]),
+    MixMagic(ItemNames.Enchantment_Pesticide, [ItemNames.Enchantment_Poison, ItemNames.Enchantment_Water]),
+    MixMagic(ItemNames.Enchantment_Petrification, [ItemNames.Enchantment_Earth, ItemNames.Enchantment_Poison]),
+    MixMagic(ItemNames.Enchantment_Petroleum, [ItemNames.Enchantment_Fire, ItemNames.Enchantment_Nature]),
+    MixMagic(ItemNames.Enchantment_Prism, [ItemNames.Enchantment_Frost, ItemNames.Enchantment_Light]),
+    MixMagic(ItemNames.Enchantment_Pyroclasm, [ItemNames.Enchantment_Fire]),
+    MixMagic(ItemNames.Enchantment_RocketLauncher, [ItemNames.Enchantment_Electricity, ItemNames.Enchantment_Fire]),
+    MixMagic(ItemNames.Enchantment_Sacrifice, [ItemNames.Enchantment_Dark, ItemNames.Enchantment_Earth]),
+    MixMagic(ItemNames.Enchantment_Slush, [ItemNames.Enchantment_Frost, ItemNames.Enchantment_Water]),
+    MixMagic(ItemNames.Enchantment_StormSurge, [ItemNames.Enchantment_Earth, ItemNames.Enchantment_Electricity]),
+    MixMagic(ItemNames.Enchantment_Thunderbolt, [ItemNames.Enchantment_Electricity, ItemNames.Enchantment_Water]),
+    MixMagic(ItemNames.Enchantment_ToxicLobotomy, [ItemNames.Enchantment_Electricity, ItemNames.Enchantment_Poison]),
+    MixMagic(ItemNames.Enchantment_Voodoo, [ItemNames.Enchantment_Dark, ItemNames.Enchantment_Poison]),
+    MixMagic(ItemNames.Enchantment_Water,[ItemNames.Enchantment_Fire, ItemNames.Enchantment_Frost])
 ]:
-    LocationDetails(
-        f"Mix the magic '{item}'",
-        [LocationTags.mix_magic, LocationTags.region_church]
+    LOCATIONS.append(
+        magicMixing.as_location_details()
     )

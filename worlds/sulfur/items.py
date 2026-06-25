@@ -673,7 +673,7 @@ ITEMS = {
     ItemDetails(
         103,
         ItemNames.Enchantment_Dark,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll_ingredient, ItemTags.scroll],
     ),
     ItemDetails(
@@ -775,7 +775,7 @@ ITEMS = {
     ItemDetails(
         120,
         ItemNames.Enchantment_Earth,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll_ingredient, ItemTags.scroll],
     ),
     ItemDetails(
@@ -793,7 +793,7 @@ ITEMS = {
     ItemDetails(
         123,
         ItemNames.Enchantment_Electricity,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll_ingredient, ItemTags.scroll],
     ),
     ItemDetails(
@@ -871,7 +871,7 @@ ITEMS = {
     ItemDetails(
         136,
         ItemNames.Enchantment_Fire,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll_ingredient, ItemTags.scroll],
     ),
     ItemDetails(
@@ -937,7 +937,7 @@ ITEMS = {
     ItemDetails(
         147,
         ItemNames.Enchantment_Frost,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll],
     ),
     ItemDetails(
@@ -1183,7 +1183,7 @@ ITEMS = {
     ItemDetails(
         188,
         ItemNames.Enchantment_Light,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll_ingredient, ItemTags.scroll],
     ),
     ItemDetails(
@@ -1273,7 +1273,7 @@ ITEMS = {
     ItemDetails(
         203,
         ItemNames.Enchantment_Nature,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll_ingredient, ItemTags.scroll],
     ),
     ItemDetails(
@@ -1393,7 +1393,7 @@ ITEMS = {
     ItemDetails(
         223,
         ItemNames.Enchantment_Poison,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll],
     ),
     ItemDetails(
@@ -1969,7 +1969,7 @@ ITEMS = {
     ItemDetails(
         319,
         ItemNames.Enchantment_Water,
-        ItemClassification.filler,
+        ItemClassification.progression,
         [ItemTags.scroll],
     ),
     ItemDetails(
@@ -5988,6 +5988,12 @@ ITEMS = {
     ItemDetails(
         1024,
         VirtualNames.UnlockAreaDungeon,
+        ItemClassification.progression,
+        [ItemTags.virtual]
+    ),
+    ItemDetails(
+        1025,
+        VirtualNames.UnlockAreaSulfurCaves,
         ItemClassification.progression,
         [ItemTags.virtual]
     ),
