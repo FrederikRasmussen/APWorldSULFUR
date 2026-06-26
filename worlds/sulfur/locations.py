@@ -220,27 +220,27 @@ def add_specific_gun_location_details(weapon_type: str, names: list[str]):
             ),
             LocationDetails(
                 f"Reach Rank 1 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_specific_weapon, LocationTags.rank_1, weapon_type, LocationTags.region_full_church],
                 required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 2 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_specific_weapon, LocationTags.rank_2, weapon_type, LocationTags.region_full_church],
                 required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 3 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_specific_weapon, LocationTags.rank_3, weapon_type, LocationTags.region_full_church],
                 required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 4 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_specific_weapon, LocationTags.rank_4, weapon_type, LocationTags.region_full_church],
                 required_item=name
             ),
             LocationDetails(
                 f"Reach Rank 5 with {name}",
-                [LocationTags.rank_up_specific_weapon, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_specific_weapon, LocationTags.rank_5, weapon_type, LocationTags.region_full_church],
                 required_item=name
             ),
         ])
@@ -279,31 +279,31 @@ def add_weapon_type_gun_location_details(weapon_type: str, names: list[str], a_o
             ),
             LocationDetails(
                 f"Reach Rank 1 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_weapon_model, LocationTags.rank_1, weapon_type, LocationTags.region_full_church],
                 requires_multiple_items=names,
                 required_amount=i+1,
             ),
             LocationDetails(
                 f"Reach Rank 2 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_weapon_model, LocationTags.rank_2, weapon_type, LocationTags.region_full_church],
                 requires_multiple_items=names,
                 required_amount=i+1,
             ),
             LocationDetails(
                 f"Reach Rank 3 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_weapon_model, LocationTags.rank_3, weapon_type, LocationTags.region_full_church],
                 requires_multiple_items=names,
                 required_amount=i+1,
             ),
             LocationDetails(
                 f"Reach Rank 4 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_weapon_model, LocationTags.rank_4, weapon_type, LocationTags.region_full_church],
                 requires_multiple_items=names,
                 required_amount=i+1,
             ),
             LocationDetails(
                 f"Reach Rank 5 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, weapon_type, LocationTags.region_full_church],
+                [LocationTags.rank_up_weapon_model, LocationTags.rank_5, weapon_type, LocationTags.region_full_church],
                 requires_multiple_items=names,
                 required_amount=i+1,
             ),
@@ -367,7 +367,6 @@ add_weapon_locations(
         ItemNames.Weapon_Snut38,
         ItemNames.Weapon_WyattPulsar,
         ItemNames.Weapon_Blackwater,
-        ItemNames.Weapon_DeathsToll,
     ]
 )
 
@@ -458,25 +457,25 @@ LOCATIONS.extend([
     ),
     LocationDetails(
         f"Find {amount_strings[1]} different {WeaponTypes.melee}s",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        [LocationTags.find_weapon_model, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=2,
     ),
     LocationDetails(
         f"Find {amount_strings[2]} different {WeaponTypes.melee}s",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        [LocationTags.find_weapon_model, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=3,
     ),
     LocationDetails(
         f"Find {amount_strings[3]} different {WeaponTypes.melee}s",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        [LocationTags.find_weapon_model, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=4,
     ),
     LocationDetails(
         f"Find {amount_strings[4]} different {WeaponTypes.melee}s",
-        [LocationTags.find_specific_weapon, WeaponTypes.melee, LocationTags.region_church],
+        [LocationTags.find_weapon_model, WeaponTypes.melee, LocationTags.region_church],
         requires_multiple_items=[ItemNames.Weapon_Bo, ItemNames.Weapon_Katana, ItemNames.Weapon_Nunchaku, ItemNames.Weapon_Sai, ItemNames.Weapon_Wakizashi],
         required_amount=5,
     ),

@@ -1,6 +1,8 @@
-from rule_builder.rules import Has, HasAll, HasFromListUnique
+from typing import Any, Mapping
+
+from rule_builder.rules import Has, HasAll, HasFromListUnique, CanReachLocation
 from worlds.AutoWorld import World
-from BaseClasses import Region, ItemClassification
+from BaseClasses import Region, ItemClassification, Item
 from Options import Toggle, Range, Choice, PerGameCommonOptions
 from dataclasses import dataclass
 
@@ -11,6 +13,7 @@ from .location_names import LocationNames
 from .location_tags import LocationTags
 from .locations import SulfurLocation, LOCATIONS, LocationDetails, \
     get_location_names_with_ids
+from .weapon_types import WeaponTypes
 
 
 # Options
@@ -89,7 +92,87 @@ class SulfurWorld(World):
     }
 
     location_name_groups = {
-        LocationTags.stamp_trading: map(lambda details : details.name, locations_by_tag[LocationTags.stamp_trading])
+        LocationTags.stamp_trading: map(lambda details : details.name, locations_by_tag[LocationTags.stamp_trading]),
+        LocationTags.find_specific_weapon: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.find_specific_weapon]
+        ),
+        LocationTags.rank_up_specific_weapon: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.rank_up_specific_weapon]
+        ),
+        LocationTags.sacrifice_specific_weapon: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.sacrifice_specific_weapon]
+        ),
+        LocationTags.find_weapon_model: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.find_weapon_model]
+        ),
+        LocationTags.rank_up_weapon_model: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.rank_up_weapon_model]
+        ),
+        LocationTags.sacrifice_weapon_model: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.sacrifice_weapon_model]
+        ),
+        LocationTags.rank_1: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.rank_1]
+        ),
+        LocationTags.rank_2: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.rank_2]
+        ),
+        LocationTags.rank_3: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.rank_3]
+        ),
+        LocationTags.rank_4: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.rank_4]
+        ),
+        LocationTags.rank_5: map(
+            lambda details: details.name,
+            locations_by_tag[LocationTags.rank_5]
+        ),
+        WeaponTypes.melee: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.melee]
+        ),
+        WeaponTypes.assault_rifle: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.assault_rifle]
+        ),
+        WeaponTypes.light_machine_gun: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.light_machine_gun]
+        ),
+        WeaponTypes.pistol: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.pistol]
+        ),
+        WeaponTypes.revolver: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.revolver]
+        ),
+        WeaponTypes.rifle: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.rifle]
+        ),
+        WeaponTypes.shotgun: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.shotgun]
+        ),
+        WeaponTypes.sniper: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.sniper]
+        ),
+        WeaponTypes.submachine_gun: map(
+            lambda details: details.name,
+            locations_by_tag[WeaponTypes.submachine_gun]
+        ),
     }
 
     def generate_early(self) -> None:
@@ -155,7 +238,22 @@ class SulfurWorld(World):
             item_type=SulfurItem,
         )
 
-    def create_item(self, item: ItemDetails) -> SulfurItem:
+        self.set_rule(
+            self.get_location(LocationNames.boss_the_witch),
+            CanReachLocation(
+                *[LocationNames.boss_cousin]
+            ) & CanReachLocation(
+                *[LocationNames.boss_st_lucia]
+            ) & CanReachLocation(
+                *[LocationNames.boss_terrorbaum]
+            ) & CanReachLocation(
+                *[LocationNames.boss_the_emperor]
+            ) & CanReachLocation(
+                *[LocationNames.boss_desert_claus]
+            )
+        )
+
+    def create_sulfur_item(self, item: ItemDetails) -> SulfurItem:
         if item.default_classification is None:
             item.default_classification = ItemClassification.filler
         return SulfurItem(
@@ -164,6 +262,9 @@ class SulfurWorld(World):
             code=item.id,
             player=self.player,
         )
+
+    def create_item(self, item: str) -> SulfurItem:
+        return self.create_sulfur_item(self.item_name_to_details[item])
 
     def create_event(self, event: str) -> SulfurItem:
         return SulfurItem(
@@ -176,13 +277,61 @@ class SulfurWorld(World):
     def get_filler_item_name(self) -> str:
         return ItemNames.Currency_SulfCoin
 
+    starting_gun = None
+    starting_melee = None
     def create_items(self) -> None:
-        generated_item_details: list[ItemDetails] = []
+        weapon_candidates: dict[ItemDetails, Item] = {}
+        #generated_item_details: list[ItemDetails] = []
         for item in ITEMS:
             if (ItemTags.unknown or ItemTags.do_not_generate) in item.tags:
                 continue
-            self.multiworld.itempool.append(self.create_item(item))
-            generated_item_details.append(item)
+            generated_item = self.create_sulfur_item(item)
+            self.multiworld.itempool.append(generated_item)
+            if ItemTags.gun in item.tags:
+                weapon_candidates[item] = generated_item
+            if ItemTags.melee in item.tags:
+                weapon_candidates[item] = generated_item
+            if item.name is VirtualNames.UnlockAreaSulfurCaves:
+                self.push_precollected(generated_item)
+            #generated_item_details.append(item)
+
+        # TODO: Check for options here
+        # Give random starting gun
+        if True:
+            weapon_types = [
+                ItemTags.gun_rifle,
+                ItemTags.gun_pistol,
+                ItemTags.gun_sniper,
+                ItemTags.gun_shotgun,
+                ItemTags.gun_revolver,
+                ItemTags.gun_assault_rifle,
+                ItemTags.gun_submachine_gun,
+                ItemTags.gun_light_machine_gun,
+            ]
+            weapon_type_index = self.random.randint(1, len(weapon_types)) - 1
+            weapons_with_type = items.TAG_TO_ITEMS[weapon_types[weapon_type_index]]
+            weapon_index = self.random.randint(1, len(weapons_with_type)) - 1
+            weapon_details = weapons_with_type[weapon_index]
+            weapon = weapon_candidates[weapon_details]
+            self.starting_gun = weapon_details
+            self.push_precollected(weapon)
+
+        # TODO: Check for options here
+        # Give random melee start
+        if True:
+            melee_options = [
+                self.item_name_to_details[ItemNames.Weapon_Bo],
+                self.item_name_to_details[ItemNames.Weapon_Nunchaku],
+                self.item_name_to_details[ItemNames.Weapon_Wakizashi],
+                self.item_name_to_details[ItemNames.Weapon_Katana],
+                self.item_name_to_details[ItemNames.Weapon_Sai],
+            ]
+            melee_index = self.random.randint(1, len(melee_options)) - 1
+            melee_details = melee_options[melee_index]
+            melee = weapon_candidates[melee_details]
+            self.starting_melee = melee_details
+            self.push_precollected(melee)
+
         #generated_item_details.sort(key=lambda d: d.id)
         #print(ItemNames.__dict__)
         #item_name_to_enum = {v: k for k, v in ItemNames.__dict__.items()}
@@ -195,3 +344,10 @@ class SulfurWorld(World):
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = lambda \
                 state: state.has("Victory", self.player)
+
+    def fill_slot_data(self) -> Mapping[str, Any]:
+        return_dict = {
+            "StartGun": self.starting_gun.id,
+            "StartMelee": self.starting_melee.id
+        }
+        return return_dict

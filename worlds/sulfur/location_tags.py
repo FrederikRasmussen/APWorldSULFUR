@@ -1,4 +1,9 @@
 ﻿class LocationTags:
+    rank_1 = "Rank 1"
+    rank_2 = "Rank 2"
+    rank_3 = "Rank 3"
+    rank_4 = "Rank 4"
+    rank_5 = "Rank 5"
     boss = "Boss"
     find_furniture = "Find furniture"
     find_specific_weapon = "Find specific weapon"

@@ -1,4 +1,5 @@
 ﻿class ItemTags:
+    gun_light_machine_gun = "Light Machine Gun"
     accessory = "Accessory"
     ammunition = "Ammunition"
     armour = "Bodywear"
@@ -24,3 +25,10 @@
     valuable = "Valuable"
     virtual = "Virtual"
     weapon_attachment = "Attachment"
+    gun_assault_rifle = "Assault Rifle"
+    gun_rifle = "Rifle"
+    gun_submachine_gun = "Sub-Machine Gun"
+    gun_pistol = "Pistol"
+    gun_revolver = "Revolver"
+    gun_sniper = "Sniper"
+    gun_shotgun = "Shotgun"
