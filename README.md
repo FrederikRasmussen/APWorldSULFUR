@@ -83,25 +83,39 @@ No options are available at this time.
 
 - Only check for bringing furniture home, not finding it in a level
 
-- Gun-lock
+- XP share between equipped guns (default on)
+
+- Location for reaching rank 1/2/3/4/5 with 1 to N+1 guns (repeats allowed),
+  where N is the number of sacrifices. Locations for sacrificing 1 to N guns
+    - Logic assumes every pair of 2 guns have defeated a boss first, so
+      pre-Cousin at most assumes 2 guns, and then 4 guns after killing him,
+      and 6 guns after killing St. Lucia
+    - Logic assumes access to Ammunition Crate for anything past 2 guns
+    - Logic assumes access to Telia for sacrifice, and anything past 2 guns
+
+- Gun Lock
     - Start the game with two random low-value 9mm guns
     - Option to allow any value
     - Option to allow any calibre
     - Option to auto-chisel into 9mm
     - Option to specify exact guns and/or groups
     - On death, respawn with the same two guns (but lose all ranks, etc.)
-    - Optional XP share between the guns (default on)
     - Sacrifice either of the guns at Rank 5 to Telia to swap it for a random
       different gun
+        - Use hard logic / progressive sacrifice items to make it so you can't
+          "jump the queue" on checks
         - Dictated by world logic in advance
+        - Option to blacklist specific guns
+        - Option to make each pair of new guns different calibres
+        - Option to make each pair of new guns different weapon types
+        - Option to make guns increasingly valuable
     - Logic allows 2 new sacrifices after every boss fight (So 10 before The
       Witch at most)
     - Option to adjust how many sacrifices you want checks for in the whole
-      run (10 default, 20 max)
+      run (10 default, 55 max, will spawn without weapons if all 55 are
+      sacrificed)
     - First sacrifice logically requires Ammunition Crate to avoid ammo
       shortages
-    - Location for each rank of each gun, and additional rank up locations
-      post-sacrifice
     - Dropped or shop guns are replaced by random oils
 
 - Rebalance Sulf
@@ -158,6 +172,19 @@ No options are available at this time.
 - Separate filler items into "useful during run" and "useful at home" and
   deliver useful during run items during the run
 
+- Make church collection box reset on its own if new items are added while in
+  the Church
+
+- Add purchasable multi world items to shopkeeps
+    - Multi world inventory _per area_ _per shopkeep_
+
+- Kill enemy type locations (Each enemy type, excluding bosses, become a
+  location, 9 goblins, 9 Black Guild members, 6 corrupted, 2 (3??) ghosts, 1
+  Haradrian, 4 Guttercliffians, 3 craws, 5 shav'was, 4 hellshrews, total of 43
+  locations)
+
+- Introduce door locks (warp back to church when not unlocked)
+
 - Randomised furniture inventories (each furniture inventory is randomly
   selected from any of the other inventories, including the toilet)
 
@@ -166,10 +193,10 @@ No options are available at this time.
 - Randomise enemies in each biome (e.g. Black Guild members in the Cave, Goblins
   in the Desert)
 
-- Kill enemy type locations (Each enemy type, excluding bosses, become a
-  location, 9 goblins, 9 Black Guild members, 6 corrupted, 2 (3??) ghosts, 1
-  Haradrian, 4 Guttercliffians, 3 craws, 5 shav'was, 4 hellshrews, total of 43
-  locations)
+- New game+ where shortcuts and door locks are reset, and all stages and
+  bosses become ng+ checks
+    - Also resets logic for sacrifices / new guns
+    - Allows up to NG+5 to allow all 55 guns to get in logic
 
 - Add 'pacts of punishment' style difficulty modifiers that are removed as
   the multi world finds the right items, like guaranteed traps at the start.
@@ -192,12 +219,6 @@ No options are available at this time.
   specific (random) items in them found throughout the multi world. Finishing
   this unlocks Beyond the Veil and The Witch boss fight
 
-- Make church collection box reset on its own if new items are added while in
-  the Church
-
-- Add purchasable multi world items to shopkeeps
-    - Multi world inventory _per area_ _per shopkeep_
-
 - Progressive weapons (e.g. sort weapons into cost brackets)
 
 - Make unlocked weapons and other permanent unlocks drop through playing the
@@ -211,21 +232,15 @@ No options are available at this time.
   completion / spheres during generation / progressives to give better
   equipment later
 
-- Block access to Town / Dungeon if player doesn't have access to those, yet
-
 - Make recipes into progressive unlocks similar to Minecraft, with automatic
   discovery of the recipes.
-
-- Random weapon per respawn
 
 - Entrance randomiser (e.g. entering Sulfur Caves from The Church might send you
   to the Forest)
 
 - Add hints from conversations with NPCs
 
-- Locations based on calibre of weapon used
-
-- Gun Game mechanics (e.g. auto-swap on rank-up or every N kills or something)
+- Gun Game mechanics (e.g. auto-swap on rank-up, and/or stage completion)
 
 - Weapon randomiser (each weapon's individual stats are randomly swapped around.
   E.g. the fire rate of the M11A2 Fisk may appear on the Bronco 89)
