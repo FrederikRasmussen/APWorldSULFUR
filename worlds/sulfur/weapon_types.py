@@ -8,3 +8,4 @@
     shotgun = "Shotgun"
     sniper = "Sniper Rifle"
     submachine_gun = "Sub-Machine Gun"
+

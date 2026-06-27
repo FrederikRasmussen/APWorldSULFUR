@@ -60,27 +60,59 @@ No options are available at this time.
 
 # Wishlist / Future plans
 
+- Desert shortcut doesn't work
+
 - Fix stuttering when picking up weapons
 
-- Show on-screen when receiving or sending items to the multi world
+- Remove gun and melee locations for now (entirely)
+
+- Make expensive Stamp items require more locations to explore
 
 - Furnishing auto-unlock (currently receiving furniture requires you to pick it
   up and reload the Church)
 
-- Make weapons not 'found' in the multiworld unobtainable (instead, on pickup,
-  randomise for one of the found multiworld weapons)
+- Remove unimplemented items (including virtual ones like "Unlock Town" and
+  "Unlock Dungeon")
 
-- Hints on which weapons are important
-
-- Baptismal Font purging from run. Sacrifice a gun at the Baptismal Font, if
-  that gun has no more progression items involved in its locations,
-  automatically unlock all locations and permanently remove the gun from
-  drops and printing
+- Show on-screen when receiving or sending items to the multi world
 
 - Use location groups and slot data to send all required information from
   .apworld generation to the C# plugin to avoid any hardcoded dictionaries
 
 - Automatic item and location groups based on tags
+
+- Only check for bringing furniture home, not finding it in a level
+
+- Gun-lock
+    - Start the game with two random low-value 9mm guns
+    - Option to allow any value
+    - Option to allow any calibre
+    - Option to auto-chisel into 9mm
+    - Option to specify exact guns and/or groups
+    - On death, respawn with the same two guns (but lose all ranks, etc.)
+    - Optional XP share between the guns (default on)
+    - Sacrifice either of the guns at Rank 5 to Telia to swap it for a random
+      different gun
+        - Dictated by world logic in advance
+    - Logic allows 2 new sacrifices after every boss fight (So 10 before The
+      Witch at most)
+    - Option to adjust how many sacrifices you want checks for in the whole
+      run (10 default, 20 max)
+    - First sacrifice logically requires Ammunition Crate to avoid ammo
+      shortages
+    - Location for each rank of each gun, and additional rank up locations
+      post-sacrifice
+    - Dropped or shop guns are replaced by random oils
+
+- Rebalance Sulf
+    - Make Telia's printing cost money for multi world weapons only once, use
+      slot data or event to keep track
+    - Set price on specific gun based on whether it was printed for free or not
+    - Make crafted scrolls at most worth 2000 Sulf to avoid infinite Sulf
+      printing, or alternatively limit Scholar to one sale of each scroll
+      per vendor reset
+
+- Music randomiser
 
 - Options and reasonable item groups
     - Simple deathlink
@@ -95,6 +127,10 @@ No options are available at this time.
     - Toggle 'out of logic' weapon obtaining
     - Enable/disable items to be used for filler
 
+- New goal: Defeat X boss (and the bosses before them) for shorter runs
+
+- Enable a console for generic multi world messages and commands
+
 - Remove recipe scraps and manuals from filler list, give the whole item list a
   once over to ensure things are tagged right and ready for future progressive
   information
@@ -107,17 +143,8 @@ No options are available at this time.
     - Exclude tier 2 scrolls by default from filler
     - Add all furniture unlocks as 'useful' generation
 
-- Rebalance Sulf
-    - Make Telia's printing cost money for multi world weapons only once, use
-      slot data or event to keep track
-    - Set price on specific gun based on whether it was printed for free or not
-    - Make crafted scrolls at most worth 2000 Sulf to avoid infinite Sulf
-      printing, or alternatively limit Scholar to one sale of each scroll
-      per vendor reset
-
-- New goal: Defeat X boss (and the bosses before them) for shorter runs
-
-- Enable a console for generic multi world messages and commands
+- Randomise laser sight items so their colour is fully random (for all valid
+  colours)
 
 - Sacrifice Valuable items to Telia for free hints in the multi world
     - Add tooltip hint to let the player know
@@ -127,9 +154,6 @@ No options are available at this time.
   chances and more rerolls on loot tables, or vanilla Luck stat) and
   Progressive Charity (every visit to the church triggered by death or
   amulet provides filler in the collection box)
-
-- Randomise laser sight items so their colour is fully random (for all valid
-  colours)
 
 - Separate filler items into "useful during run" and "useful at home" and
   deliver useful during run items during the run

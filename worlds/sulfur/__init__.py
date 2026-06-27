@@ -105,18 +105,6 @@ class SulfurWorld(World):
             lambda details: details.name,
             locations_by_tag[LocationTags.sacrifice_specific_weapon]
         ),
-        LocationTags.find_weapon_model: map(
-            lambda details: details.name,
-            locations_by_tag[LocationTags.find_weapon_model]
-        ),
-        LocationTags.rank_up_weapon_model: map(
-            lambda details: details.name,
-            locations_by_tag[LocationTags.rank_up_weapon_model]
-        ),
-        LocationTags.sacrifice_weapon_model: map(
-            lambda details: details.name,
-            locations_by_tag[LocationTags.sacrifice_weapon_model]
-        ),
         LocationTags.rank_1: map(
             lambda details: details.name,
             locations_by_tag[LocationTags.rank_1]

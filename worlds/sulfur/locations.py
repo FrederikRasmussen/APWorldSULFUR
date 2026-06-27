@@ -261,7 +261,8 @@ amount_strings = [
 ]
 def add_weapon_type_gun_location_details(weapon_type: str, names: list[str], a_or_an: str):
     for i in range(len(names)):
-        space_and_models = "" if i == 0 else " models"
+        space_and_models = "" if i == 0 else " models" \
+        '''
         amount_string = a_or_an if i == 0 else amount_strings[i]
         amount_string = f"all {amount_string}" if i + 1 >= len(names) else amount_string
         LOCATIONS.extend([
@@ -308,6 +309,7 @@ def add_weapon_type_gun_location_details(weapon_type: str, names: list[str], a_o
                 required_amount=i+1,
             ),
         ])
+        '''
 
 def add_weapon_locations(weapon_type: str, a_or_an: str, names: list[str]):
     add_specific_gun_location_details(weapon_type, names)

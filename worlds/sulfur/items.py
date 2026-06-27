@@ -5378,7 +5378,7 @@ ITEMS = {
         898,
         ItemNames.Weapon_Farsight,
         ItemClassification.progression,
-        [ItemTags.gun, ItemTags.gun_revolver],
+        [ItemTags.gun, ItemTags.gun_rifle],
     ),
     ItemDetails(
         899,
@@ -5426,7 +5426,7 @@ ITEMS = {
         919,
         ItemNames.Weapon_Knop,
         ItemClassification.progression,
-        [ItemTags.gun, ItemTags.gun_revolver],
+        [ItemTags.gun, ItemTags.gun_rifle],
     ),
     ItemDetails(
         920,
@@ -5480,7 +5480,7 @@ ITEMS = {
         930,
         ItemNames.Weapon_PierreFusil,
         ItemClassification.progression,
-        [ItemTags.gun, ItemTags.gun_revolver],
+        [ItemTags.gun, ItemTags.gun_rifle],
     ),
     ItemDetails(
         931,
@@ -5570,7 +5570,7 @@ ITEMS = {
         948,
         ItemNames.Weapon_TailorMarksman,
         ItemClassification.progression,
-        [ItemTags.gun, ItemTags.gun_revolver],
+        [ItemTags.gun, ItemTags.gun_rifle],
     ),
     ItemDetails(
         949,
