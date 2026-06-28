@@ -59,23 +59,6 @@ Victory by defeating The Witch.
 No options are available at this time.
 
 # Wishlist / Future plans
-
-- Desert shortcut doesn't work
-
-- Fix stuttering when picking up weapons
-
-- Remove gun and melee locations for now (entirely)
-
-- Make expensive Stamp items require more locations to explore
-
-- Furnishing auto-unlock (currently receiving furniture requires you to pick it
-  up and reload the Church)
-
-- Remove unimplemented items (including virtual ones like "Unlock Town" and
-  "Unlock Dungeon")
-
-- Show on-screen when receiving or sending items to the multi world
-
 - Use location groups and slot data to send all required information from
   .apworld generation to the C# plugin to avoid any hardcoded dictionaries
 
@@ -145,6 +128,10 @@ No options are available at this time.
 
 - Enable a console for generic multi world messages and commands
 
+- Improve in-game options menu
+- 
+- Swap to Async calls
+
 - Remove recipe scraps and manuals from filler list, give the whole item list a
   once over to ensure things are tagged right and ready for future progressive
   information
@@ -187,6 +174,8 @@ No options are available at this time.
 
 - Randomised furniture inventories (each furniture inventory is randomly
   selected from any of the other inventories, including the toilet)
+
+- Add locations to generic crafting and add progressive crafting items to pool
 
 - Shopkeep randomiser (each shopkeep randomly swaps item lists)
 

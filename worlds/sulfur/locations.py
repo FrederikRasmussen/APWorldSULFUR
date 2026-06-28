@@ -202,119 +202,7 @@ add_game_area_location_details(
     ]
 )
 
-# Weapons
-WEAPON_LOCATION_IDS_START = CURRENT_LOCATION_ID
-WEAPON_LOCATIONS_EACH = 14
-def add_specific_gun_location_details(weapon_type: str, names: list[str]):
-    for name in names:
-        LOCATIONS.extend([
-            LocationDetails(
-                f"Find {name}",
-                [LocationTags.find_specific_weapon, weapon_type, LocationTags.region_full_church],
-                required_item=name
-            ),
-            LocationDetails(
-                f"Contribute {name} to the cause",
-                [LocationTags.sacrifice_specific_weapon, weapon_type, LocationTags.region_full_church],
-                required_item=name
-            ),
-            LocationDetails(
-                f"Reach Rank 1 with {name}",
-                [LocationTags.rank_up_specific_weapon, LocationTags.rank_1, weapon_type, LocationTags.region_full_church],
-                required_item=name
-            ),
-            LocationDetails(
-                f"Reach Rank 2 with {name}",
-                [LocationTags.rank_up_specific_weapon, LocationTags.rank_2, weapon_type, LocationTags.region_full_church],
-                required_item=name
-            ),
-            LocationDetails(
-                f"Reach Rank 3 with {name}",
-                [LocationTags.rank_up_specific_weapon, LocationTags.rank_3, weapon_type, LocationTags.region_full_church],
-                required_item=name
-            ),
-            LocationDetails(
-                f"Reach Rank 4 with {name}",
-                [LocationTags.rank_up_specific_weapon, LocationTags.rank_4, weapon_type, LocationTags.region_full_church],
-                required_item=name
-            ),
-            LocationDetails(
-                f"Reach Rank 5 with {name}",
-                [LocationTags.rank_up_specific_weapon, LocationTags.rank_5, weapon_type, LocationTags.region_full_church],
-                required_item=name
-            ),
-        ])
-
-amount_strings = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
-    "eleven",
-    "twelve",
-]
-def add_weapon_type_gun_location_details(weapon_type: str, names: list[str], a_or_an: str):
-    for i in range(len(names)):
-        space_and_models = "" if i == 0 else " models" \
-        '''
-        amount_string = a_or_an if i == 0 else amount_strings[i]
-        amount_string = f"all {amount_string}" if i + 1 >= len(names) else amount_string
-        LOCATIONS.extend([
-            LocationDetails(
-                f"Find {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.find_weapon_model, weapon_type, LocationTags.region_full_church],
-                requires_multiple_items=names,
-                required_amount=i+1,
-            ),
-            LocationDetails(
-                f"Contribute {amount_string} {weapon_type}{space_and_models} to the cause",
-                [LocationTags.sacrifice_weapon_model, weapon_type, LocationTags.region_full_church],
-                requires_multiple_items=names,
-                required_amount=i+1,
-            ),
-            LocationDetails(
-                f"Reach Rank 1 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, LocationTags.rank_1, weapon_type, LocationTags.region_full_church],
-                requires_multiple_items=names,
-                required_amount=i+1,
-            ),
-            LocationDetails(
-                f"Reach Rank 2 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, LocationTags.rank_2, weapon_type, LocationTags.region_full_church],
-                requires_multiple_items=names,
-                required_amount=i+1,
-            ),
-            LocationDetails(
-                f"Reach Rank 3 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, LocationTags.rank_3, weapon_type, LocationTags.region_full_church],
-                requires_multiple_items=names,
-                required_amount=i+1,
-            ),
-            LocationDetails(
-                f"Reach Rank 4 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, LocationTags.rank_4, weapon_type, LocationTags.region_full_church],
-                requires_multiple_items=names,
-                required_amount=i+1,
-            ),
-            LocationDetails(
-                f"Reach Rank 5 with {amount_string} {weapon_type}{space_and_models}",
-                [LocationTags.rank_up_weapon_model, LocationTags.rank_5, weapon_type, LocationTags.region_full_church],
-                requires_multiple_items=names,
-                required_amount=i+1,
-            ),
-        ])
-        '''
-
-def add_weapon_locations(weapon_type: str, a_or_an: str, names: list[str]):
-    add_specific_gun_location_details(weapon_type, names)
-    add_weapon_type_gun_location_details(weapon_type, names, a_or_an)
-
+'''
 add_weapon_locations(
     WeaponTypes.assault_rifle,
     "an",
@@ -424,7 +312,9 @@ add_weapon_locations(
         ItemNames.Weapon_Longboy,
     ]
 )
+'''
 
+'''
 LOCATIONS.extend([
     LocationDetails(
         f"Find {ItemNames.Weapon_Bo}",
@@ -482,33 +372,19 @@ LOCATIONS.extend([
         required_amount=5,
     ),
 ])
+'''
 
 # Storage locations
 LOCATIONS.extend([
-    LocationDetails(
-        LocationNames.furniture_find_suitcase,
-        [LocationTags.find_furniture, LocationTags.region_sulfur_caves],
-        required_item=ItemNames.Item_Suitcase,
-    ),
     LocationDetails(
         LocationNames.furniture_place_suitcase,
         [LocationTags.place_furniture, LocationTags.region_sulfur_caves],
         required_item=ItemNames.Item_Suitcase,
     ),
     LocationDetails(
-        LocationNames.furniture_find_refrigerator,
-        [LocationTags.find_furniture, LocationTags.region_sewers],
-        required_item=ItemNames.Item_Refrigerator,
-    ),
-    LocationDetails(
         LocationNames.furniture_place_refrigerator,
         [LocationTags.place_furniture, LocationTags.region_sewers],
         required_item=ItemNames.Item_Refrigerator,
-    ),
-    LocationDetails(
-        LocationNames.furniture_find_chest_of_drawers,
-        [LocationTags.find_furniture, LocationTags.region_castle],
-        required_item=ItemNames.Item_ChestOfDrawers,
     ),
     LocationDetails(
         LocationNames.furniture_place_chest_of_drawers,
