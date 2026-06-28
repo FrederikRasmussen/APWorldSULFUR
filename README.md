@@ -129,7 +129,7 @@ No options are available at this time.
 - Enable a console for generic multi world messages and commands
 
 - Improve in-game options menu
-- 
+
 - Swap to Async calls
 
 - Remove recipe scraps and manuals from filler list, give the whole item list a
