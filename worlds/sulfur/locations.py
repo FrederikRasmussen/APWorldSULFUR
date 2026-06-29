@@ -379,17 +379,14 @@ LOCATIONS.extend([
     LocationDetails(
         LocationNames.furniture_place_suitcase,
         [LocationTags.place_furniture, LocationTags.region_sulfur_caves],
-        required_item=ItemNames.Item_Suitcase,
     ),
     LocationDetails(
         LocationNames.furniture_place_refrigerator,
         [LocationTags.place_furniture, LocationTags.region_sewers],
-        required_item=ItemNames.Item_Refrigerator,
     ),
     LocationDetails(
         LocationNames.furniture_place_chest_of_drawers,
         [LocationTags.place_furniture, LocationTags.region_castle],
-        required_item=ItemNames.Item_ChestOfDrawers,
     ),
 ])
 

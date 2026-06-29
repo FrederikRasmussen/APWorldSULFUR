@@ -129,23 +129,28 @@ class SulfurWorld(World):
         self.multiworld.regions.append(new_region)
         return new_region
 
-    def create_region_with_connection(self, region_connection, region_name, required_item) -> Region:
+    def create_region_with_connection(self, region_connection, region_name, required_item = None) -> Region:
         new_region = self.create_region(region_name)
-        region_connection.connect(
-            new_region, f"{region_name} to {region_connection.name}",
-            rule=Has(required_item)
-        )
+        if required_item is not None:
+            region_connection.connect(
+                new_region, f"{region_name} to {region_connection.name}",
+                rule=Has(required_item)
+            )
+        else:
+            region_connection.connect(
+                new_region, f"{region_name} to {region_connection.name}"
+            )
         return new_region
 
     def create_regions(self) -> None:
         church_region = self.create_region(LocationTags.region_church)
 
-        full_church_region = self.create_region_with_connection(church_region, LocationTags.region_full_church, VirtualNames.UnlockAreaChurchGrounds)
-        sulfur_caves_region = self.create_region_with_connection(church_region, LocationTags.region_sulfur_caves, VirtualNames.UnlockAreaSulfurCaves)
+        full_church_region = self.create_region_with_connection(church_region, LocationTags.region_full_church, VirtualNames.UnlockAreaTown)
+        sulfur_caves_region = self.create_region_with_connection(church_region, LocationTags.region_sulfur_caves)
         town_region = self.create_region_with_connection(full_church_region, LocationTags.region_town, VirtualNames.UnlockAreaTown)
         sewers_region = self.create_region_with_connection(full_church_region, LocationTags.region_sewers, VirtualNames.UnlockAreaSewers)
         hedge_maze_region = self.create_region_with_connection(full_church_region, LocationTags.region_hedge_maze, VirtualNames.UnlockAreaHedgeMaze)
-        dungeon_region = self.create_region_with_connection(full_church_region, LocationTags.region_dungeon, VirtualNames.UnlockAreaDungeon)
+        dungeon_region = self.create_region_with_connection(full_church_region, LocationTags.region_dungeon, VirtualNames.UnlockAreaHedgeMaze)
         castle_region = self.create_region_with_connection(full_church_region, LocationTags.region_castle, VirtualNames.UnlockAreaCastle)
         forest_region = self.create_region_with_connection(full_church_region, LocationTags.region_forest, VirtualNames.UnlockAreaForest)
         fortress_region = self.create_region_with_connection(full_church_region, LocationTags.region_fortress, VirtualNames.UnlockAreaBridge)
@@ -201,9 +206,8 @@ class SulfurWorld(World):
     starting_melee = None
     def create_items(self) -> None:
         weapon_candidates: dict[ItemDetails, Item] = {}
-        #generated_item_details: list[ItemDetails] = []
         for item in ITEMS:
-            if (ItemTags.unknown or ItemTags.do_not_generate) in item.tags:
+            if len({ItemTags.do_not_generate, ItemTags.unknown}.intersection(item.tags)) > 0:
                 continue
             generated_item = self.create_sulfur_item(item)
             self.multiworld.itempool.append(generated_item)

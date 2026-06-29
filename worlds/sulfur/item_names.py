@@ -5,11 +5,9 @@
     UnlockAreaDesert = "Unlock Desert shortcut"
     UnlockAreaBridge = "Unlock Shav'Wani Fortress Bridge shortcut"
     UnlockAreaForest = "Unlock Forest shortcut"
-    UnlockAreaChurchGrounds = "Unlock Church Grounds"
     UnlockAreaSewers = "Unlock Sewer shortcut"
     UnlockAreaHedgeMaze = "Unlock Hedge Maze shortcut"
     UnlockAreaCastle = "Unlock Castle shortcut after Hedge Maze"
-    UnlockAreaDungeon = "Unlock Dungeon entrance after Hedge Maze"
 
 class ItemNames:
     Ammo_12Ga = "Ammo Box (12ga)"

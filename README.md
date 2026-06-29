@@ -63,13 +63,6 @@ No options are available at this time.
 - Use location groups and slot data to send all required information from
   .apworld generation to the C# plugin to avoid any hardcoded dictionaries
 
-- Remove recipe scraps and manuals from filler list, give the whole item list a
-  once over to ensure things are tagged right and ready for future progressive
-  information
-    - Sort food / healing by amount healed and speed categories
-    - Put buff-only consumables in their own category
-    - Tag equipment with downsides (e.g. Turtle Shell) with high or low severity
-
 - Redo filler generation so it only generates 'final' items like meals,
   health potions, sodas, oils, etc.
     - Exclude tier 2 scrolls by default from filler
@@ -109,7 +102,8 @@ No options are available at this time.
 - Rubberbanding assistance
     - Drop quest items when needing stamps for Progression or Useful items
     - Spawn NPCs with required quest items in current inventory
-    - Drop ingredients for undiscovered / uncrafted recipes
+    - Drop ingredients for undiscovered / uncrafted recipes (including 
+      scrolls, could enable removing scroll selling from Scholar)
 
 - Gun Lock
     - Start the game with two random low-value 9mm guns
@@ -150,14 +144,6 @@ No options are available at this time.
 
 - Swap to Async calls
 
-- Additional locations for storing (or contributing) all guns
-    - Include rubberbanding assistance that blacklists guns already in
-      inventory, at home, or at Telia. If there are no valid guns left in
-      current loot table, drop filler
-    - Include tooltips on any gun, for which zones have new guns to be
-      found, and whether they are securely stored at home or contributed to
-      the cause
-
 - Improve in-game options menu
 
 - Randomise laser sight items so their colour is fully random (for all valid
@@ -169,8 +155,34 @@ No options are available at this time.
 - Make church collection box reset on its own if new items are added while in
   the Church
 
+- Progressive Rank Lock
+    - Game starts with only ability to get Rank 1 guns
+    - Items unlock the ability to level up higher
+    - Option to let overflow XP flow into other guns in inventory and stash
+
+- Additional locations for using explosives on destructible walls in all areas
+    - Includes "Explosives Unlock" item that is required to buy equip
+      explosives or add oils/scrolls that make weapons explosive. Out-of-logic
+      possible with specific enemy mutations and by moving Sulf barrels.
+
+- Additional locations for storing (or contributing) all guns,
+  with option for simply finding or extracting with them instead
+    - Include rubberbanding assistance that blacklists guns already in
+      inventory, at home, or at Telia. If there are no valid guns left in
+      current loot table, drop filler
+    - Include tooltips on any gun, for which zones have new guns to be
+      found, and whether they are securely stored at home or contributed to
+      the cause
+
 - Add purchasable multi world items to shopkeeps
     - Multi world inventory _per area_ _per shopkeep_
+
+- Add locations to quest completions per NPC
+    - Include quest item selection based on available areas and 'quest 
+      difficulty' progressive items
+    - Include rubberbanding assistance
+        - Prefer NPCs with remaining checks
+    - Include hard logic via NPC unlocks
 
 - Kill enemy type locations (Each enemy type, excluding bosses, become a
   location, 9 goblins, 9 Black Guild members, 6 corrupted, 2 (3??) ghosts, 1

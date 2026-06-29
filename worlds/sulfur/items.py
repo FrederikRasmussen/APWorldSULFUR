@@ -5081,7 +5081,7 @@ ITEMS = {
     ),
     ItemDetails(
         1013,
-        VirtualNames.UnlockAreaChurchGrounds,
+        VirtualNames.UnlockAreaTown,
         ItemClassification.progression,
         [ItemTags.virtual],
     ),
