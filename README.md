@@ -59,12 +59,42 @@ Victory by defeating The Witch.
 No options are available at this time.
 
 # Wishlist / Future plans
+
 - Use location groups and slot data to send all required information from
   .apworld generation to the C# plugin to avoid any hardcoded dictionaries
 
+- Remove recipe scraps and manuals from filler list, give the whole item list a
+  once over to ensure things are tagged right and ready for future progressive
+  information
+    - Sort food / healing by amount healed and speed categories
+    - Put buff-only consumables in their own category
+    - Tag equipment with downsides (e.g. Turtle Shell) with high or low severity
+
+- Redo filler generation so it only generates 'final' items like meals,
+  health potions, sodas, oils, etc.
+    - Exclude tier 2 scrolls by default from filler
+    - Add all furniture unlocks as 'useful' generation
+
+- Make filler items generate in SULFUR directly, so it can roll loot tables and
+  make small lootsplosions rarely. Combine with Progressive Luck (better
+  chances and more rerolls on loot tables, or vanilla Luck stat) and
+  Progressive Charity (every visit to the church triggered by death or
+  amulet provides filler in the collection box)
+
 - Automatic item and location groups based on tags
 
-- Only check for bringing furniture home, not finding it in a level
+- Options and reasonable item groups
+    - Simple deathlink
+    - Starting weapon from categories or specifics
+    - Ranksanity, Findsanity, Contributesanity options
+        - Max rank required
+        - Toggle between specifics, class-based, or totals
+    - Stampsanity
+    - Mixing the Magic Sanity
+    - Enable/disable any specific guns/melee weapons from pool, supports
+      item groups
+    - Toggle 'out of logic' weapon obtaining
+    - Enable/disable items to be used for filler
 
 - XP share between equipped guns (default on)
 
@@ -75,6 +105,11 @@ No options are available at this time.
       and 6 guns after killing St. Lucia
     - Logic assumes access to Ammunition Crate for anything past 2 guns
     - Logic assumes access to Telia for sacrifice, and anything past 2 guns
+
+- Rubberbanding assistance
+    - Drop quest items when needing stamps for Progression or Useful items
+    - Spawn NPCs with required quest items in current inventory
+    - Drop ingredients for undiscovered / uncrafted recipes
 
 - Gun Lock
     - Start the game with two random low-value 9mm guns
@@ -109,55 +144,27 @@ No options are available at this time.
       printing, or alternatively limit Scholar to one sale of each scroll
       per vendor reset
 
-- Music randomiser
-
-- Options and reasonable item groups
-    - Simple deathlink
-    - Starting weapon from categories or specifics
-    - Ranksanity, Findsanity, Contributesanity options
-        - Max rank required
-        - Toggle between specifics, class-based, or totals
-    - Stampsanity
-    - Mixing the Magic Sanity
-    - Enable/disable any specific guns/melee weapons from pool, supports
-      item groups
-    - Toggle 'out of logic' weapon obtaining
-    - Enable/disable items to be used for filler
-
 - New goal: Defeat X boss (and the bosses before them) for shorter runs
 
-- Enable a console for generic multi world messages and commands
-
-- Improve in-game options menu
+- Music randomiser
 
 - Swap to Async calls
 
-- Remove recipe scraps and manuals from filler list, give the whole item list a
-  once over to ensure things are tagged right and ready for future progressive
-  information
-    - Sort food / healing by amount healed and speed categories
-    - Put buff-only consumables in their own category
-    - Tag equipment with downsides (e.g. Turtle Shell) with high or low severity
+- Additional locations for storing (or contributing) all guns
+    - Include rubberbanding assistance that blacklists guns already in
+      inventory, at home, or at Telia. If there are no valid guns left in
+      current loot table, drop filler
+    - Include tooltips on any gun, for which zones have new guns to be
+      found, and whether they are securely stored at home or contributed to
+      the cause
 
-- Redo filler generation so it only generates 'final' items like meals,
-  health potions, sodas, oils, etc.
-    - Exclude tier 2 scrolls by default from filler
-    - Add all furniture unlocks as 'useful' generation
+- Improve in-game options menu
 
 - Randomise laser sight items so their colour is fully random (for all valid
   colours)
 
 - Sacrifice Valuable items to Telia for free hints in the multi world
     - Add tooltip hint to let the player know
-
-- Make filler items generate in SULFUR directly, so it can roll loot tables and
-  make small lootsplosions rarely. Combine with Progressive Luck (better
-  chances and more rerolls on loot tables, or vanilla Luck stat) and
-  Progressive Charity (every visit to the church triggered by death or
-  amulet provides filler in the collection box)
-
-- Separate filler items into "useful during run" and "useful at home" and
-  deliver useful during run items during the run
 
 - Make church collection box reset on its own if new items are added while in
   the Church
@@ -223,6 +230,8 @@ No options are available at this time.
 
 - Make recipes into progressive unlocks similar to Minecraft, with automatic
   discovery of the recipes.
+
+- Make crafting a recipe for the first time into a location
 
 - Entrance randomiser (e.g. entering Sulfur Caves from The Church might send you
   to the Forest)
