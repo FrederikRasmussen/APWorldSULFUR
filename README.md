@@ -91,6 +91,8 @@ No options are available at this time.
 
 - New goal: Defeat X boss (and the bosses before them) for shorter runs
 
+- Swap to Async calls
+
 - XP share between equipped guns (default on)
 
 - Location for reaching rank 1/2/3/4/5 with 1 to N+1 guns (repeats allowed),
@@ -101,6 +103,22 @@ No options are available at this time.
     - Logic assumes access to Ammunition Crate for anything past 2 guns
     - Logic assumes access to Telia for sacrifice, and anything past 2 guns
 
+- Additional locations for using explosives on destructible walls in all areas
+    - Includes "Explosives Unlock" item that is required to buy equip
+      explosives or add oils/scrolls that make weapons explosive. Out-of-logic
+      possible with specific enemy mutations and by moving Sulf barrels.
+
+- Progressive Rank Lock
+    - Game starts with only ability to get Rank 1 guns
+    - Items unlock the ability to level up higher
+    - Option to let overflow XP flow into other guns in inventory and stash
+
+- Rubberbanding assistance
+    - Drop quest items when needing stamps for Progression or Useful items
+    - Spawn NPCs with required quest items in current inventory
+    - Drop ingredients for undiscovered / uncrafted recipes (including
+      scrolls, could enable removing scroll selling from Scholar)
+
 - Service Lock
     - Can only use Printing Station / Repair / Cooking (small and big) /
       Amulet Charge / Magic Mixing / Stamp Trading / Shopping after unlock
@@ -108,11 +126,31 @@ No options are available at this time.
         - Include option for fully unlocked during runs
         - Include option to lock shrines
 
-- Rubberbanding assistance
-    - Drop quest items when needing stamps for Progression or Useful items
-    - Spawn NPCs with required quest items in current inventory
-    - Drop ingredients for undiscovered / uncrafted recipes (including
-      scrolls, could enable removing scroll selling from Scholar)
+- Introduce door locks (warp back to church when not unlocked)
+
+- Additional locations for storing (or contributing) all guns,
+  with option for simply finding or extracting with them instead
+    - Include rubberbanding assistance that blacklists guns already in
+      inventory, at home, or at Telia. If there are no valid guns left in
+      current loot table, drop filler
+    - Include tooltips on any gun, for which zones have new guns to be
+      found, and whether they are securely stored at home or contributed to
+      the cause
+
+- Add purchasable multi world items to shopkeeps
+    - Multi world inventory _per area_ _per shopkeep_
+
+- Add locations to quest completions per NPC
+    - Include quest item selection based on available areas and 'quest
+      difficulty' progressive items
+    - Include rubberbanding assistance
+        - Prefer NPCs with remaining checks
+    - Include hard logic via NPC unlocks
+
+- Kill enemy type locations (Each enemy type, excluding bosses, become a
+  location, 9 goblins, 9 Black Guild members, 6 corrupted, 2 (3??) ghosts, 1
+  Haradrian, 4 Guttercliffians, 3 craws, 5 shav'was, 4 hellshrews, total of 43
+  locations)
 
 - Gun Lock
     - Start the game with two random low-value 9mm guns
@@ -149,8 +187,6 @@ No options are available at this time.
 
 - Music randomiser
 
-- Swap to Async calls
-
 - Improve in-game options menu
 
 - Randomise laser sight items so their colour is fully random (for all valid
@@ -158,45 +194,6 @@ No options are available at this time.
 
 - Sacrifice Valuable items to Telia for free hints in the multi world
     - Add tooltip hint to let the player know
-
-- Make church collection box reset on its own if new items are added while in
-  the Church
-
-- Progressive Rank Lock
-    - Game starts with only ability to get Rank 1 guns
-    - Items unlock the ability to level up higher
-    - Option to let overflow XP flow into other guns in inventory and stash
-
-- Additional locations for using explosives on destructible walls in all areas
-    - Includes "Explosives Unlock" item that is required to buy equip
-      explosives or add oils/scrolls that make weapons explosive. Out-of-logic
-      possible with specific enemy mutations and by moving Sulf barrels.
-
-- Additional locations for storing (or contributing) all guns,
-  with option for simply finding or extracting with them instead
-    - Include rubberbanding assistance that blacklists guns already in
-      inventory, at home, or at Telia. If there are no valid guns left in
-      current loot table, drop filler
-    - Include tooltips on any gun, for which zones have new guns to be
-      found, and whether they are securely stored at home or contributed to
-      the cause
-
-- Add purchasable multi world items to shopkeeps
-    - Multi world inventory _per area_ _per shopkeep_
-
-- Add locations to quest completions per NPC
-    - Include quest item selection based on available areas and 'quest
-      difficulty' progressive items
-    - Include rubberbanding assistance
-        - Prefer NPCs with remaining checks
-    - Include hard logic via NPC unlocks
-
-- Kill enemy type locations (Each enemy type, excluding bosses, become a
-  location, 9 goblins, 9 Black Guild members, 6 corrupted, 2 (3??) ghosts, 1
-  Haradrian, 4 Guttercliffians, 3 craws, 5 shav'was, 4 hellshrews, total of 43
-  locations)
-
-- Introduce door locks (warp back to church when not unlocked)
 
 - Randomised furniture inventories (each furniture inventory is randomly
   selected from any of the other inventories, including the toilet)
@@ -207,6 +204,22 @@ No options are available at this time.
 
 - Randomise enemies in each biome (e.g. Black Guild members in the Cave, Goblins
   in the Desert)
+
+- Furniture randomiser (each furniture item randomly unlocks other furnishing)
+
+- Randomise scavenge loot lists for different areas, e.g. Sewers drops Caves,
+  Caves drop Castle, Castle drops Dungeon etc.  
+
+- Make recipes into progressive unlocks similar to Minecraft, with automatic
+  discovery of the recipes.
+
+- Make crafting a recipe for the first time into a location
+
+- Make church collection box reset on its own if new items are added while in
+  the Church
+
+- Entrance randomiser (e.g. entering Sulfur Caves from The Church might send you
+  to the Forest)
 
 - New game+ where shortcuts and door locks are reset, and all stages and
   bosses become ng+ checks
@@ -247,28 +260,12 @@ No options are available at this time.
   completion / spheres during generation / progressives to give better
   equipment later
 
-- Make recipes into progressive unlocks similar to Minecraft, with automatic
-  discovery of the recipes.
-
-- Make crafting a recipe for the first time into a location
-
-- Entrance randomiser (e.g. entering Sulfur Caves from The Church might send you
-  to the Forest)
-
 - Add hints from conversations with NPCs
 
 - Gun Game mechanics (e.g. auto-swap on rank-up, and/or stage completion)
 
 - Weapon randomiser (each weapon's individual stats are randomly swapped around.
   E.g. the fire rate of the M11A2 Fisk may appear on the Bronco 89)
-
-- Furniture randomiser (each furniture item randomly unlocks other furnishing)
-
-- Randomise loot lists for different factions of enemies (e.g. Goblin Enemies
-  drop things usually reserved for Black Guild drops)
-
-- Area loot randomiser (each area randomly swaps its loot list for a different
-  area)
 
 - Golden run locations, one check for each stage (and boss) killed without going
   back to the Church in between. Sulfur Caves also included
