@@ -1,6 +1,7 @@
 ﻿class ItemTags:
     csharp_checkpoint = "C#: Checkpoint"
     csharp_item_id = "C#: ItemID"
+    csharp_loot_chance = "C#: Loot Chance"
     csharp_loot_table = "C#: LootTable"
     csharp_printer = "C#: Printer"
     csharp_rubberbanding = "C#: Rubberbanding"
@@ -8,11 +9,14 @@
     csharp_vendor_table_extension = "C#: VendorTable extension"
     csharp_charity = "C#: Charity"
     csharp_recipe_unlock = "C#: Recipe unlock"
+    csharp_recurring = "C#: Recurring"
 
+    group_charity = "Charity"
     group_explosive = "Explosives"
     group_food = "Food"
     group_ingredients = "Ingredients"
-    group_recipes = "Recipes"
+    group_cookbooks = "Recipes"
+    group_recurring_donations = "Recurring Donations"
     group_repeatable = "Repeatable"
     group_scroll = "Scrolls"
     group_service_stations = "Service stations"

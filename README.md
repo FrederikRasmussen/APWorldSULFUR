@@ -89,6 +89,8 @@ No options are available at this time.
     - Toggle 'out of logic' weapon obtaining
     - Enable/disable items to be used for filler
 
+- New goal: Defeat X boss (and the bosses before them) for shorter runs
+
 - XP share between equipped guns (default on)
 
 - Location for reaching rank 1/2/3/4/5 with 1 to N+1 guns (repeats allowed),
@@ -99,10 +101,17 @@ No options are available at this time.
     - Logic assumes access to Ammunition Crate for anything past 2 guns
     - Logic assumes access to Telia for sacrifice, and anything past 2 guns
 
+- Service Lock
+    - Can only use Printing Station / Repair / Cooking (small and big) /
+      Amulet Charge / Magic Mixing / Stamp Trading / Shopping after unlock
+        - Include per NPC lock
+        - Include option for fully unlocked during runs
+        - Include option to lock shrines
+
 - Rubberbanding assistance
     - Drop quest items when needing stamps for Progression or Useful items
     - Spawn NPCs with required quest items in current inventory
-    - Drop ingredients for undiscovered / uncrafted recipes (including 
+    - Drop ingredients for undiscovered / uncrafted recipes (including
       scrolls, could enable removing scroll selling from Scholar)
 
 - Gun Lock
@@ -137,8 +146,6 @@ No options are available at this time.
     - Make crafted scrolls at most worth 2000 Sulf to avoid infinite Sulf
       printing, or alternatively limit Scholar to one sale of each scroll
       per vendor reset
-
-- New goal: Defeat X boss (and the bosses before them) for shorter runs
 
 - Music randomiser
 
@@ -178,7 +185,7 @@ No options are available at this time.
     - Multi world inventory _per area_ _per shopkeep_
 
 - Add locations to quest completions per NPC
-    - Include quest item selection based on available areas and 'quest 
+    - Include quest item selection based on available areas and 'quest
       difficulty' progressive items
     - Include rubberbanding assistance
         - Prefer NPCs with remaining checks

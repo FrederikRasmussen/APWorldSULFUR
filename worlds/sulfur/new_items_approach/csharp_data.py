@@ -11,6 +11,11 @@ class CSharp:
         return data
 
     @staticmethod
+    def add_recurring_loot_table_data(data: dict[str, Any], name: str) -> dict[str, Any]:
+        data["recurring_loot_table"] = name
+        return data
+
+    @staticmethod
     def add_item_id_data(data: dict[str, Any], name: str, instant_delivery: bool = False) -> dict[str, Any]:
         data["item_id"] = {
             "name": name,
@@ -24,4 +29,20 @@ class CSharp:
             "vendor": vendor,
             "item": item
         }
-        return data;
+        return data
+
+    @staticmethod
+    def add_checkpoint_data(data: dict[str, Any], name: str) -> dict[str, Any]:
+        data["checkpoint"] = name
+        return data
+
+    @staticmethod
+    def add_progressive_checkpoint_data(data: dict[str, Any], names: list[str]) -> dict[str, Any]:
+        data["progressive_checkpoints"] = names
+        return data
+
+    @staticmethod
+    def as_recurring(data: dict[str, Any]):
+        return {
+            "recurring": data
+        }
